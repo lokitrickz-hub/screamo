@@ -11,7 +11,7 @@ export default function VideoFeature() {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-32 px-6 bg-[#0a0a0a] overflow-hidden"
+      className="relative py-16 md:py-32 px-6 bg-[#0a0a0a] overflow-hidden"
     >
       {/* Accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-lime)]/20 to-transparent" />
@@ -35,7 +35,7 @@ export default function VideoFeature() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-[var(--font-heading)] font-black text-2xl md:text-4xl lg:text-5xl
+          className="font-[var(--font-heading)] font-black text-xl md:text-4xl lg:text-5xl
                    text-white leading-[1.1] max-w-3xl mb-4"
         >
           Półfinał <span className="text-[var(--color-lime)]">Mam Talent!</span>
@@ -45,8 +45,8 @@ export default function VideoFeature() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-[var(--font-body)] text-[var(--color-gray-400)] text-base md:text-lg
-                   leading-relaxed max-w-2xl mb-10"
+          className="font-[var(--font-body)] text-[var(--color-gray-400)] text-sm md:text-lg
+                   leading-relaxed max-w-2xl mb-8 md:mb-10"
         >
           Nasz spektakularny występ w półfinale 12. edycji programu Mam Talent! — moment,
           w którym ScreamoTrickz stał się marką rozpoznawalną w całej Polsce.

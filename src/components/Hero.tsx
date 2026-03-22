@@ -35,15 +35,15 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="mb-4"
         >
-          <span className="font-[var(--font-accent)] text-xs md:text-sm tracking-[0.3em] uppercase
+          <span className="font-[var(--font-accent)] text-[10px] md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase
                          text-[var(--color-gray-400)]">
             Uczniowski Klub Sportowy
           </span>
         </motion.div>
 
         {/* Main title — letter-by-letter reveal */}
-        <h1 className="font-[var(--font-heading)] font-black text-[clamp(2.8rem,10vw,8rem)]
-                      leading-[0.9] tracking-tight mb-6 overflow-hidden">
+        <h1 className="font-[var(--font-heading)] font-black text-[clamp(2rem,8vw,8rem)]
+                      leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap">
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}
@@ -69,12 +69,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="font-[var(--font-accent)] text-sm md:text-base tracking-[0.2em] uppercase
-                   text-[var(--color-gray-300)] mb-10"
+          className="font-[var(--font-accent)] text-xs md:text-base tracking-[0.1em] md:tracking-[0.2em] uppercase
+                   text-[var(--color-gray-300)] mb-8 md:mb-10"
         >
           Tricking{" "}
-          <span className="text-[var(--color-lime)] mx-2">|</span> Akrobatyka{" "}
-          <span className="text-[var(--color-lime)] mx-2">|</span> Sądecczyzna
+          <span className="text-[var(--color-lime)] mx-1 md:mx-2">|</span> Akrobatyka{" "}
+          <span className="text-[var(--color-lime)] mx-1 md:mx-2">|</span> Sądecczyzna
         </motion.p>
 
         {/* CTA Buttons */}
@@ -89,7 +89,7 @@ export default function Hero() {
             className="inline-flex items-center justify-center gap-2
                      bg-[var(--color-lime)] text-[#050505] font-[var(--font-accent)]
                      font-semibold text-sm tracking-wider uppercase
-                     px-8 py-3.5 rounded-sm
+                     px-6 md:px-8 py-3 md:py-3.5 rounded-sm
                      hover:bg-[var(--color-lime-dark)] hover:scale-105
                      transition-all duration-300"
           >
@@ -100,7 +100,7 @@ export default function Hero() {
             className="inline-flex items-center justify-center gap-2
                      border border-white/20 text-white font-[var(--font-accent)]
                      font-medium text-sm tracking-wider uppercase
-                     px-8 py-3.5 rounded-sm
+                     px-6 md:px-8 py-3 md:py-3.5 rounded-sm
                      hover:border-[var(--color-lime)] hover:text-[var(--color-lime)]
                      transition-all duration-300"
           >

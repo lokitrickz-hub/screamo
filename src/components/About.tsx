@@ -18,7 +18,7 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className="relative py-24 md:py-32 px-6 bg-[#050505] overflow-hidden"
+      className="relative py-16 md:py-32 px-6 bg-[#050505] overflow-hidden"
     >
       {/* Subtle grid bg */}
       <div
@@ -48,8 +48,8 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-[var(--font-heading)] font-black text-3xl md:text-5xl lg:text-[3.5rem]
-                   text-white leading-[1.05] max-w-3xl mb-8"
+          className="font-[var(--font-heading)] font-black text-2xl md:text-5xl lg:text-[3.5rem]
+                   text-white leading-[1.05] max-w-3xl mb-6 md:mb-8"
         >
           Definiujemy grawitację
           <br />
@@ -61,8 +61,8 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-[var(--font-body)] text-[var(--color-gray-400)] text-base md:text-lg
-                   leading-relaxed max-w-2xl mb-16"
+          className="font-[var(--font-body)] text-[var(--color-gray-400)] text-sm md:text-lg
+                   leading-relaxed max-w-2xl mb-10 md:mb-16"
         >
           UKS ScreamoTrickz to nie tylko klub sportowy — to pierwsza w regionie
           i jedna z czołowych w Polsce akademii trickingu. Łączymy dynamikę
@@ -80,7 +80,7 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="relative p-6 md:p-8 rounded-lg
+              className="relative p-5 md:p-8 rounded-lg
                        bg-white/[0.03] border border-white/[0.06]
                        hover:border-[var(--color-lime)]/30 transition-colors duration-500"
             >
@@ -88,7 +88,7 @@ export default function About() {
                 size={20}
                 className="text-[var(--color-lime)] mb-4"
               />
-              <div className="font-[var(--font-heading)] font-black text-4xl md:text-5xl text-white mb-1">
+              <div className="font-[var(--font-heading)] font-black text-3xl md:text-5xl text-white mb-1">
                 {stat.value}
               </div>
               <div className="font-[var(--font-accent)] text-xs tracking-[0.15em] uppercase text-[var(--color-gray-500)]">

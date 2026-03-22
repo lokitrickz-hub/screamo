@@ -133,10 +133,10 @@ export default function Masters() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="masters" className="relative py-24 md:py-32 px-6">
+    <section id="masters" className="relative py-16 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div ref={headerRef} className="mb-16 md:mb-20">
+        <div ref={headerRef} className="mb-10 md:mb-20">
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -150,7 +150,7 @@ export default function Masters() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-[var(--font-heading)] font-black text-4xl md:text-6xl lg:text-7xl
+            className="font-[var(--font-heading)] font-black text-3xl md:text-6xl lg:text-7xl
                      text-white leading-[0.95]"
           >
             THE<br />

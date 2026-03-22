@@ -11,13 +11,13 @@ export default function Footer() {
   return (
     <footer ref={ref} id="kontakt" className="relative border-t border-[var(--color-glass-border)]">
       {/* CTA band */}
-      <div className="bg-[var(--color-lime)] py-16 md:py-20 px-6">
+      <div className="bg-[var(--color-lime)] py-12 md:py-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="font-[var(--font-heading)] font-black text-3xl md:text-5xl lg:text-6xl
+            className="font-[var(--font-heading)] font-black text-2xl md:text-5xl lg:text-6xl
                      text-[#050505] leading-[0.95] mb-4"
           >
             GOTOWY NA TRENING?

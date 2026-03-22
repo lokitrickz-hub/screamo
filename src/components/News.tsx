@@ -24,7 +24,7 @@ export default function News() {
   };
 
   return (
-    <section id="news" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="news" className="relative py-16 md:py-32 overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-lime)]/10 to-transparent" />
 
@@ -45,7 +45,7 @@ export default function News() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="font-[var(--font-heading)] font-black text-4xl md:text-6xl lg:text-7xl
+              className="font-[var(--font-heading)] font-black text-3xl md:text-6xl lg:text-7xl
                        text-white leading-[0.95]"
             >
               SĄDECCZYZNA<br />

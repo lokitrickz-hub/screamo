@@ -97,13 +97,13 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="relative py-24 md:py-32 px-6">
+    <section id="gallery" className="relative py-16 md:py-32 px-4 md:px-6">
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-lime)]/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div ref={headerRef} className="mb-16 md:mb-20">
+        <div ref={headerRef} className="mb-10 md:mb-20">
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -117,7 +117,7 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-[var(--font-heading)] font-black text-4xl md:text-6xl lg:text-7xl
+            className="font-[var(--font-heading)] font-black text-3xl md:text-6xl lg:text-7xl
                      text-white leading-[0.95]"
           >
             MEDIA<br />
@@ -126,7 +126,7 @@ export default function Gallery() {
         </div>
 
         {/* Masonry grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[240px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[240px]">
           {GALLERY_ITEMS.map((item, i) => (
             <motion.div
               key={item.id}
