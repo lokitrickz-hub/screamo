@@ -37,7 +37,7 @@ export default function Hero() {
         >
           <span className="font-[var(--font-accent)] text-xs md:text-sm tracking-[0.3em] uppercase
                          text-[var(--color-gray-400)]">
-            Uczniowski Klub Sportowy
+            Uczniowski Klub Sportowy 222
           </span>
         </motion.div>
 
