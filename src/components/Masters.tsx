@@ -14,6 +14,7 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
   const handleMouseEnter = () => {
     setIsHovered(true);
     videoRef.current?.play().catch(() => {});
+    
   };
 
   const handleMouseLeave = () => {
