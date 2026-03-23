@@ -252,11 +252,12 @@ export default function Masters() {
           transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <LayoutGroup>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 auto-rows-[minmax(0,1fr)]">
-              {/* Big card — left side (or full width on mobile) */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-5"
+                 style={{ minHeight: "min(85vh, 900px)" }}>
+              {/* Big card — left 3 columns, full height */}
               <motion.div
                 layout
-                className="md:row-span-2 aspect-[3/4] md:aspect-auto"
+                className="aspect-[3/4] md:aspect-auto md:col-span-3 md:row-span-2"
               >
                 <TrainerTile
                   trainer={bigTrainer}
@@ -267,12 +268,12 @@ export default function Masters() {
                 />
               </motion.div>
 
-              {/* Two smaller cards — right side stacked */}
+              {/* Two smaller cards — right 2 columns, stacked */}
               {smallTrainers.map((trainer) => (
                 <motion.div
                   layout
                   key={trainer.slug}
-                  className="aspect-[4/3] md:aspect-auto"
+                  className="aspect-[3/4] md:aspect-auto md:col-span-2"
                 >
                   <TrainerTile
                     trainer={trainer}
