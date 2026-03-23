@@ -88,7 +88,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="#masters"
+            href="/zajecia"
             className="inline-flex items-center justify-center gap-2
                      bg-[var(--color-yellow)] text-[var(--color-navy)] font-[var(--font-accent)]
                      font-bold text-sm tracking-wider uppercase
@@ -98,7 +98,7 @@ export default function Hero() {
                      hover:shadow-[0_0_35px_rgba(251,191,36,0.5)]
                      transition-all duration-300"
           >
-            Poznaj nas
+            Zapisz dziecko
           </a>
           <a
             href="/historia"
@@ -109,14 +109,14 @@ export default function Hero() {
                      hover:bg-[var(--color-purple)] hover:border-[var(--color-purple)]
                      transition-all duration-300"
           >
-            Nasza historia
+            Poznaj nas
           </a>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.a
-        href="#masters"
+        href="#classes"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}

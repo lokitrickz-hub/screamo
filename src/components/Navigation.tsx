@@ -79,13 +79,13 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/kontakt"
+              href="/zajecia"
               className="font-[var(--font-accent)] text-xs font-bold tracking-wider uppercase
                        px-5 py-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
                        hover:bg-[var(--color-yellow-dark)] hover:scale-105
                        transition-all duration-300 rounded-full"
             >
-              Dołącz
+              Zapisz się
             </Link>
           </div>
 
@@ -147,14 +147,14 @@ export default function Navigation() {
                 transition={{ delay: NAV_LINKS.length * 0.08, duration: 0.4 }}
               >
                 <Link
-                  href="/kontakt"
+                  href="/zajecia"
                   onClick={() => setMobileOpen(false)}
                   className="font-[var(--font-accent)] text-sm font-bold tracking-wider uppercase
                            px-8 py-3 bg-[var(--color-yellow)] text-[var(--color-navy)]
                            hover:bg-[var(--color-yellow-dark)]
                            transition-all duration-300 rounded-full"
                 >
-                  Dołącz do nas
+                  Zapisz się
                 </Link>
               </motion.div>
             </div>

@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import ClassesPreview from "@/components/ClassesPreview";
+import KadraPreview from "@/components/KadraPreview";
 import SocialWall from "@/components/SocialWall";
 import Footer from "@/components/Footer";
 
@@ -9,7 +10,8 @@ export default function Home() {
     <>
       <Navigation />
       <Hero />
-      <About />
+      <ClassesPreview />
+      <KadraPreview />
       <SocialWall />
       <Footer />
     </>

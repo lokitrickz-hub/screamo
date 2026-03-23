@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
-  { label: "Start", href: "/" },
+  { label: "Zajęcia", href: "/zajecia" },
   { label: "Kadra", href: "/kadra" },
-  { label: "Blog", href: "/blog" },
-  { label: "Historia", href: "/historia" },
+  { label: "Aktualności", href: "/blog" },
+  { label: "O nas", href: "/historia" },
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
