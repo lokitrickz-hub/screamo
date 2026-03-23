@@ -134,7 +134,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 ];
 
 export interface TimelineEvent {
-  year: number;
+  label: string;
   title: string;
   description: string;
   image?: string;
@@ -143,37 +143,48 @@ export interface TimelineEvent {
 
 export const TIMELINE: TimelineEvent[] = [
   {
-    year: 2011,
-    title: "Wielki Wybuch — Początki",
-    description: "Grupa powstała z czystej pasji do ruchu. Andrzej Stec, zainspirowany filmami w internecie, zaczął gromadzić wokół siebie ludzi, którzy nie bali się upadać, by ostatecznie wzbić się w górę. Spotykali się na trawie, piasku i starych materacach, budując fundamenty pod to, co dziś znamy jako ScreamoTrickz.",
+    label: "2011 r.",
+    title: "Cyfrowa Iskra i Stodoła Dziadka",
+    description: "Wszystko zaczęło się w sieci. Grupa chłopaków z Nowego Sącza i okolic poznała się przez internet, dzieląc rzadką pasję do ekstremalnych ewolucji w powietrzu. Założyli Screamo Trickz w 2011 roku. Ich pierwszą, historyczną \"salą treningową\" była zwykła stodoła dziadka Andrzeja Steca. To w tych surowych warunkach, na sianie, bez profesjonalnych mat, wykuwał się ich żelazny charakter i unikalny styl łączący sztuki walki, akrobatykę i breakdance.",
     image: "/images/gallery-4.jpg",
     highlight: true,
   },
   {
-    year: 2014,
-    title: "Budowanie Autorytetu",
-    description: "Lata intensywnych treningów i pierwszych wyjazdów na ogólnopolskie zawody. Grupa zaczęła być rozpoznawalna dzięki unikalnemu stylowi, łączącemu siłę z niesamowitą płynnością ruchu.",
+    label: "Rozwój zespołu",
+    title: "Zjednoczeni przez Tricking",
+    description: "Katorżnicze treningi doprowadziły do uformowania profesjonalnego trzonu zespołu. Do Andrzeja dołączyli Kamil, Dawid, Rafał i Tomasz. Grupa wyszła poza granice Sądecczyzny, integrując talenty również z Warszawy i Katowic. Tak powstała zgrana maszyna, która wkrótce miała zdominować polską scenę Extreme Martial Tricks.",
     highlight: true,
   },
   {
-    year: 2019,
-    title: "Przełom w Mam Talent!",
-    description: "ScreamoTrickz staje się marką ogólnopolską. Po spektakularnych występach w 12. edycji programu Mam Talent!, grupa dociera do półfinału, zdobywając uznanie jury i tysięcy widzów przed telewizorami. To wtedy narodziła się idea sformalizowania grupy.",
+    label: "Złote Lata Zawodów",
+    title: "Mistrzowie Polski bez Konkurencji",
+    description: "Screamo Trickz zaczęło regularnie stawać na najwyższym stopniu podium. Zdobyli wielokrotne Mistrzostwo Polski w Trickingu, udowadniając swoją bezdyskusyjną dominację. Spektakularnym sukcesem był m.in. start w Radlinie, skąd ekipa przywiozła łącznie aż 38 medali (w tym 14 złotych) w takich kategoriach jak bitwy na tricki czy rozbicia desek.",
     image: "/images/gallery-22.jpg",
     highlight: true,
   },
   {
-    year: 2020,
-    title: "Narodziny UKS ScreamoTrickz",
-    description: "Oficjalne zarejestrowanie jako Uczniowski Klub Sportowy. Rozpoczęcie systematycznej pracy z dziećmi i młodzieżą w Nowym Sączu. Domem treningowym staje się Park Trampolin JumpMania.",
+    label: "Występ Castingowy",
+    title: "Trzy razy \"TAK\" od Polski",
+    description: "Nadszedł czas wyjścia z niszy. Screamo Trickz wystąpiło w ogólnopolskim programie \"Mam Talent\" telewizji TVN. Ich castingowy, naładowany adrenaliną występ poderwał publiczność z miejsc, a jury było zachwycone precyzją, dramaturgią i niesamowitym zgraniem drużyny. Bez cienia wątpliwości otrzymali trzy razy \"TAK\", stając się fenomenem w skali całego kraju.",
+    highlight: true,
+  },
+  {
+    label: "Telewizyjny Półfinał",
+    title: "Superbohaterowie w Prime-Time",
+    description: "W odcinku półfinałowym emitowanym na żywo, grupa podniosła poprzeczkę jeszcze wyżej, występując w strojach superbohaterów. Zaprezentowali ekstremalnie trudne, wręcz przeczące prawom fizyki ewolucje. Chociaż w głosowaniu widzów zdobyli piąte miejsce i ostatecznie pożegnali się z programem, ich występ zapisał się w historii formatu jako pokaz absolutnej lekkości i mistrzostwa.",
+    highlight: true,
+  },
+  {
+    label: "Od 27 lipca 2021",
+    title: "Od Sal Treningowych po Wielkie Sceny",
+    description: "Ogromny kapitał popularności pozwolił grupie na wejście na rynek profesjonalnych usług eventowych. Screamo Trickz stało się pożądaną atrakcją wielkich imprez plenerowych i festiwali. Doskonałym przykładem był ich spektakularny pokaz akrobatyczny uświetniający prestiżowy Festiwal Kultury \"Karpaty Offer\" w rodzinnym Nowym Sączu pod koniec lipca 2021 roku.",
     image: "/images/gallery-18.jpg",
     highlight: true,
   },
   {
-    year: 2024,
-    title: "Dominacja na Arenie Narodowej",
-    description: "Klub staje się potęgą w polskim trickingu. Podczas ostatnich Mistrzostw Polski zawodnicy ScreamoTrickz zdobyli rekordową liczbę 31 medali, potwierdzając, że Nowy Sącz jest stolicą tej dyscypliny w Polsce.",
-    image: "/images/news-1.jpg",
+    label: "Dziś",
+    title: "Nowe Pokolenie Mistrzów",
+    description: "Obecnie Screamo Trickz to nie tylko elitarni zawodnicy, ale też wybitni pedagodzy. Trenerzy dzielą się wiedzą w Akademii, wychowując kolejne pokolenia. Ich praca u podstaw przynosi światowe efekty — to pod okiem Andrzeja Steca 10-letnia Anastazja Jurek wywalczyła tytuł Mistrzyni Europy w Trickingu w angielskim Birmingham. Grupa prowadzi również innowacyjne zajęcia akrobatyczne dla młodzieży z mniejszych miejscowości, m.in. w gminie Ochotnica Dolna, krzewiąc kulturę ruchu tam, gdzie jest ona najbardziej potrzebna.",
     highlight: true,
   },
 ];

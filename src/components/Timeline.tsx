@@ -44,7 +44,7 @@ function TimelineItem({
               event.highlight ? "text-[var(--color-yellow)]" : "text-[var(--color-gray-500)]"
             }`}
           >
-            {event.year}
+            {event.label}
           </span>
 
           <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white mt-2 mb-3">
@@ -189,7 +189,7 @@ export default function Timeline() {
           {/* Events */}
           <div className="space-y-12 md:space-y-16">
             {TIMELINE.map((event, i) => (
-              <TimelineItem key={event.year} event={event} index={i} />
+              <TimelineItem key={event.label} event={event} index={i} />
             ))}
           </div>
         </div>
