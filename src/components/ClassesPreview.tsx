@@ -8,7 +8,6 @@ import Link from "next/link";
 const GROUPS = [
   {
     name: "Maluchy",
-    ages: "5 — 7 lat",
     icon: Sparkles,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40",
@@ -16,7 +15,6 @@ const GROUPS = [
   },
   {
     name: "Juniorzy",
-    ages: "8 — 12 lat",
     icon: Flame,
     color: "var(--color-purple-light)",
     border: "border-[var(--color-purple)]/40",
@@ -24,7 +22,6 @@ const GROUPS = [
   },
   {
     name: "Zaawansowani",
-    ages: "13+ lat",
     icon: Zap,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40",
@@ -101,13 +98,6 @@ export default function ClassesPreview() {
               <h3 className="font-[var(--font-heading)] text-lg text-white mb-0.5">
                 {group.name}
               </h3>
-              <span
-                className="inline-block font-[var(--font-accent)] text-[10px] font-bold tracking-wider uppercase mb-3"
-                style={{ color: group.color }}
-              >
-                {group.ages}
-              </span>
-
               <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] leading-relaxed">
                 {group.desc}
               </p>

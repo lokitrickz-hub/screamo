@@ -2,13 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowLeft, Sparkles, Flame, Zap, Trophy, MapPin, Clock, Phone } from "lucide-react";
+import { ArrowLeft, Sparkles, Flame, Zap, Trophy, MapPin, Calendar, Phone, User } from "lucide-react";
 import Link from "next/link";
 
 const AGE_GROUPS = [
   {
     name: "Maluchy",
-    ages: "5 — 7 lat",
     icon: Sparkles,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
@@ -19,7 +18,6 @@ const AGE_GROUPS = [
   },
   {
     name: "Juniorzy",
-    ages: "8 — 12 lat",
     icon: Flame,
     color: "var(--color-purple-light)",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
@@ -30,7 +28,6 @@ const AGE_GROUPS = [
   },
   {
     name: "Zaawansowani",
-    ages: "13+ lat",
     icon: Zap,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
@@ -41,7 +38,6 @@ const AGE_GROUPS = [
   },
   {
     name: "Kadra Zawodnicza",
-    ages: "Wyłącznie po kwalifikacji",
     icon: Trophy,
     color: "var(--color-purple-light)",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
@@ -59,9 +55,9 @@ const LOCATIONS = [
     note: "Główna baza treningowa klubu",
   },
   {
-    name: "Ochotnica Dolna",
-    address: "Gmina Ochotnica Dolna",
-    note: "Zajęcia akrobatyczne dla młodzieży z okolic",
+    name: "Elektryk — Nowy Sącz",
+    address: "Zespół Szkół Elektryczno-Mechanicznych, ul. Bolesława Limanowskiego 4, 33-330 Nowy Sącz",
+    note: "Zajęcia sobotnich grup — Mariusz Piskorz",
   },
 ];
 
@@ -162,14 +158,6 @@ export default function Classes() {
                 </h3>
               </div>
 
-              {/* Age badge */}
-              <span
-                className="inline-block font-[var(--font-accent)] text-[11px] font-bold tracking-wider uppercase mb-4"
-                style={{ color: group.color }}
-              >
-                {group.ages}
-              </span>
-
               {/* Description */}
               <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed mb-5">
                 {group.description}
@@ -231,24 +219,129 @@ export default function Classes() {
           </div>
         </div>
 
-        {/* Schedule & Pricing placeholder */}
-        <div ref={ctaRef} className="mb-16">
+        {/* Schedule */}
+        <div ref={ctaRef} className="mb-20 md:mb-28">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="font-[var(--font-heading)] text-2xl md:text-4xl text-white mb-3"
+          >
+            PLAN <span className="text-[var(--color-yellow)]">ZAJĘĆ</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] mb-8"
+          >
+            Kliknij w dzień, żeby zobaczyć szczegóły zajęć
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {/* Poniedziałek */}
+            <ScheduleDay
+              day="Poniedziałek"
+              location="Jump Mania"
+              trainer="Andrzej"
+              accent="yellow"
+              inView={ctaInView}
+              delay={0.15}
+              sessions={[
+                { time: "16:15", name: "Grupa początkująca 7-13 lat" },
+                { time: "17:30", name: "Grupa zaawansowana" },
+                { time: "18:45", name: "Zawodnicy" },
+              ]}
+            />
+
+            {/* Wtorek */}
+            <ScheduleDay
+              day="Wtorek"
+              trainer="Andrzej i Wiktoria"
+              accent="purple"
+              inView={ctaInView}
+              delay={0.2}
+              sessions={[
+                { time: "16:15", name: "Maluchy 5-7 lat", location: "Dunajcowa 60A", trainer: "Andrzej i Wiktoria" },
+                { time: "17:10", name: "Akrobatyka/Tricking 8-13 lat", location: "Dunajcowa 60A", trainer: "Andrzej i Wiktoria" },
+                { time: "18:30", name: "Tumbling — skoki na ścieżce", location: "Jump Mania", trainer: "Andrzej" },
+                { time: "19:30", name: "Grupa dla dorosłych", location: "Jump Mania", trainer: "Andrzej" },
+              ]}
+            />
+
+            {/* Środa */}
+            <ScheduleDay
+              day="Środa"
+              location="Jump Mania"
+              trainer="Andrzej"
+              accent="yellow"
+              inView={ctaInView}
+              delay={0.25}
+              sessions={[
+                { time: "16:15", name: "Grupa początkująca 7-13 lat" },
+                { time: "17:30", name: "Grupa zaawansowana" },
+                { time: "18:45", name: "Zawodnicy" },
+              ]}
+            />
+
+            {/* Czwartek */}
+            <ScheduleDay
+              day="Czwartek"
+              accent="purple"
+              inView={ctaInView}
+              delay={0.3}
+              sessions={[
+                { time: "Umów się", name: "Treningi personalne" },
+              ]}
+            />
+
+            {/* Piątek */}
+            <ScheduleDay
+              day="Piątek"
+              location="Dunajcowa 60A"
+              trainer="Andrzej i Wiktoria"
+              accent="yellow"
+              inView={ctaInView}
+              delay={0.35}
+              sessions={[
+                { time: "16:30", name: "Tricking zawodnicy", trainer: "Andrzej" },
+                { time: "18:00", name: "Akrobatyka grupa 7-10 lat", trainer: "Andrzej i Wiktoria" },
+                { time: "19:00", name: "Akrobatyka/Tricking — zawody", trainer: "Andrzej i Wiktoria" },
+              ]}
+            />
+
+            {/* Sobota */}
+            <ScheduleDay
+              day="Sobota"
+              location="Elektryk"
+              trainer="Mariusz"
+              accent="purple"
+              inView={ctaInView}
+              delay={0.4}
+              sessions={[
+                { time: "09:00", name: "Grupa początkująca — nowy nabór" },
+                { time: "10:00", name: "Grupa średniozaawansowana" },
+                { time: "11:00", name: "Maluchy 5-7 lat" },
+              ]}
+            />
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative p-8 md:p-12 rounded-2xl bg-gradient-to-br from-[var(--color-purple)]/20 to-[var(--color-navy-light)]
                       border-2 border-[var(--color-purple)]/30 text-center"
           >
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Clock size={20} className="text-[var(--color-yellow)]" />
-              <h2 className="font-[var(--font-heading)] text-xl md:text-3xl text-white">
-                GRAFIK & CENNIK
-              </h2>
-            </div>
+            <h2 className="font-[var(--font-heading)] text-xl md:text-3xl text-white mb-3">
+              CHCESZ <span className="text-[var(--color-yellow)]">DOŁĄCZYĆ?</span>
+            </h2>
             <p className="font-[var(--font-body)] text-sm md:text-base text-[var(--color-gray-300)] leading-relaxed max-w-lg mx-auto mb-8">
-              Szczegółowy grafik zajęć i cennik zostaną opublikowane wkrótce.
-              Skontaktuj się z nami, aby poznać dostępne terminy i zapisać dziecko na trening!
+              Zadzwoń i zapisz dziecko na trening. Pierwsze zajęcia możesz odbyć próbnie!
             </p>
             <a
               href="tel:+48514201443"
@@ -266,5 +359,104 @@ export default function Classes() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ─── Schedule Day Card ─── */
+
+interface Session {
+  time: string;
+  name: string;
+  location?: string;
+  trainer?: string;
+}
+
+function ScheduleDay({
+  day,
+  location,
+  trainer,
+  accent,
+  sessions,
+  inView,
+  delay,
+}: {
+  day: string;
+  location?: string;
+  trainer?: string;
+  accent: "yellow" | "purple";
+  sessions: Session[];
+  inView: boolean;
+  delay: number;
+}) {
+  const borderColor = accent === "yellow"
+    ? "border-[var(--color-yellow)]/30"
+    : "border-[var(--color-purple)]/30";
+  const accentColor = accent === "yellow"
+    ? "var(--color-yellow)"
+    : "var(--color-purple-light)";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.5 }}
+      className={`rounded-2xl bg-[var(--color-navy-light)] border-2 ${borderColor} overflow-hidden`}
+    >
+      {/* Day header */}
+      <div className="px-5 py-3 border-b border-[var(--color-purple)]/10 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Calendar size={14} style={{ color: accentColor }} />
+          <h3 className="font-[var(--font-heading)] text-base text-white">{day}</h3>
+        </div>
+      </div>
+
+      {/* Meta — location & trainer (if same for all sessions) */}
+      {(location || trainer) && (
+        <div className="px-5 pt-3 flex flex-wrap gap-x-4 gap-y-1">
+          {location && (
+            <span className="flex items-center gap-1.5 font-[var(--font-accent)] text-[10px] tracking-wider uppercase text-[var(--color-gray-500)]">
+              <MapPin size={10} /> {location}
+            </span>
+          )}
+          {trainer && (
+            <span className="flex items-center gap-1.5 font-[var(--font-accent)] text-[10px] tracking-wider uppercase text-[var(--color-gray-500)]">
+              <User size={10} /> {trainer}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Sessions */}
+      <div className="p-5 space-y-3">
+        {sessions.map((s, i) => (
+          <div key={i} className="flex gap-3">
+            <span
+              className="font-[var(--font-heading)] text-sm min-w-[50px]"
+              style={{ color: accentColor }}
+            >
+              {s.time}
+            </span>
+            <div className="min-w-0">
+              <span className="font-[var(--font-body)] text-sm text-white block">{s.name}</span>
+              {/* Per-session overrides */}
+              {(s.location || s.trainer) && (
+                <div className="flex flex-wrap gap-x-3 mt-0.5">
+                  {s.location && (
+                    <span className="flex items-center gap-1 font-[var(--font-accent)] text-[9px] tracking-wider uppercase text-[var(--color-gray-500)]">
+                      <MapPin size={8} /> {s.location}
+                    </span>
+                  )}
+                  {s.trainer && (
+                    <span className="flex items-center gap-1 font-[var(--font-accent)] text-[9px] tracking-wider uppercase text-[var(--color-gray-500)]">
+                      <User size={8} /> {s.trainer}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 }
