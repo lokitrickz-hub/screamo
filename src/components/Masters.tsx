@@ -1,29 +1,26 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { Instagram, Youtube, Facebook, Sparkles, ArrowLeft } from "lucide-react";
+import { motion, useInView, AnimatePresence, LayoutGroup } from "framer-motion";
+import { Instagram, Youtube, Facebook, Sparkles, ArrowLeft, X } from "lucide-react";
 import { TRAINERS, type Trainer } from "@/lib/data";
 import Link from "next/link";
 
-function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [isHovered, setIsHovered] = useState(false);
+function TrainerTile({
+  trainer,
+  isActive,
+  onSelect,
+  onClose,
+  layoutId,
+}: {
+  trainer: Trainer;
+  isActive: boolean;
+  onSelect: () => void;
+  onClose: () => void;
+  layoutId: string;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    videoRef.current?.play().catch(() => {});
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   const socialIcons = {
     instagram: Instagram,
@@ -31,126 +28,145 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
     facebook: Facebook,
   };
 
-  const isEven = index % 2 === 0;
+  function handlePlay() {
+    setVideoPlaying(true);
+    videoRef.current?.play().catch(() => {});
+  }
+
+  function handleStop() {
+    setVideoPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${
-        !isEven ? "md:direction-rtl" : ""
-      }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      layout
+      layoutId={layoutId}
+      onClick={() => { if (!isActive) onSelect(); }}
+      onMouseEnter={handlePlay}
+      onMouseLeave={handleStop}
+      className={`relative overflow-hidden rounded-2xl border-4 border-[var(--color-purple)]
+                cursor-pointer transition-shadow duration-500 h-full
+                ${isActive
+                  ? "glow-pulse shadow-[0_0_40px_rgba(124,58,237,0.4)]"
+                  : "hover:shadow-[0_0_30px_rgba(124,58,237,0.25)]"
+                }`}
+      style={{ minHeight: 0 }}
     >
-      {/* Photo / Video side */}
+      {/* Photo */}
+      <div
+        className={`absolute inset-0 bg-cover bg-center bg-[var(--color-navy-lighter)] transition-opacity duration-700
+                  ${videoPlaying ? "opacity-0" : "opacity-100"}`}
+        style={{ backgroundImage: `url(${trainer.photo})` }}
+      />
+
+      {/* Video */}
+      <video
+        ref={videoRef}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700
+                  ${videoPlaying ? "opacity-100" : "opacity-0"}`}
+        src={trainer.video}
+        muted
+        loop
+        playsInline
+        preload="none"
+      />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)] via-[var(--color-navy)]/30 to-transparent" />
+
+      {/* Trick label on hover */}
       <motion.div
-        animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 15, mass: 0.8 }}
-        className={isEven ? "" : "md:order-2"}
+        initial={false}
+        animate={videoPlaying ? { opacity: 1, scale: 1, rotate: -2 } : { opacity: 0, scale: 0.5, rotate: 10 }}
+        transition={{ type: "spring", stiffness: 500, damping: 20 }}
+        className="absolute top-4 right-4 bg-[var(--color-yellow)] text-[var(--color-navy)]
+                 font-[var(--font-heading)] text-xs px-3 py-1.5 rounded-lg z-20
+                 shadow-[0_0_15px_rgba(251,191,36,0.4)]"
       >
-        <div
-          className={`relative overflow-hidden rounded-2xl aspect-[4/5]
-                    bg-[var(--color-navy-light)]
-                    border-4 border-[var(--color-purple)]
-                    transition-shadow duration-500
-                    ${isHovered ? "glow-pulse shadow-[0_0_40px_rgba(124,58,237,0.4)]" : "shadow-lg"}`}
-        >
-          <div
-            className={`absolute inset-0 bg-cover bg-center bg-[var(--color-navy-lighter)] transition-opacity duration-700 ${
-              isHovered ? "opacity-0" : "opacity-100"
-            }`}
-            style={{ backgroundImage: `url(${trainer.photo})` }}
-          />
-
-          <video
-            ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }`}
-            src={trainer.video}
-            muted
-            loop
-            playsInline
-            preload="none"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/60 via-transparent to-transparent" />
-
-          {/* Trick label */}
-          <motion.div
-            initial={false}
-            animate={
-              isHovered
-                ? { opacity: 1, scale: 1, rotate: -2 }
-                : { opacity: 0, scale: 0.5, rotate: 10 }
-            }
-            transition={{ type: "spring", stiffness: 500, damping: 20 }}
-            className="absolute top-4 right-4 bg-[var(--color-yellow)] text-[var(--color-navy)]
-                     font-[var(--font-heading)] text-xs px-3 py-1.5 rounded-lg
-                     shadow-[0_0_15px_rgba(251,191,36,0.4)]"
-          >
-            {trainer.trick}
-          </motion.div>
-
-          {/* Sparkle */}
-          <motion.div
-            initial={false}
-            animate={isHovered ? { opacity: 1, rotate: 15 } : { opacity: 0, rotate: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-12 right-16"
-          >
-            <Sparkles size={18} className="text-[var(--color-yellow)]" fill="currentColor" />
-          </motion.div>
-        </div>
+        {trainer.trick}
       </motion.div>
 
-      {/* Info side */}
-      <div className={isEven ? "" : "md:order-1"}>
+      <motion.div
+        initial={false}
+        animate={videoPlaying ? { opacity: 1, rotate: 15 } : { opacity: 0, rotate: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute top-12 right-16 z-20"
+      >
+        <Sparkles size={18} className="text-[var(--color-yellow)]" fill="currentColor" />
+      </motion.div>
+
+      {/* Close button when active */}
+      {isActive && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onClose(); }}
+          className="absolute top-4 left-4 z-30 w-8 h-8 rounded-full bg-[var(--color-navy)]/80 backdrop-blur
+                   flex items-center justify-center text-[var(--color-gray-300)] hover:text-[var(--color-yellow)]
+                   border border-[var(--color-purple)]/40 transition-colors"
+        >
+          <X size={14} />
+        </button>
+      )}
+
+      {/* Info overlay */}
+      <div className="relative z-10 h-full flex flex-col justify-end p-5 md:p-6">
         <span
-          className="inline-block font-[var(--font-accent)] text-[10px] tracking-[0.15em] uppercase font-bold
-                    text-[var(--color-yellow)] bg-[var(--color-navy-light)] backdrop-blur-sm
-                    px-3 py-1.5 border-2 border-[var(--color-yellow)]/30 rounded-lg mb-4"
+          className="inline-block self-start font-[var(--font-accent)] text-[9px] tracking-[0.15em] uppercase font-bold
+                    text-[var(--color-yellow)] bg-[var(--color-navy)]/60 backdrop-blur-sm
+                    px-2.5 py-1 border border-[var(--color-yellow)]/30 rounded-lg mb-2"
         >
           {trainer.role}
         </span>
 
-        <h3
-          className="font-[var(--font-heading)] text-3xl md:text-4xl lg:text-5xl text-white mb-4"
-          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.3)" }}
-        >
+        <h3 className="font-[var(--font-heading)] text-xl md:text-2xl lg:text-3xl text-white mb-1"
+            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
           {trainer.name}
         </h3>
 
-        <p className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base leading-relaxed mb-6">
-          {trainer.bio}
-        </p>
+        {/* Bio — only when active */}
+        <AnimatePresence>
+          {isActive && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <p className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm leading-relaxed mt-3 mb-4">
+                {trainer.bio}
+              </p>
 
-        {/* Social icons */}
-        <div className="flex gap-3">
-          {Object.entries(trainer.socials).map(([platform, url]) => {
-            const Icon = socialIcons[platform as keyof typeof socialIcons];
-            if (!Icon || !url) return null;
-            return (
-              <a
-                key={platform}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/40
-                         flex items-center justify-center
-                         hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)]
-                         hover:text-[var(--color-navy)] text-[var(--color-gray-300)]
-                         transition-all duration-300"
-                aria-label={platform}
-              >
-                <Icon size={16} />
-              </a>
-            );
-          })}
-        </div>
+              {/* Social icons */}
+              <div className="flex gap-2.5">
+                {Object.entries(trainer.socials).map(([platform, url]) => {
+                  const Icon = socialIcons[platform as keyof typeof socialIcons];
+                  if (!Icon || !url) return null;
+                  return (
+                    <a
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-9 h-9 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/40
+                               flex items-center justify-center
+                               hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)]
+                               hover:text-[var(--color-navy)] text-[var(--color-gray-300)]
+                               transition-all duration-300"
+                      aria-label={platform}
+                    >
+                      <Icon size={14} />
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
@@ -159,6 +175,17 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
 export default function Masters() {
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+
+  // Andrzej is always index 0, the "featured" trainer
+  const featured = TRAINERS[0];
+
+  // Determine which is the "big" card
+  const bigTrainer = activeSlug
+    ? TRAINERS.find((t) => t.slug === activeSlug) || featured
+    : featured;
+
+  const smallTrainers = TRAINERS.filter((t) => t.slug !== bigTrainer.slug);
 
   return (
     <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)]">
@@ -182,7 +209,7 @@ export default function Masters() {
         </motion.div>
 
         {/* Header */}
-        <div ref={headerRef} className="mb-16 md:mb-24 text-center">
+        <div ref={headerRef} className="mb-16 md:mb-20 text-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -214,16 +241,51 @@ export default function Masters() {
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
-            Trenerzy z pasją, doświadczeniem i sercem do sportu. Najedź na zdjęcie, żeby zobaczyć ich flagowy trick!
+            Kliknij w trenera, żeby poznać go bliżej. Najedź na zdjęcie, żeby zobaczyć trick!
           </motion.p>
         </div>
 
-        {/* Full trainer profiles */}
-        <div className="space-y-16 md:space-y-24">
-          {TRAINERS.map((trainer, i) => (
-            <TrainerCard key={trainer.name} trainer={trainer} index={i} />
-          ))}
-        </div>
+        {/* Bento grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <LayoutGroup>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 auto-rows-[minmax(0,1fr)]">
+              {/* Big card — left side (or full width on mobile) */}
+              <motion.div
+                layout
+                className="md:row-span-2 aspect-[3/4] md:aspect-auto"
+              >
+                <TrainerTile
+                  trainer={bigTrainer}
+                  isActive={activeSlug === bigTrainer.slug}
+                  onSelect={() => setActiveSlug(bigTrainer.slug)}
+                  onClose={() => setActiveSlug(null)}
+                  layoutId={`trainer-${bigTrainer.slug}`}
+                />
+              </motion.div>
+
+              {/* Two smaller cards — right side stacked */}
+              {smallTrainers.map((trainer) => (
+                <motion.div
+                  layout
+                  key={trainer.slug}
+                  className="aspect-[4/3] md:aspect-auto"
+                >
+                  <TrainerTile
+                    trainer={trainer}
+                    isActive={activeSlug === trainer.slug}
+                    onSelect={() => setActiveSlug(trainer.slug)}
+                    onClose={() => setActiveSlug(null)}
+                    layoutId={`trainer-${trainer.slug}`}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </LayoutGroup>
+        </motion.div>
       </div>
     </section>
   );
