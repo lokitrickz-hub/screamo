@@ -175,8 +175,8 @@ export default function Contact() {
                 icon: MapPin,
                 title: "Gdzie trenujemy",
                 value: "Park Trampolin JumpMania",
-                href: "https://maps.google.com/?q=Jazowsko+326",
-                subtitle: "Jazowsko 326, 33-389 Jazowsko",
+                href: "https://maps.google.com/?q=Zielona+27+Nowy+Sącz",
+                subtitle: "ul. Zielona 27, 33-300 Nowy Sącz",
               },
               {
                 icon: Clock,

@@ -51,7 +51,7 @@ const AGE_GROUPS = [
 const LOCATIONS = [
   {
     name: "JumpMania — Nowy Sącz",
-    address: "Park Trampolin JumpMania, Nowy Sącz",
+    address: "ul. Zielona 27, 33-300 Nowy Sącz",
     note: "Główna baza treningowa klubu",
   },
   {
