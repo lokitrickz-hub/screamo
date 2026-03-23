@@ -50,8 +50,7 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-9 h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="font-[var(--font-heading)] text-base font-bold hidden sm:block tracking-wide"
-                  style={{ WebkitTextStroke: "0.5px currentColor" }}>
+            <span className="font-[var(--font-heading)] text-base hidden sm:block tracking-wide">
               <span className="text-white">SCREAMO</span>
               <span className="text-[var(--color-yellow)]">TRICKZ</span>
             </span>

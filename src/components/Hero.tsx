@@ -45,8 +45,7 @@ export default function Hero() {
 
         {/* Main title — letter-by-letter reveal */}
         <h1 className="font-[var(--font-heading)] text-[clamp(1rem,4vw,4rem)]
-                      leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap font-bold"
-            style={{ WebkitTextStroke: "1px currentColor" }}>
+                      leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap">
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}
