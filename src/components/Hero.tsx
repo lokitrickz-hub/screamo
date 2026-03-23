@@ -45,7 +45,8 @@ export default function Hero() {
 
         {/* Main title — letter-by-letter reveal */}
         <h1 className="font-[var(--font-heading)] text-[clamp(1rem,4vw,4rem)]
-                      leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap">
+                      leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap font-bold"
+            style={{ WebkitTextStroke: "1px currentColor" }}>
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}
@@ -77,7 +78,7 @@ export default function Hero() {
         >
           Tricking{" "}
           <span className="text-[var(--color-purple-light)] mx-1 md:mx-2 font-bold">|</span> Akrobatyka{" "}
-          <span className="text-[var(--color-purple-light)] mx-1 md:mx-2 font-bold">|</span> Sadecczyzna
+          <span className="text-[var(--color-purple-light)] mx-1 md:mx-2 font-bold">|</span> Gimnastyka
         </motion.p>
 
         {/* CTA Buttons */}
