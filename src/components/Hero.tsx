@@ -44,7 +44,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Main title — letter-by-letter reveal */}
-        <h1 className="font-[var(--font-heading)] text-[clamp(2rem,8vw,8rem)]
+        <h1 className="font-[var(--font-heading)] text-[clamp(1rem,4vw,4rem)]
                       leading-[0.9] tracking-tight mb-4 md:mb-6 overflow-hidden whitespace-nowrap">
           {titleLetters.map((letter, i) => (
             <motion.span
