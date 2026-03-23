@@ -91,7 +91,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: "31 medali na Mistrzostwach Polski!",
     excerpt: "ScreamoTrickz dominuje podium w kategoriach Tricking Battle i Rozbijanie Desek. Rekordowa liczba medali potwierdza — Nowy Sącz jest stolicą trickingu w Polsce!",
     date: "2025-03-15",
-    image: "/images/gallery-22.jpg",
+    image: "/images/zawody-IMG_1385.jpg",
     tag: "Zawody",
   },
   {
@@ -109,7 +109,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: "Nowe nabory w JumpManii",
     excerpt: "Rozpoczynamy zapisy do grup początkujących w JumpManii. Zrób swój pierwszy krok w stronę grawitacji — treningi dla każdego wieku!",
     date: "2025-04-01",
-    image: "/images/gallery-12.jpg",
+    image: "/images/zawody-IMG_9093.jpg",
     tag: "Nabór",
   },
   {
@@ -118,7 +118,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: "Pokaz na Dniach Nowego Sącza",
     excerpt: "ScreamoTrickz zaprezentuje się podczas Dni Nowego Sącza na scenie głównej. Zapraszamy na widowiskowy pokaz akrobatyczny!",
     date: "2025-06-10",
-    image: "/images/gallery-17.jpg",
+    image: "/images/zawody-IMG_9228.jpg",
     tag: "Event",
   },
   {
@@ -127,7 +127,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: "Półfinał Mam Talent!",
     excerpt: "Nasz spektakularny występ w półfinale 12. edycji programu Mam Talent! — moment, w którym ScreamoTrickz stał się marką rozpoznawalną w całej Polsce.",
     date: "2019-11-15",
-    image: "/images/gallery-22.jpg",
+    image: "/images/mam-talent-3.jpg",
     tag: "TV",
     youtube: "https://www.youtube.com/watch?v=ywHOHj4tLII",
   },
@@ -166,12 +166,14 @@ export const TIMELINE: TimelineEvent[] = [
     label: "Występ Castingowy",
     title: "Trzy razy \"TAK\" od Polski",
     description: "Nadszedł czas wyjścia z niszy. Screamo Trickz wystąpiło w ogólnopolskim programie \"Mam Talent\" telewizji TVN. Ich castingowy, naładowany adrenaliną występ poderwał publiczność z miejsc, a jury było zachwycone precyzją, dramaturgią i niesamowitym zgraniem drużyny. Bez cienia wątpliwości otrzymali trzy razy \"TAK\", stając się fenomenem w skali całego kraju.",
+    image: "/images/mam-talent-1.jpg",
     highlight: true,
   },
   {
     label: "Telewizyjny Półfinał",
     title: "Superbohaterowie w Prime-Time",
     description: "W odcinku półfinałowym emitowanym na żywo, grupa podniosła poprzeczkę jeszcze wyżej, występując w strojach superbohaterów. Zaprezentowali ekstremalnie trudne, wręcz przeczące prawom fizyki ewolucje. Chociaż w głosowaniu widzów zdobyli piąte miejsce i ostatecznie pożegnali się z programem, ich występ zapisał się w historii formatu jako pokaz absolutnej lekkości i mistrzostwa.",
+    image: "/images/mam-talent-2.jpg",
     highlight: true,
   },
   {
