@@ -1,14 +1,13 @@
 export const NAV_LINKS = [
-  { label: "Start", href: "#hero" },
-  { label: "O nas", href: "#about" },
-  { label: "Kadra", href: "#masters" },
-  { label: "Aktualności", href: "#news" },
-  { label: "Galeria", href: "#gallery" },
+  { label: "Start", href: "/" },
+  { label: "Kadra", href: "/kadra" },
+  { label: "Blog", href: "/blog" },
   { label: "Historia", href: "/historia" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
 export interface Trainer {
+  slug: string;
   name: string;
   role: string;
   bio: string;
@@ -24,6 +23,7 @@ export interface Trainer {
 
 export const TRAINERS: Trainer[] = [
   {
+    slug: "andrzej-stec",
     name: "Andrzej Stec",
     role: "Założyciel & Główny Trener",
     bio: "Wizjoner i serce ScreamoTrickz. Od 2011 roku wyznacza kierunek rozwoju klubu. Specjalizuje się w technicznych ewolucjach i metodyce nauczania trickingu od podstaw. To on przeprowadził grupę z podwórkowych treningów na ogólnopolską scenę.",
@@ -37,6 +37,7 @@ export const TRAINERS: Trainer[] = [
     },
   },
   {
+    slug: "mariusz-piskorz",
     name: "Mariusz Piskorz",
     role: "Drugi Trener",
     bio: "Trener z wieloletnim doświadczeniem i niebywałym podejściem do dzieci. Na zajęciach u Mariusza zapomnij o nudzie! Jest wesoło, ale zawsze konkretnie.",
@@ -49,6 +50,7 @@ export const TRAINERS: Trainer[] = [
     },
   },
   {
+    slug: "wiktoria-bisaga",
     name: "Wiktoria Bisaga",
     role: "Instruktorka & Mistrzyni",
     bio: "Wielokrotna Mistrzyni Polski i jedna z najbardziej utytułowanych zawodniczek w kraju. Udowadnia, że tricking to sport bez barier. W klubie zajmuje się szkoleniem nowych pokoleń, łącząc surową dyscyplinę sportową z pasją do widowiskowych pokazów.",
@@ -64,6 +66,7 @@ export const TRAINERS: Trainer[] = [
 
 export interface NewsItem {
   id: number;
+  slug: string;
   title: string;
   excerpt: string;
   date: string;
@@ -75,6 +78,7 @@ export interface NewsItem {
 export const NEWS_ITEMS: NewsItem[] = [
   {
     id: 1,
+    slug: "warsaw-tricking-gathering-2025",
     title: "Warsaw Tricking Gathering 2025",
     excerpt: "12-14 września 2025 — ScreamoTrickz na największym evencie trickingowym w Polsce! Trzy dni pełne batli, warsztatów i niesamowitej energii w Warszawie.",
     date: "2025-09-14",
@@ -83,6 +87,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 2,
+    slug: "31-medali-mistrzostwa-polski",
     title: "31 medali na Mistrzostwach Polski!",
     excerpt: "ScreamoTrickz dominuje podium w kategoriach Tricking Battle i Rozbijanie Desek. Rekordowa liczba medali potwierdza — Nowy Sącz jest stolicą trickingu w Polsce!",
     date: "2025-03-15",
@@ -91,6 +96,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 3,
+    slug: "pytanie-na-sniadanie",
     title: "ScreamoTrickz w Pytanie na Śniadanie!",
     excerpt: "Nasza zawodniczka Anastazja Jurek — mistrzyni Europy w trickingu do lat 12 — wraz z trenerem Andrzejem Stecem gościli w programie TVP. Góralka z pasją podbija Polskę!",
     date: "2025-07-01",
@@ -99,6 +105,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 4,
+    slug: "nowe-nabory-jumpmania",
     title: "Nowe nabory w JumpManii",
     excerpt: "Rozpoczynamy zapisy do grup początkujących w JumpManii. Zrób swój pierwszy krok w stronę grawitacji — treningi dla każdego wieku!",
     date: "2025-04-01",
@@ -107,6 +114,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 5,
+    slug: "pokaz-dni-nowego-sacza",
     title: "Pokaz na Dniach Nowego Sącza",
     excerpt: "ScreamoTrickz zaprezentuje się podczas Dni Nowego Sącza na scenie głównej. Zapraszamy na widowiskowy pokaz akrobatyczny!",
     date: "2025-06-10",
@@ -115,6 +123,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: 6,
+    slug: "polfinal-mam-talent",
     title: "Półfinał Mam Talent!",
     excerpt: "Nasz spektakularny występ w półfinale 12. edycji programu Mam Talent! — moment, w którym ScreamoTrickz stał się marką rozpoznawalną w całej Polsce.",
     date: "2019-11-15",
@@ -122,37 +131,6 @@ export const NEWS_ITEMS: NewsItem[] = [
     tag: "TV",
     youtube: "https://www.youtube.com/watch?v=ywHOHj4tLII",
   },
-];
-
-export interface GalleryItem {
-  id: number;
-  type: "image" | "video";
-  src: string;
-  thumbnail: string;
-  alt: string;
-  span?: "wide" | "tall" | "large";
-}
-
-export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, type: "image", src: "/images/gallery-1.jpg", thumbnail: "/images/gallery-1.jpg", alt: "Akrobatyka na scenie", span: "tall" },
-  { id: 2, type: "image", src: "/images/gallery-2.jpg", thumbnail: "/images/gallery-2.jpg", alt: "Pokaz trickingowy" },
-  { id: 3, type: "image", src: "/images/gallery-3.jpg", thumbnail: "/images/gallery-3.jpg", alt: "Zawodnik w akcji", span: "tall" },
-  { id: 4, type: "image", src: "/images/gallery-4.jpg", thumbnail: "/images/gallery-4.jpg", alt: "Trening akrobatyczny", span: "wide" },
-  { id: 5, type: "image", src: "/images/gallery-5.jpg", thumbnail: "/images/gallery-5.jpg", alt: "Skok akrobatyczny" },
-  { id: 6, type: "image", src: "/images/gallery-6.jpg", thumbnail: "/images/gallery-6.jpg", alt: "Trening grupowy", span: "large" },
-  { id: 7, type: "image", src: "/images/gallery-7.jpg", thumbnail: "/images/gallery-7.jpg", alt: "Zawody akrobatyczne" },
-  { id: 8, type: "image", src: "/images/gallery-8.jpg", thumbnail: "/images/gallery-8.jpg", alt: "Pokaz na scenie", span: "tall" },
-  { id: 9, type: "image", src: "/images/gallery-9.jpg", thumbnail: "/images/gallery-9.jpg", alt: "Zawodnik ScreamoTrickz" },
-  { id: 10, type: "image", src: "/images/gallery-10.jpg", thumbnail: "/images/gallery-10.jpg", alt: "Trening akrobatyczny", span: "wide" },
-  { id: 11, type: "image", src: "/images/gallery-11.jpg", thumbnail: "/images/gallery-11.jpg", alt: "Pokaz trickingowy" },
-  { id: 12, type: "image", src: "/images/gallery-12.jpg", thumbnail: "/images/gallery-12.jpg", alt: "Zawodnik w powietrzu" },
-  { id: 13, type: "image", src: "/images/gallery-13.jpg", thumbnail: "/images/gallery-13.jpg", alt: "Drużyna ScreamoTrickz", span: "wide" },
-  { id: 14, type: "image", src: "/images/gallery-14.jpg", thumbnail: "/images/gallery-14.jpg", alt: "Akrobatyka sportowa" },
-  { id: 15, type: "image", src: "/images/gallery-15.jpg", thumbnail: "/images/gallery-15.jpg", alt: "Screeny z treningu", span: "wide" },
-  { id: 16, type: "image", src: "/images/gallery-16.jpg", thumbnail: "/images/gallery-16.jpg", alt: "Screeny z treningu" },
-  { id: 17, type: "image", src: "/images/gallery-17.jpg", thumbnail: "/images/gallery-17.jpg", alt: "Zdjęcie klubowe", span: "tall" },
-  { id: 18, type: "image", src: "/images/gallery-18.jpg", thumbnail: "/images/gallery-18.jpg", alt: "Nastka — zawodniczka" },
-  { id: 22, type: "image", src: "/images/gallery-22.jpg", thumbnail: "/images/gallery-22.jpg", alt: "Zawody — drużyna", span: "tall" },
 ];
 
 export interface TimelineEvent {
@@ -199,3 +177,18 @@ export const TIMELINE: TimelineEvent[] = [
     highlight: true,
   },
 ];
+
+export const SOCIAL_LINKS = {
+  instagram: {
+    url: "https://www.instagram.com/screamotrickz.official/",
+    handle: "@screamotrickz.official",
+  },
+  youtube: {
+    url: "https://www.youtube.com/@ScreamoTrickz",
+    handle: "@ScreamoTrickz",
+  },
+  facebook: {
+    url: "https://www.facebook.com/ScreamoTrickz",
+    handle: "ScreamoTrickz",
+  },
+} as const;

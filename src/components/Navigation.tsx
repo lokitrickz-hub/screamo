@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -18,8 +20,15 @@ export default function Navigation() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <>
@@ -29,16 +38,19 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[rgba(16,23,42,0.9)] backdrop-blur-xl border-b border-[var(--color-purple)]/20"
+            ? "bg-[rgba(16,23,42,0.92)] backdrop-blur-xl border-b border-[var(--color-purple)]/20"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 md:h-18 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <img src="/images/logo.png" alt="ScreamoTrickz" className="w-9 h-9 object-contain
-                          group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-[var(--font-heading)] text-sm tracking-wider hidden sm:block text-[var(--color-yellow)]">
+            <img
+              src="/images/logo.png"
+              alt="ScreamoTrickz"
+              className="w-9 h-9 object-contain group-hover:scale-110 transition-transform duration-300"
+            />
+            <span className="font-[var(--font-heading)] text-sm hidden sm:block text-[var(--color-yellow)]">
               SCREAMOTRICKZ
             </span>
           </Link>
@@ -49,32 +61,38 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-[var(--font-accent)] text-xs font-semibold tracking-[0.15em] uppercase
-                         text-[var(--color-gray-300)] hover:text-[var(--color-yellow)]
-                         transition-colors duration-300 relative group"
+                className={`font-[var(--font-accent)] text-xs font-semibold tracking-[0.15em] uppercase
+                         transition-colors duration-300 relative group ${
+                           isActive(link.href)
+                             ? "text-[var(--color-yellow)]"
+                             : "text-[var(--color-gray-300)] hover:text-[var(--color-yellow)]"
+                         }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-yellow)]
-                              group-hover:w-full transition-all duration-300" />
+                <span
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-[var(--color-yellow)]
+                            transition-all duration-300 ${
+                              isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                            }`}
+                />
               </Link>
             ))}
             <Link
-              href="#kontakt"
+              href="/kontakt"
               className="font-[var(--font-accent)] text-xs font-bold tracking-wider uppercase
                        px-5 py-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
                        hover:bg-[var(--color-yellow-dark)] hover:scale-105
                        transition-all duration-300 rounded-full"
             >
-              Dolacz
+              Dołącz
             </Link>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 text-[var(--color-yellow)] hover:text-white
-                     transition-colors"
-            aria-label="Otworz menu"
+            className="md:hidden p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
+            aria-label="Otwórz menu"
           >
             <Menu size={24} />
           </button>
@@ -112,8 +130,11 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-[var(--font-heading)] text-2xl uppercase
-                             text-white hover:text-[var(--color-yellow)] transition-colors"
+                    className={`font-[var(--font-heading)] text-2xl uppercase transition-colors ${
+                      isActive(link.href)
+                        ? "text-[var(--color-yellow)]"
+                        : "text-white hover:text-[var(--color-yellow)]"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -125,14 +146,14 @@ export default function Navigation() {
                 transition={{ delay: NAV_LINKS.length * 0.08, duration: 0.4 }}
               >
                 <Link
-                  href="#kontakt"
+                  href="/kontakt"
                   onClick={() => setMobileOpen(false)}
                   className="font-[var(--font-accent)] text-sm font-bold tracking-wider uppercase
                            px-8 py-3 bg-[var(--color-yellow)] text-[var(--color-navy)]
                            hover:bg-[var(--color-yellow-dark)]
                            transition-all duration-300 rounded-full"
                 >
-                  Dolacz do nas
+                  Dołącz do nas
                 </Link>
               </motion.div>
             </div>

@@ -2,12 +2,13 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Instagram, Youtube, Facebook, Sparkles } from "lucide-react";
+import { Instagram, Youtube, Facebook, Sparkles, ArrowLeft } from "lucide-react";
 import { TRAINERS, type Trainer } from "@/lib/data";
+import Link from "next/link";
 
 function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -30,34 +31,33 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
     facebook: Facebook,
   };
 
+  const isEven = index % 2 === 0;
+
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative"
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${
+        !isEven ? "md:direction-rtl" : ""
+      }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Spring Scale wrapper */}
+      {/* Photo / Video side */}
       <motion.div
-        animate={isHovered ? { scale: 1.04 } : { scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 15,
-          mass: 0.8,
-        }}
+        animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 15, mass: 0.8 }}
+        className={isEven ? "" : "md:order-2"}
       >
-        {/* Card with thick purple border */}
-        <div className={`relative overflow-hidden rounded-2xl aspect-[3/4]
-                      bg-[var(--color-navy-light)]
-                      border-4 border-[var(--color-purple)]
-                      transition-shadow duration-500
-                      ${isHovered ? "glow-pulse shadow-[0_0_40px_rgba(124,58,237,0.4)]" : "shadow-lg"}`}>
-
-          {/* Static photo — designed for AI cartoon/Pixar portraits */}
+        <div
+          className={`relative overflow-hidden rounded-2xl aspect-[4/5]
+                    bg-[var(--color-navy-light)]
+                    border-4 border-[var(--color-purple)]
+                    transition-shadow duration-500
+                    ${isHovered ? "glow-pulse shadow-[0_0_40px_rgba(124,58,237,0.4)]" : "shadow-lg"}`}
+        >
           <div
             className={`absolute inset-0 bg-cover bg-center bg-[var(--color-navy-lighter)] transition-opacity duration-700 ${
               isHovered ? "opacity-0" : "opacity-100"
@@ -65,7 +65,6 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
             style={{ backgroundImage: `url(${trainer.photo})` }}
           />
 
-          {/* Hover video */}
           <video
             ref={videoRef}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
@@ -78,35 +77,25 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
             preload="none"
           />
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/60 via-transparent to-transparent" />
 
-          {/* Trick label — appears on hover with comic pop */}
+          {/* Trick label */}
           <motion.div
             initial={false}
-            animate={isHovered
-              ? { opacity: 1, scale: 1, rotate: -2 }
-              : { opacity: 0, scale: 0.5, rotate: 10 }
+            animate={
+              isHovered
+                ? { opacity: 1, scale: 1, rotate: -2 }
+                : { opacity: 0, scale: 0.5, rotate: 10 }
             }
             transition={{ type: "spring", stiffness: 500, damping: 20 }}
             className="absolute top-4 right-4 bg-[var(--color-yellow)] text-[var(--color-navy)]
-                     font-[var(--font-heading)] text-xs tracking-wider
-                     px-3 py-1.5 rounded-lg
+                     font-[var(--font-heading)] text-xs px-3 py-1.5 rounded-lg
                      shadow-[0_0_15px_rgba(251,191,36,0.4)]"
           >
             {trainer.trick}
           </motion.div>
 
-          {/* Role badge */}
-          <div className="absolute top-4 left-4">
-            <span className="font-[var(--font-accent)] text-[10px] tracking-[0.1em] uppercase font-bold
-                          text-[var(--color-yellow)] bg-[var(--color-navy)]/80 backdrop-blur-sm
-                          px-3 py-1.5 border-2 border-[var(--color-yellow)]/30 rounded-lg">
-              {trainer.role}
-            </span>
-          </div>
-
-          {/* Sparkle decoration on hover */}
+          {/* Sparkle */}
           <motion.div
             initial={false}
             animate={isHovered ? { opacity: 1, rotate: 15 } : { opacity: 0, rotate: 0 }}
@@ -115,44 +104,54 @@ function TrainerCard({ trainer, index }: { trainer: Trainer; index: number }) {
           >
             <Sparkles size={18} className="text-[var(--color-yellow)]" fill="currentColor" />
           </motion.div>
-
-          {/* Bottom info */}
-          <div className="absolute bottom-0 left-0 right-0 p-5">
-            <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white mb-1"
-                style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
-              {trainer.name}
-            </h3>
-            <p className="font-[var(--font-body)] text-xs text-[var(--color-gray-300)] leading-relaxed mb-3
-                        line-clamp-2 group-hover:line-clamp-none transition-all">
-              {trainer.bio}
-            </p>
-
-            {/* Social icons */}
-            <div className="flex gap-3">
-              {Object.entries(trainer.socials).map(([platform, url]) => {
-                const Icon = socialIcons[platform as keyof typeof socialIcons];
-                if (!Icon || !url) return null;
-                return (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[var(--color-purple)]/20 border border-[var(--color-purple)]/40
-                             flex items-center justify-center
-                             hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)]
-                             hover:text-[var(--color-navy)] text-[var(--color-gray-300)]
-                             transition-all duration-300"
-                    aria-label={platform}
-                  >
-                    <Icon size={14} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
         </div>
       </motion.div>
+
+      {/* Info side */}
+      <div className={isEven ? "" : "md:order-1"}>
+        <span
+          className="inline-block font-[var(--font-accent)] text-[10px] tracking-[0.15em] uppercase font-bold
+                    text-[var(--color-yellow)] bg-[var(--color-navy-light)] backdrop-blur-sm
+                    px-3 py-1.5 border-2 border-[var(--color-yellow)]/30 rounded-lg mb-4"
+        >
+          {trainer.role}
+        </span>
+
+        <h3
+          className="font-[var(--font-heading)] text-3xl md:text-4xl lg:text-5xl text-white mb-4"
+          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.3)" }}
+        >
+          {trainer.name}
+        </h3>
+
+        <p className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base leading-relaxed mb-6">
+          {trainer.bio}
+        </p>
+
+        {/* Social icons */}
+        <div className="flex gap-3">
+          {Object.entries(trainer.socials).map(([platform, url]) => {
+            const Icon = socialIcons[platform as keyof typeof socialIcons];
+            if (!Icon || !url) return null;
+            return (
+              <a
+                key={platform}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/40
+                         flex items-center justify-center
+                         hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)]
+                         hover:text-[var(--color-navy)] text-[var(--color-gray-300)]
+                         transition-all duration-300"
+                aria-label={platform}
+              >
+                <Icon size={16} />
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -162,48 +161,65 @@ export default function Masters() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="masters" className="relative py-16 md:py-32 px-6 bg-[var(--color-navy)]">
-      {/* Decorative diagonal stripe */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[var(--color-purple)] via-[var(--color-yellow)] to-[var(--color-purple)]" />
+    <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)]">
+      <div className="max-w-6xl mx-auto">
+        {/* Back button */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
+        >
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-semibold
+                     tracking-wider uppercase text-[var(--color-gray-400)]
+                     hover:text-[var(--color-yellow)] transition-colors group"
+          >
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+            Powrót na stronę główną
+          </Link>
+        </motion.div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div ref={headerRef} className="mb-10 md:mb-20">
+        {/* Header */}
+        <div ref={headerRef} className="mb-16 md:mb-24 text-center">
           <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
-            Kadra
+            Poznaj nas
           </motion.span>
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-[var(--font-heading)] text-3xl md:text-6xl lg:text-7xl
-                     text-white leading-[1]"
+            className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
+                     text-white leading-[1] mb-4"
           >
-            THE<br />
-            <span className="text-[var(--color-yellow)]"
-                  style={{ textShadow: "0 0 40px rgba(251,191,36,0.3)" }}>
-              MASTERS
+            NASZA{" "}
+            <span
+              className="text-[var(--color-yellow)]"
+              style={{ textShadow: "0 0 40px rgba(251,191,36,0.3)" }}
+            >
+              KADRA
             </span>
-          </motion.h2>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
-                     mt-4 max-w-md leading-relaxed"
+                     max-w-lg mx-auto leading-relaxed"
           >
-            Poznaj nasza kadre trenerska. Najedz na karte, zeby zobaczyc ich flagowy trick w akcji.
+            Trenerzy z pasją, doświadczeniem i sercem do sportu. Najedź na zdjęcie, żeby zobaczyć ich flagowy trick!
           </motion.p>
         </div>
 
-        {/* Trainer cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {/* Full trainer profiles */}
+        <div className="space-y-16 md:space-y-24">
           {TRAINERS.map((trainer, i) => (
             <TrainerCard key={trainer.name} trainer={trainer} index={i} />
           ))}

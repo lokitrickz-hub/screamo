@@ -1,9 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Masters from "@/components/Masters";
-import News from "@/components/News";
-import Gallery from "@/components/Gallery";
+import MastersPreview from "@/components/MastersPreview";
+import SocialWall from "@/components/SocialWall";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,9 +11,8 @@ export default function Home() {
       <Navigation />
       <Hero />
       <About />
-      <Masters />
-      <News />
-      <Gallery />
+      <MastersPreview />
+      <SocialWall />
       <Footer />
     </>
   );

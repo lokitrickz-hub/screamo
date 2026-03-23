@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { TIMELINE } from "@/lib/data";
 
@@ -27,41 +27,36 @@ function TimelineItem({
       {/* Content */}
       <motion.div
         initial={{ opacity: 0, x: isLeft ? -50 : 50, scale: 0.95 }}
-        animate={
-          isInView
-            ? { opacity: 1, x: 0, scale: 1 }
-            : {}
-        }
+        animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={`flex-1 ${isLeft ? "md:pr-16 md:text-right" : "md:pl-16 md:text-left"}`}
       >
         <div
-          className={`bg-[var(--color-glass)] backdrop-blur-sm border border-[var(--color-glass-border)]
-                    rounded-sm p-6 md:p-8 ${
+          className={`bg-[var(--color-navy-light)] backdrop-blur-sm border-2 border-[var(--color-purple)]/20
+                    rounded-2xl p-6 md:p-8 ${
                       event.highlight
-                        ? "border-[rgba(217,255,0,0.15)] shadow-[0_0_40px_rgba(217,255,0,0.03)]"
+                        ? "border-[var(--color-purple)]/40 shadow-[0_0_30px_rgba(124,58,237,0.1)]"
                         : ""
                     }`}
         >
-          {/* Year */}
           <span
-            className={`font-[var(--font-accent)] text-sm font-semibold tracking-wider
-                      ${event.highlight ? "text-[var(--color-lime)]" : "text-[var(--color-gray-500)]"}`}
+            className={`font-[var(--font-heading)] text-sm ${
+              event.highlight ? "text-[var(--color-yellow)]" : "text-[var(--color-gray-500)]"
+            }`}
           >
             {event.year}
           </span>
 
-          <h3 className="font-[var(--font-heading)] font-bold text-xl md:text-2xl text-white mt-2 mb-3">
+          <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white mt-2 mb-3">
             {event.title}
           </h3>
 
-          <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] leading-relaxed">
+          <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed">
             {event.description}
           </p>
 
-          {/* Optional image */}
           {event.image && (
-            <div className="mt-4 aspect-video rounded-sm overflow-hidden bg-[var(--color-gray-800)] relative">
+            <div className="mt-4 aspect-video rounded-xl overflow-hidden bg-[var(--color-navy-lighter)] relative border border-[var(--color-purple)]/20">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${event.image})` }}
@@ -71,7 +66,7 @@ function TimelineItem({
         </div>
       </motion.div>
 
-      {/* Center dot — desktop only */}
+      {/* Center dot — desktop */}
       <div className="hidden md:flex flex-col items-center flex-shrink-0 w-4">
         <motion.div
           initial={{ scale: 0 }}
@@ -79,8 +74,8 @@ function TimelineItem({
           transition={{ duration: 0.4, delay: 0.2 }}
           className={`w-4 h-4 rounded-full border-2 mt-8 ${
             event.highlight
-              ? "bg-[var(--color-lime)] border-[var(--color-lime)] shadow-[0_0_12px_rgba(217,255,0,0.4)]"
-              : "bg-[var(--color-gray-800)] border-[var(--color-gray-600)]"
+              ? "bg-[var(--color-yellow)] border-[var(--color-yellow)] shadow-[0_0_12px_rgba(251,191,36,0.4)]"
+              : "bg-[var(--color-navy-light)] border-[var(--color-gray-600)]"
           }`}
         />
       </div>
@@ -92,12 +87,12 @@ function TimelineItem({
         transition={{ duration: 0.4, delay: 0.2 }}
         className={`md:hidden absolute left-0 top-8 w-3 h-3 rounded-full border-2 -translate-x-[7px] ${
           event.highlight
-            ? "bg-[var(--color-lime)] border-[var(--color-lime)]"
-            : "bg-[var(--color-gray-800)] border-[var(--color-gray-600)]"
+            ? "bg-[var(--color-yellow)] border-[var(--color-yellow)]"
+            : "bg-[var(--color-navy-light)] border-[var(--color-gray-600)]"
         }`}
       />
 
-      {/* Spacer for other side — desktop only */}
+      {/* Spacer — desktop */}
       <div className="hidden md:block flex-1" />
     </div>
   );
@@ -116,7 +111,7 @@ export default function Timeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-6 min-h-screen">
+    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-6 min-h-screen bg-[var(--color-navy)]">
       <div className="max-w-5xl mx-auto">
         {/* Back button */}
         <motion.div
@@ -127,9 +122,9 @@ export default function Timeline() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs
+            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-semibold
                      tracking-wider uppercase text-[var(--color-gray-400)]
-                     hover:text-[var(--color-lime)] transition-colors group"
+                     hover:text-[var(--color-yellow)] transition-colors group"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             Powrót na stronę główną
@@ -142,8 +137,8 @@ export default function Timeline() {
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-[var(--font-accent)] text-xs tracking-[0.2em] uppercase
-                     text-[var(--color-lime)] mb-3 block"
+            className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
+                     text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
             Od 2011 roku
           </motion.span>
@@ -151,17 +146,20 @@ export default function Timeline() {
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-[var(--font-heading)] font-black text-4xl md:text-6xl lg:text-7xl
-                     text-white leading-[0.95] mb-4"
+            className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
+                     text-white leading-[1] mb-4"
           >
-            NASZA<br />
-            <span className="text-[var(--color-lime)]">HISTORIA</span>
+            NASZA{" "}
+            <span className="text-[var(--color-yellow)]"
+                  style={{ textShadow: "0 0 30px rgba(251,191,36,0.3)" }}>
+              HISTORIA
+            </span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="font-[var(--font-body)] text-[var(--color-gray-400)] text-sm md:text-base
+            className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
             Poznaj drogę ScreamoTrickz — od pierwszych salta w parku po scenę ogólnopolską.
@@ -172,19 +170,19 @@ export default function Timeline() {
         <div ref={containerRef} className="relative pl-6 md:pl-0">
           {/* Vertical line — desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
-            <div className="absolute inset-0 bg-[var(--color-gray-800)]" />
+            <div className="absolute inset-0 bg-[var(--color-navy-lighter)]" />
             <motion.div
               style={{ height: lineHeight }}
-              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[var(--color-lime)] to-[var(--color-lime)]/20"
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[var(--color-yellow)] to-[var(--color-purple)]/40"
             />
           </div>
 
           {/* Vertical line — mobile */}
           <div className="md:hidden absolute left-0 top-0 bottom-0 w-px">
-            <div className="absolute inset-0 bg-[var(--color-gray-800)]" />
+            <div className="absolute inset-0 bg-[var(--color-navy-lighter)]" />
             <motion.div
               style={{ height: lineHeight }}
-              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[var(--color-lime)] to-[var(--color-lime)]/20"
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[var(--color-yellow)] to-[var(--color-purple)]/40"
             />
           </div>
 
@@ -204,10 +202,10 @@ export default function Timeline() {
           transition={{ duration: 0.5 }}
           className="mt-16 md:mt-20 text-center"
         >
-          <div className="inline-flex items-center gap-3 bg-[var(--color-glass)] backdrop-blur-sm
-                       border border-[rgba(217,255,0,0.15)] rounded-sm px-6 py-3">
-            <div className="w-2 h-2 rounded-full bg-[var(--color-lime)] animate-pulse" />
-            <span className="font-[var(--font-accent)] text-sm text-[var(--color-lime)] font-medium">
+          <div className="inline-flex items-center gap-3 bg-[var(--color-navy-light)]
+                       border-2 border-[var(--color-yellow)]/30 rounded-full px-6 py-3">
+            <div className="w-2 h-2 rounded-full bg-[var(--color-yellow)] animate-pulse" />
+            <span className="font-[var(--font-heading)] text-sm text-[var(--color-yellow)]">
               Historia trwa...
             </span>
           </div>
