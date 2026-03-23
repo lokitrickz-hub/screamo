@@ -39,7 +39,7 @@ export const TRAINERS: Trainer[] = [
   {
     name: "Mariusz Piskorz",
     role: "Drugi Trener",
-    bio: "Filary techniczne klubu. Ekspert od przygotowania siłowego i akrobatycznego. Jego doświadczenie pozwala zawodnikom bezpiecznie przesuwać granice swoich możliwości fizycznych. Słynie z dbałości o czystość techniki każdego kicka i twista.",
+    bio: "Trener z wieloletnim doświadczeniem i niebywałym podejściem do dzieci. Na zajęciach u Mariusza zapomnij o nudzie! Jest wesoło, ale zawsze konkretnie.",
     photo: "/images/trainer-mariusz.jpg",
     video: "/videos/mariusz-trick.mp4",
     trick: "Butterfly Twist",
