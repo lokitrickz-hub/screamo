@@ -2,12 +2,12 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Flame, Target, Users } from "lucide-react";
+import { Flame, Target, Users, Star } from "lucide-react";
 
 const STATS = [
-  { value: "31", label: "Medali MP", icon: Flame },
-  { value: "14+", label: "Lat doświadczenia", icon: Target },
-  { value: "100+", label: "Zawodników", icon: Users },
+  { value: "31", label: "Medali MP", icon: Flame, color: "var(--color-yellow)" },
+  { value: "14+", label: "Lat doswiadczenia", icon: Target, color: "var(--color-purple-light)" },
+  { value: "100+", label: "Zawodnikow", icon: Users, color: "var(--color-yellow)" },
 ];
 
 export default function About() {
@@ -18,17 +18,26 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className="relative py-16 md:py-32 px-6 bg-[#050505] overflow-hidden"
+      className="relative py-16 md:py-32 px-6 bg-[var(--color-navy)] overflow-hidden"
     >
-      {/* Subtle grid bg */}
+      {/* Comic dots background */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundImage: "radial-gradient(circle, var(--color-purple) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
         }}
       />
+
+      {/* Decorative star bursts */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0, rotate: -30 }}
+        animate={isInView ? { opacity: 0.08, scale: 1, rotate: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="absolute top-20 right-10 hidden md:block"
+      >
+        <Star size={120} className="text-[var(--color-yellow)]" fill="currentColor" />
+      </motion.div>
 
       <div className="relative max-w-6xl mx-auto">
         {/* Label */}
@@ -38,7 +47,8 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="font-[var(--font-accent)] text-[11px] tracking-[0.2em] uppercase text-[var(--color-lime)]">
+          <span className="inline-block font-[var(--font-accent)] text-[11px] tracking-[0.2em] uppercase
+                         text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full font-bold">
             O nas
           </span>
         </motion.div>
@@ -48,12 +58,13 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-[var(--font-heading)] font-black text-2xl md:text-5xl lg:text-[3.5rem]
-                   text-white leading-[1.05] max-w-3xl mb-6 md:mb-8"
+          className="font-[var(--font-heading)] text-2xl md:text-5xl lg:text-[3.5rem]
+                   text-white leading-[1.1] max-w-3xl mb-6 md:mb-8"
         >
-          Definiujemy grawitację
-          <br />
-          <span className="text-[var(--color-lime)]">na własnych zasadach.</span>
+          Definiujemy grawitacje{" "}
+          <span className="text-[var(--color-yellow)]" style={{ textShadow: "0 0 30px rgba(251,191,36,0.3)" }}>
+            na wlasnych zasadach.
+          </span>
         </motion.h2>
 
         {/* Body */}
@@ -61,15 +72,15 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-[var(--font-body)] text-[var(--color-gray-400)] text-sm md:text-lg
+          className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-lg
                    leading-relaxed max-w-2xl mb-10 md:mb-16"
         >
-          UKS ScreamoTrickz to nie tylko klub sportowy — to pierwsza w regionie
-          i jedna z czołowych w Polsce akademii trickingu. Łączymy dynamikę
-          sztuk walki, estetykę gimnastyki i ekspresję breakdance&apos;u. Naszą
-          misją jest zarażanie pasją do ruchu, budowanie pewności siebie
-          poprzez opanowanie własnego ciała i integracja lokalnej społeczności
-          sportowej na całej Sądecczyźnie.
+          UKS ScreamoTrickz to nie tylko klub sportowy &mdash; to pierwsza w regionie
+          i jedna z czolowych w Polsce akademii trickingu. Laczymy dynamike
+          sztuk walki, estetyce gimnastyki i ekspresje breakdance&apos;u. Nasza
+          misja jest zarazanie pasja do ruchu, budowanie pewnosci siebie
+          poprzez opanowanie wlasnego ciala i integracja lokalnej spolecznosci
+          sportowej na calej Sadecczyznie.
         </motion.p>
 
         {/* Stats */}
@@ -80,18 +91,21 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="relative p-5 md:p-8 rounded-lg
-                       bg-white/[0.03] border border-white/[0.06]
-                       hover:border-[var(--color-lime)]/30 transition-colors duration-500"
+              className="relative p-5 md:p-8 rounded-2xl
+                       bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/30
+                       hover:border-[var(--color-purple)] transition-all duration-500
+                       hover:shadow-[0_0_30px_rgba(124,58,237,0.2)]"
             >
               <stat.icon
-                size={20}
-                className="text-[var(--color-lime)] mb-4"
+                size={24}
+                className="mb-4"
+                style={{ color: stat.color }}
               />
-              <div className="font-[var(--font-heading)] font-black text-3xl md:text-5xl text-white mb-1">
+              <div className="font-[var(--font-heading)] text-3xl md:text-5xl text-white mb-1">
                 {stat.value}
               </div>
-              <div className="font-[var(--font-accent)] text-xs tracking-[0.15em] uppercase text-[var(--color-gray-500)]">
+              <div className="font-[var(--font-accent)] text-xs font-semibold tracking-[0.15em] uppercase"
+                   style={{ color: stat.color }}>
                 {stat.label}
               </div>
             </motion.div>

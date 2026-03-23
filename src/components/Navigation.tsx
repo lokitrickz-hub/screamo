@@ -29,7 +29,7 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[rgba(5,5,5,0.72)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)]"
+            ? "bg-[rgba(16,23,42,0.9)] backdrop-blur-xl border-b border-[var(--color-purple)]/20"
             : "bg-transparent"
         }`}
       >
@@ -38,7 +38,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center gap-3 group">
             <img src="/images/logo.png" alt="ScreamoTrickz" className="w-9 h-9 object-contain
                           group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-[var(--font-heading)] font-bold text-sm tracking-wider hidden sm:block">
+            <span className="font-[var(--font-heading)] text-sm tracking-wider hidden sm:block text-[var(--color-yellow)]">
               SCREAMOTRICKZ
             </span>
           </Link>
@@ -49,32 +49,32 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-[var(--font-accent)] text-xs tracking-[0.15em] uppercase
-                         text-[var(--color-gray-300)] hover:text-[var(--color-lime)]
+                className="font-[var(--font-accent)] text-xs font-semibold tracking-[0.15em] uppercase
+                         text-[var(--color-gray-300)] hover:text-[var(--color-yellow)]
                          transition-colors duration-300 relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-lime)]
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-yellow)]
                               group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
             <Link
               href="#kontakt"
-              className="font-[var(--font-accent)] text-xs tracking-wider uppercase
-                       px-5 py-2 border border-[var(--color-lime)] text-[var(--color-lime)]
-                       hover:bg-[var(--color-lime)] hover:text-[#050505]
-                       transition-all duration-300 rounded-sm"
+              className="font-[var(--font-accent)] text-xs font-bold tracking-wider uppercase
+                       px-5 py-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
+                       hover:bg-[var(--color-yellow-dark)] hover:scale-105
+                       transition-all duration-300 rounded-full"
             >
-              Dołącz
+              Dolacz
             </Link>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 text-[var(--color-gray-300)] hover:text-[var(--color-lime)]
+            className="md:hidden p-2 text-[var(--color-yellow)] hover:text-white
                      transition-colors"
-            aria-label="Otwórz menu"
+            aria-label="Otworz menu"
           >
             <Menu size={24} />
           </button>
@@ -89,13 +89,13 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-[rgba(5,5,5,0.95)] backdrop-blur-2xl
+            className="fixed inset-0 z-[100] bg-[rgba(16,23,42,0.97)] backdrop-blur-2xl
                      flex flex-col items-center justify-center"
           >
             <button
               onClick={() => setMobileOpen(false)}
               className="absolute top-5 right-6 p-2 text-[var(--color-gray-400)]
-                       hover:text-[var(--color-lime)] transition-colors"
+                       hover:text-[var(--color-yellow)] transition-colors"
               aria-label="Zamknij menu"
             >
               <X size={28} />
@@ -112,8 +112,8 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-[var(--font-heading)] text-3xl font-bold uppercase
-                             text-white hover:text-[var(--color-lime)] transition-colors"
+                    className="font-[var(--font-heading)] text-2xl uppercase
+                             text-white hover:text-[var(--color-yellow)] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -127,12 +127,12 @@ export default function Navigation() {
                 <Link
                   href="#kontakt"
                   onClick={() => setMobileOpen(false)}
-                  className="font-[var(--font-accent)] text-sm tracking-wider uppercase
-                           px-8 py-3 border-2 border-[var(--color-lime)] text-[var(--color-lime)]
-                           hover:bg-[var(--color-lime)] hover:text-[#050505]
-                           transition-all duration-300"
+                  className="font-[var(--font-accent)] text-sm font-bold tracking-wider uppercase
+                           px-8 py-3 bg-[var(--color-yellow)] text-[var(--color-navy)]
+                           hover:bg-[var(--color-yellow-dark)]
+                           transition-all duration-300 rounded-full"
                 >
-                  Dołącz do nas
+                  Dolacz do nas
                 </Link>
               </motion.div>
             </div>
