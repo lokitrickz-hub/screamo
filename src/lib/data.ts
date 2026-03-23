@@ -145,20 +145,20 @@ export const TIMELINE: TimelineEvent[] = [
   {
     label: "2011 r.",
     title: "Cyfrowa Iskra i Stodoła Dziadka",
-    description: "Wszystko zaczęło się w sieci. Grupa chłopaków z Nowego Sącza i okolic poznała się przez internet, dzieląc rzadką pasję do ekstremalnych ewolucji w powietrzu. Założyli Screamo Trickz w 2011 roku. Ich pierwszą, historyczną \"salą treningową\" była zwykła stodoła dziadka Andrzeja Steca. To w tych surowych warunkach, na sianie, bez profesjonalnych mat, wykuwał się ich żelazny charakter i unikalny styl łączący sztuki walki, akrobatykę i breakdance.",
+    description: "Wszystko zaczęło się w sieci. Grupa chłopaków z Nowego Sącza i okolic poznała się przez internet, dzieląc rzadką pasję do ekstremalnych ewolucji w powietrzu. Założyli Screamo Trickz w 2011 roku. Pierwszy, historyczny skład tworzyli wspólnie: Andrzej, Sebastian, Kuba, Tomasz oraz Mateusz. Ich pierwszą \"salą treningową\" była zwykła stodoła dziadka Andrzeja Steca. To w tych surowych warunkach, na sianie, bez profesjonalnych mat, wykuwał się ich charakter i unikalny styl łączący sztuki walki, akrobatykę i breakdance.",
     image: "/images/gallery-4.jpg",
     highlight: true,
   },
   {
-    label: "Rozwój zespołu",
+    label: "Rozwój Zespołu",
     title: "Zjednoczeni przez Tricking",
-    description: "Katorżnicze treningi doprowadziły do uformowania profesjonalnego trzonu zespołu. Do Andrzeja dołączyli Kamil, Dawid, Rafał i Tomasz. Grupa wyszła poza granice Sądecczyzny, integrując talenty również z Warszawy i Katowic. Tak powstała zgrana maszyna, która wkrótce miała zdominować polską scenę Extreme Martial Tricks.",
+    description: "Z biegiem lat pierwotny skład ulegał naturalnym zmianom. Część ekipy podążyła nowymi ścieżkami, a przeprowadzki niektórych członków sprawiły, że działalność grupy rozszerzyła się na inne polskie miasta. Setki godzin wspólnych treningów doprowadziły do uformowania nowego, profesjonalnego trzonu zespołu. Do grupy dołączył brat Andrzeja — Rafał, oraz jego rówieśnik i kolega, Dawid. Obaj od podstaw zostali wyszkoleni i wprowadzeni w świat trickingu bezpośrednio przez Andrzeja. Skład uzupełnił również Kamil, który na co dzień mieszka i działa u siebie w Katowicach, ale z pełnym zaangażowaniem dołączył do nowosądeckiej ekipy. W ten sposób uformowała się zgrana, oparta na przyjaźni i braterstwie maszyna, która wkrótce miała zdominować polską scenę Extreme Martial Tricks.",
     highlight: true,
   },
   {
     label: "Złote Lata Zawodów",
     title: "Mistrzowie Polski bez Konkurencji",
-    description: "Screamo Trickz zaczęło regularnie stawać na najwyższym stopniu podium. Zdobyli wielokrotne Mistrzostwo Polski w Trickingu, udowadniając swoją bezdyskusyjną dominację. Spektakularnym sukcesem był m.in. start w Radlinie, skąd ekipa przywiozła łącznie aż 38 medali (w tym 14 złotych) w takich kategoriach jak bitwy na tricki czy rozbicia desek.",
+    description: "Screamo Trickz zaczęło regularnie stawać na najwyższym stopniu podium. Zdobyli wielokrotne Mistrzostwo Polski w Trickingu, udowadniając swoją bezdyskusyjną dominację. Spektakularnym sukcesem był m.in. start na Mistrzostwach Polski w Radlinie, skąd ekipa występująca w ogromnym składzie przywiozła łącznie aż 38 medali (w tym 14 złotych). Walczyli tam w takich kategoriach jak tor przeszkód, bitwy na tricki czy widowiskowe rozbicia desek.",
     image: "/images/gallery-22.jpg",
     highlight: true,
   },
@@ -186,7 +186,7 @@ export const TIMELINE: TimelineEvent[] = [
   {
     label: "Dziś",
     title: "Nowe Pokolenie Mistrzów",
-    description: "Obecnie Screamo Trickz to nie tylko elitarni zawodnicy, ale też wybitni pedagodzy. Trenerzy dzielą się wiedzą w Akademii, wychowując kolejne pokolenia. Ich praca u podstaw przynosi światowe efekty — to pod okiem Andrzeja Steca 10-letnia Anastazja Jurek wywalczyła tytuł Mistrzyni Europy w Trickingu w angielskim Birmingham. Grupa prowadzi również innowacyjne zajęcia akrobatyczne dla młodzieży z mniejszych miejscowości, m.in. w gminie Ochotnica Dolna, krzewiąc kulturę ruchu tam, gdzie jest ona najbardziej potrzebna.",
+    description: "Obecnie Screamo Trickz to nie tylko elitarni zawodnicy, ale też wybitni trenerzy i pedagodzy (m.in. Andrzej Stec i Sebastian Michulec, którzy pełnią dziś rolę trenerów Kadry Polski). Ich praca u podstaw przynosi światowe efekty — to pod okiem Andrzeja 10-letnia Anastazja Jurek wywalczyła tytuł Mistrzyni Europy w Trickingu w angielskim Birmingham. Grupa prowadzi również innowacyjne zajęcia akrobatyczne dla młodzieży z mniejszych miejscowości.",
     highlight: true,
   },
 ];
