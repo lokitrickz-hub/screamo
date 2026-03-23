@@ -41,7 +41,7 @@ export default function Footer() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="font-[var(--font-body)] text-[var(--color-navy)]/70 text-sm md:text-base max-w-lg mx-auto mb-8 font-medium"
           >
-            Dolacz do ScreamoTrickz. Bez wzgledu na wiek i poziom &mdash; kazdy moze zaczac swoja przygode z trickingiem.
+            Dołącz do ScreamoTrickz. Bez względu na wiek i poziom &mdash; każdy może zacząć swoją przygodę z trickingiem.
           </motion.p>
           <motion.a
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export default function Footer() {
                      hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]
                      transition-all duration-300"
           >
-            Zadzwon &mdash; 514 201 443
+            Zadzwoń &mdash; 514 201 443
           </motion.a>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-[var(--font-body)] text-xs text-[var(--color-gray-400)] leading-relaxed max-w-xs">
-              Uczniowski Klub Sportowy &quot;Screamo Trickz&quot;. Tricking, akrobatyka i gimnastyka sportowa na Sadecczyznie od 2011 roku.
+              Uczniowski Klub Sportowy &quot;Screamo Trickz&quot;. Tricking, akrobatyka i gimnastyka sportowa na Sądecczyźnie od 2011 roku.
             </p>
           </div>
 
@@ -126,10 +126,10 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-[var(--color-purple)]/20
                       flex flex-col md:flex-row items-center justify-between gap-2">
           <span className="font-[var(--font-body)] text-[11px] text-[var(--color-gray-500)]">
-            &copy; {new Date().getFullYear()} UKS ScreamoTrickz. Wszelkie prawa zastrzezone.
+            &copy; {new Date().getFullYear()} UKS ScreamoTrickz. Wszelkie prawa zastrzeżone.
           </span>
           <span className="font-[var(--font-body)] text-[11px] text-[var(--color-gray-500)]">
-            Jazowsko, woj. malopolskie
+            Jazowsko, woj. małopolskie
           </span>
         </div>
       </div>
