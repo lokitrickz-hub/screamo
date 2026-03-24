@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase";
+import { getAdminClient } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   try {
@@ -13,6 +13,7 @@ export async function POST(request: Request) {
     }
 
     // Save to Supabase
+    const supabaseAdmin = getAdminClient();
     const { error } = await supabaseAdmin.from("contact_messages").insert({
       name,
       contact,
