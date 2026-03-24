@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Instagram, Youtube, Facebook, Sparkles, ArrowLeft, X } from "lucide-react";
 import { TRAINERS, type Trainer } from "@/lib/data";
 import Link from "next/link";
@@ -9,15 +9,15 @@ import Link from "next/link";
 function TrainerTile({
   trainer,
   isActive,
+  isSmall,
   onSelect,
   onClose,
-  layoutId,
 }: {
   trainer: Trainer;
   isActive: boolean;
+  isSmall: boolean;
   onSelect: () => void;
   onClose: () => void;
-  layoutId: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -44,17 +44,15 @@ function TrainerTile({
   return (
     <motion.div
       layout
-      layoutId={layoutId}
       onClick={() => { if (!isActive) onSelect(); }}
       onMouseEnter={handlePlay}
       onMouseLeave={handleStop}
       className={`relative overflow-hidden rounded-2xl border-4 border-[var(--color-purple)]
-                cursor-pointer transition-shadow duration-500 h-full
+                cursor-pointer transition-shadow duration-500 h-full w-full
                 ${isActive
                   ? "glow-pulse shadow-[0_0_40px_rgba(124,58,237,0.4)]"
                   : "hover:shadow-[0_0_30px_rgba(124,58,237,0.25)]"
                 }`}
-      style={{ minHeight: 0 }}
     >
       {/* Photo */}
       <div
@@ -113,16 +111,23 @@ function TrainerTile({
 
       {/* Info overlay */}
       <div className="relative z-10 h-full flex flex-col justify-end p-5 md:p-6">
+        {/* Role label — hide when card is small */}
         <span
-          className="inline-block self-start font-[var(--font-accent)] text-[9px] tracking-[0.15em] uppercase font-bold
+          className={`inline-block self-start font-[var(--font-accent)] text-[9px] tracking-[0.15em] uppercase font-bold
                     text-[var(--color-yellow)] bg-[var(--color-navy)]/60 backdrop-blur-sm
-                    px-2.5 py-1 border border-[var(--color-yellow)]/30 rounded-lg mb-2"
+                    px-2.5 py-1 border border-[var(--color-yellow)]/30 rounded-lg mb-2
+                    transition-opacity duration-300
+                    ${isSmall ? "opacity-0" : "opacity-100"}`}
         >
           {trainer.role}
         </span>
 
-        <h3 className="font-[var(--font-heading)] text-xl md:text-2xl lg:text-3xl text-white mb-1"
-            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
+        <h3
+          className={`font-[var(--font-heading)] text-white transition-all duration-500
+                    ${isSmall ? "text-base md:text-lg" : "text-xl md:text-2xl lg:text-3xl"}
+                    ${isSmall ? "mb-0" : "mb-1"}`}
+          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
+        >
           {trainer.name}
         </h3>
 
@@ -177,15 +182,15 @@ export default function Masters() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  // Andrzej is always index 0, the "featured" trainer
-  const featured = TRAINERS[0];
-
-  // Determine which is the "big" card
-  const bigTrainer = activeSlug
-    ? TRAINERS.find((t) => t.slug === activeSlug) || featured
-    : featured;
-
-  const smallTrainers = TRAINERS.filter((t) => t.slug !== bigTrainer.slug);
+  // Build column template based on which trainer is active
+  // Each trainer keeps its fixed position (index 0, 1, 2)
+  function getColumnTemplate() {
+    if (!activeSlug) return "3fr 1fr 1fr"; // default: Andrzej big
+    const activeIndex = TRAINERS.findIndex((t) => t.slug === activeSlug);
+    if (activeIndex === -1) return "3fr 1fr 1fr";
+    // Active card gets 3fr, others get 1fr
+    return TRAINERS.map((_, i) => (i === activeIndex ? "3fr" : "1fr")).join(" ");
+  }
 
   return (
     <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)]">
@@ -245,47 +250,66 @@ export default function Masters() {
           </motion.p>
         </div>
 
-        {/* Bento grid */}
+        {/* Trainer cards — fixed positions, dynamic sizing */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <LayoutGroup>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-5"
-                 style={{ minHeight: "min(85vh, 900px)" }}>
-              {/* Big card — left 3 columns, full height */}
-              <motion.div
-                layout
-                className="aspect-[3/4] md:aspect-auto md:col-span-3 md:row-span-2"
-              >
-                <TrainerTile
-                  trainer={bigTrainer}
-                  isActive={activeSlug === bigTrainer.slug}
-                  onSelect={() => setActiveSlug(bigTrainer.slug)}
-                  onClose={() => setActiveSlug(null)}
-                  layoutId={`trainer-${bigTrainer.slug}`}
-                />
-              </motion.div>
-
-              {/* Two smaller cards — right 2 columns, stacked */}
-              {smallTrainers.map((trainer) => (
+          {/* Mobile: stack vertically */}
+          <div className="flex flex-col md:hidden gap-4">
+            {TRAINERS.map((trainer) => {
+              const isActive = activeSlug === trainer.slug;
+              const isSmall = activeSlug !== null && !isActive;
+              return (
                 <motion.div
-                  layout
                   key={trainer.slug}
-                  className="aspect-[3/4] md:aspect-auto md:col-span-2"
+                  layout
+                  animate={{ height: isActive ? 500 : isSmall ? 200 : 350 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full rounded-2xl overflow-hidden"
                 >
                   <TrainerTile
                     trainer={trainer}
-                    isActive={activeSlug === trainer.slug}
+                    isActive={isActive}
+                    isSmall={isSmall}
                     onSelect={() => setActiveSlug(trainer.slug)}
                     onClose={() => setActiveSlug(null)}
-                    layoutId={`trainer-${trainer.slug}`}
                   />
                 </motion.div>
-              ))}
-            </div>
-          </LayoutGroup>
+              );
+            })}
+          </div>
+
+          {/* Desktop: horizontal row with dynamic column ratios */}
+          <div
+            className="hidden md:grid gap-5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              gridTemplateColumns: getColumnTemplate(),
+              height: "min(80vh, 750px)",
+            }}
+          >
+            {TRAINERS.map((trainer) => {
+              const isActive = activeSlug === trainer.slug;
+              const isSmall = activeSlug !== null && !isActive;
+              return (
+                <motion.div
+                  key={trainer.slug}
+                  layout
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full rounded-2xl overflow-hidden"
+                >
+                  <TrainerTile
+                    trainer={trainer}
+                    isActive={isActive}
+                    isSmall={isSmall}
+                    onSelect={() => setActiveSlug(trainer.slug)}
+                    onClose={() => setActiveSlug(null)}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
     </section>
