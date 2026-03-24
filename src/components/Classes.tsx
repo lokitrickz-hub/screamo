@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles, Flame, Zap, Trophy, MapPin, Calendar, Phone, User } from "lucide-react";
 import Link from "next/link";
+
+const VP = { once: true, margin: "-80px" as const };
 
 const AGE_GROUPS = [
   {
@@ -67,15 +68,6 @@ const LOCATIONS = [
 ];
 
 export default function Classes() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
-  const groupsRef = useRef<HTMLDivElement>(null);
-  const groupsInView = useInView(groupsRef, { once: true, margin: "-80px" });
-  const locRef = useRef<HTMLDivElement>(null);
-  const locInView = useInView(locRef, { once: true, margin: "-80px" });
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-80px" });
-
   return (
     <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-6 min-h-screen bg-[var(--color-navy)]">
       {/* Comic dots background */}
@@ -107,10 +99,11 @@ export default function Classes() {
         </motion.div>
 
         {/* Header */}
-        <div ref={headerRef} className="mb-16 md:mb-20">
+        <div className="mb-16 md:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ duration: 0.5 }}
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
@@ -119,7 +112,8 @@ export default function Classes() {
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ delay: 0.1, duration: 0.6 }}
             className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
                      text-white leading-[1] mb-4"
@@ -134,7 +128,8 @@ export default function Classes() {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-xl leading-relaxed"
@@ -145,12 +140,13 @@ export default function Classes() {
         </div>
 
         {/* Age Groups */}
-        <div ref={groupsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
           {AGE_GROUPS.map((group, i) => (
             <motion.div
               key={group.name}
               initial={{ opacity: 0, y: 40 }}
-              animate={groupsInView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VP}
               transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={`relative p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
                         border-2 ${group.border} ${group.shadow} transition-all duration-500`}
@@ -186,10 +182,11 @@ export default function Classes() {
         </div>
 
         {/* Locations */}
-        <div ref={locRef} className="mb-20 md:mb-28">
+        <div className="mb-20 md:mb-28">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={locInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ duration: 0.5 }}
             className="font-[var(--font-heading)] text-2xl md:text-4xl text-white mb-8"
           >
@@ -201,7 +198,8 @@ export default function Classes() {
               <motion.div
                 key={loc.name}
                 initial={{ opacity: 0, y: 30 }}
-                animate={locInView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={VP}
                 transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
                 className="p-6 rounded-2xl bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/20"
               >
@@ -225,10 +223,11 @@ export default function Classes() {
         </div>
 
         {/* Schedule */}
-        <div ref={ctaRef} className="mb-20 md:mb-28">
+        <div className="mb-20 md:mb-28">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ duration: 0.5 }}
             className="font-[var(--font-heading)] text-2xl md:text-4xl text-white mb-3"
           >
@@ -236,7 +235,8 @@ export default function Classes() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
             transition={{ delay: 0.1, duration: 0.5 }}
             className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] mb-8"
           >
@@ -250,7 +250,6 @@ export default function Classes() {
               location="Jump Mania"
               trainer="Andrzej"
               accent="yellow"
-              inView={ctaInView}
               delay={0.15}
               sessions={[
                 { time: "16:15", name: "Grupa początkująca 7-13 lat" },
@@ -264,7 +263,6 @@ export default function Classes() {
               day="Wtorek"
               trainer="Andrzej i Wiktoria"
               accent="purple"
-              inView={ctaInView}
               delay={0.2}
               sessions={[
                 { time: "16:15", name: "Maluchy 5-7 lat", location: "Dunajcowa 60A", trainer: "Andrzej i Wiktoria" },
@@ -280,7 +278,6 @@ export default function Classes() {
               location="Jump Mania"
               trainer="Andrzej"
               accent="yellow"
-              inView={ctaInView}
               delay={0.25}
               sessions={[
                 { time: "16:15", name: "Grupa początkująca 7-13 lat" },
@@ -293,7 +290,6 @@ export default function Classes() {
             <ScheduleDay
               day="Czwartek"
               accent="purple"
-              inView={ctaInView}
               delay={0.3}
               sessions={[
                 { time: "Umów się", name: "Treningi personalne" },
@@ -306,7 +302,6 @@ export default function Classes() {
               location="Dunajcowa 60A"
               trainer="Andrzej i Wiktoria"
               accent="yellow"
-              inView={ctaInView}
               delay={0.35}
               sessions={[
                 { time: "16:30", name: "Tricking zawodnicy", trainer: "Andrzej" },
@@ -321,7 +316,6 @@ export default function Classes() {
               location="Elektryk"
               trainer="Mariusz"
               accent="purple"
-              inView={ctaInView}
               delay={0.4}
               sessions={[
                 { time: "09:00", name: "Grupa początkująca — nowy nabór" },
@@ -382,7 +376,6 @@ function ScheduleDay({
   trainer,
   accent,
   sessions,
-  inView,
   delay,
 }: {
   day: string;
@@ -390,7 +383,6 @@ function ScheduleDay({
   trainer?: string;
   accent: "yellow" | "purple";
   sessions: Session[];
-  inView: boolean;
   delay: number;
 }) {
   const borderColor = accent === "yellow"
@@ -403,7 +395,8 @@ function ScheduleDay({
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VP}
       transition={{ delay, duration: 0.5 }}
       className={`rounded-2xl bg-[var(--color-navy-light)] border-2 ${borderColor} overflow-hidden`}
     >
