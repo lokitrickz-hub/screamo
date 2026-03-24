@@ -50,9 +50,14 @@ const AGE_GROUPS = [
 
 const LOCATIONS = [
   {
+    name: "Dunajcowa 60A — Nowy Sącz",
+    address: "ul. Dunajcowa 60A, 33-300 Nowy Sącz",
+    note: "Główna baza treningowa klubu",
+  },
+  {
     name: "JumpMania — Nowy Sącz",
     address: "ul. Zielona 27, 33-300 Nowy Sącz",
-    note: "Główna baza treningowa klubu",
+    note: "Tumbling i treningi wieczorne",
   },
   {
     name: "Elektryk — Nowy Sącz",
@@ -191,7 +196,7 @@ export default function Classes() {
             GDZIE <span className="text-[var(--color-yellow)]">TRENUJEMY</span>
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {LOCATIONS.map((loc, i) => (
               <motion.div
                 key={loc.name}
