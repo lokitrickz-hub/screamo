@@ -173,24 +173,12 @@ export default function Contact() {
               },
               {
                 icon: MapPin,
-                title: "Dunajcowa 60A — główna baza",
-                value: "ul. Dunajcowa 60A",
-                href: "https://maps.google.com/?q=Dunajcowa+60A+Nowy+Sącz",
-                subtitle: "33-300 Nowy Sącz",
-              },
-              {
-                icon: MapPin,
-                title: "JumpMania",
-                value: "ul. Zielona 27",
-                href: "https://maps.google.com/?q=Zielona+27+Nowy+Sącz",
-                subtitle: "33-300 Nowy Sącz — tumbling i treningi wieczorne",
-              },
-              {
-                icon: MapPin,
-                title: "Elektryk (ZSE-M)",
-                value: "ul. Bolesława Limanowskiego 4",
-                href: "https://maps.google.com/?q=Limanowskiego+4+Nowy+Sącz",
-                subtitle: "33-330 Nowy Sącz — sobotnie grupy Mariusza",
+                title: "Gdzie trenujemy",
+                locations: [
+                  { name: "Dunajcowa 60A — główna baza", address: "ul. Dunajcowa 60A, 33-300 Nowy Sącz", href: "https://maps.google.com/?q=Dunajcowa+60A+Nowy+Sącz" },
+                  { name: "JumpMania", address: "ul. Zielona 27, 33-300 Nowy Sącz", href: "https://maps.google.com/?q=Zielona+27+Nowy+Sącz" },
+                  { name: "Elektryk (ZSE-M)", address: "ul. Limanowskiego 4, 33-330 Nowy Sącz", href: "https://maps.google.com/?q=Limanowskiego+4+Nowy+Sącz" },
+                ],
               },
               {
                 icon: Clock,
@@ -198,43 +186,81 @@ export default function Contact() {
                 value: "Pon — Pt: 16:00 — 20:00",
                 subtitle: "Sob: 10:00 — 14:00",
               },
-            ].map((item, i) => (
+            ].map((item) => (
               <div
                 key={item.title}
                 className="bg-[var(--color-navy-light)] rounded-2xl border-2 border-[var(--color-purple)]/20
                          p-5 hover:border-[var(--color-purple)]/50 transition-colors duration-300"
               >
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/30
-                             flex items-center justify-center flex-shrink-0"
-                  >
-                    <item.icon size={18} className="text-[var(--color-yellow)]" />
-                  </div>
+                {"locations" in item && item.locations ? (
+                  /* Locations block — all in one card */
                   <div>
-                    <h3 className="font-[var(--font-heading)] text-sm text-[var(--color-yellow)] mb-1">
-                      {item.title}
-                    </h3>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target={item.href.startsWith("http") ? "_blank" : undefined}
-                        rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="font-[var(--font-body)] text-white text-base font-medium
-                                 hover:text-[var(--color-yellow)] transition-colors block"
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className="w-10 h-10 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/30
+                                 flex items-center justify-center flex-shrink-0"
                       >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className="font-[var(--font-body)] text-white text-base font-medium block">
-                        {item.value}
-                      </span>
-                    )}
-                    <span className="font-[var(--font-body)] text-xs text-[var(--color-gray-400)] mt-0.5 block">
-                      {item.subtitle}
-                    </span>
+                        <item.icon size={18} className="text-[var(--color-yellow)]" />
+                      </div>
+                      <h3 className="font-[var(--font-heading)] text-sm text-[var(--color-yellow)]">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <div className="space-y-3 pl-[52px]">
+                      {(item.locations as { name: string; address: string; href: string }[]).map((loc) => (
+                        <a
+                          key={loc.name}
+                          href={loc.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block hover:text-[var(--color-yellow)] transition-colors group/loc"
+                        >
+                          <span className="font-[var(--font-body)] text-white text-sm font-medium group-hover/loc:text-[var(--color-yellow)] block">
+                            {loc.name}
+                          </span>
+                          <span className="font-[var(--font-body)] text-xs text-[var(--color-gray-400)]">
+                            {loc.address}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  /* Standard info card */
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-10 h-10 rounded-full bg-[var(--color-purple)]/20 border-2 border-[var(--color-purple)]/30
+                               flex items-center justify-center flex-shrink-0"
+                    >
+                      <item.icon size={18} className="text-[var(--color-yellow)]" />
+                    </div>
+                    <div>
+                      <h3 className="font-[var(--font-heading)] text-sm text-[var(--color-yellow)] mb-1">
+                        {item.title}
+                      </h3>
+                      {"href" in item && item.href ? (
+                        <a
+                          href={item.href as string}
+                          target={(item.href as string).startsWith("http") ? "_blank" : undefined}
+                          rel={(item.href as string).startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="font-[var(--font-body)] text-white text-base font-medium
+                                   hover:text-[var(--color-yellow)] transition-colors block"
+                        >
+                          {"value" in item ? (item.value as string) : ""}
+                        </a>
+                      ) : (
+                        <span className="font-[var(--font-body)] text-white text-base font-medium block">
+                          {"value" in item ? (item.value as string) : ""}
+                        </span>
+                      )}
+                      {"subtitle" in item && (
+                        <span className="font-[var(--font-body)] text-xs text-[var(--color-gray-400)] mt-0.5 block">
+                          {item.subtitle as string}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 
