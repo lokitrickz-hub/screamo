@@ -41,7 +41,7 @@ function TimelineItem({
         >
           <span
             className={`font-[var(--font-heading)] text-sm ${
-              event.highlight ? "text-[var(--color-yellow)]" : "text-[var(--color-gray-500)]"
+              event.highlight ? "text-[var(--color-yellow)]" : "text-[var(--color-gray-400)]"
             }`}
           >
             {event.label}
@@ -194,7 +194,7 @@ export default function Timeline() {
           </div>
         </div>
 
-        {/* End marker */}
+        {/* End marker + CTA */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -203,12 +203,24 @@ export default function Timeline() {
           className="mt-16 md:mt-20 text-center"
         >
           <div className="inline-flex items-center gap-3 bg-[var(--color-navy-light)]
-                       border-2 border-[var(--color-yellow)]/30 rounded-full px-6 py-3">
+                       border-2 border-[var(--color-yellow)]/30 rounded-full px-6 py-3 mb-6">
             <div className="w-2 h-2 rounded-full bg-[var(--color-yellow)] animate-pulse" />
             <span className="font-[var(--font-heading)] text-sm text-[var(--color-yellow)]">
               Historia trwa...
             </span>
           </div>
+          <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] mb-5">
+            Chcesz być częścią tej historii?
+          </p>
+          <Link
+            href="/kontakt"
+            className="inline-flex items-center gap-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
+                     font-[var(--font-heading)] text-sm px-7 py-3 rounded-full
+                     hover:bg-[var(--color-yellow-dark)] hover:scale-105
+                     shadow-[0_0_25px_rgba(251,191,36,0.3)] transition-all duration-300"
+          >
+            Dołącz do nas!
+          </Link>
         </motion.div>
       </div>
     </section>

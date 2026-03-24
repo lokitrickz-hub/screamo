@@ -211,7 +211,7 @@ export default function BlogList() {
                                      px-2 py-0.5 rounded-full font-bold border border-[var(--color-purple)]/30">
                         {item.tag}
                       </span>
-                      <span className="flex items-center gap-1.5 text-[var(--color-gray-500)]">
+                      <span className="flex items-center gap-1.5 text-[var(--color-gray-400)]">
                         <Calendar size={10} />
                         <span className="font-[var(--font-accent)] text-[10px] tracking-wider font-medium">
                           {formatDate(item.date)}

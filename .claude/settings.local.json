@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(find 'C:\\\\Users\\\\Tomek\\\\Desktop\\\\TRZ Web\\\\ScreamoTrickz\\\\screamotrickz\\\\web' -maxdepth 1 -name *.config.* -o -name *.mjs -o -name next.config.*)",
+      "Bash(npx next:*)",
+      "Bash(ffmpeg -i \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Wiktoria Bisaga Video.mov\" -c:v libx264 -preset fast -crf 23 -an -movflags +faststart -y \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/screamotrickz/web/public/videos/wiktoria-trick.mp4\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(find . -path *historia* -type f)",
+      "Bash(grep -r historia . --include=*.ts --include=*.tsx --include=*.js --include=*.jsx)",
+      "Bash(find . -name *Timeline* -o -name *timeline*)",
+      "Bash(grep -r \"TIMELINE\\\\|historia\\\\|history\" ./src --include=*.ts --include=*.tsx)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/Andrzej.mov\")",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/Wiktoria .mov\")",
+      "Bash(ffmpeg -i \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/Andrzej.mov\" -c:v libx264 -preset medium -crf 25 -vf \"scale=720:-2\" -an -movflags +faststart -y \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/screamotrickz/web/public/videos/andrzej-trick.mp4\")",
+      "Bash(ffmpeg -i \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/Wiktoria .mov\" -c:v libx264 -preset medium -crf 25 -vf \"scale=720:-2\" -an -movflags +faststart -y \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/screamotrickz/web/public/videos/wiktoria-trick.mp4\")",
+      "Bash(cp \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/A42F9CA2-E427-4C46-A180-79DD37B52A8D.jpg\" mam-talent-1.jpg)",
+      "Bash(cp \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/B208230B-2AB3-4EDF-B354-C72C3570FA3A.jpg\" mam-talent-2.jpg)",
+      "Bash(cp \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/Nowe/D4057BE8-565D-493D-BD76-6695F4F5FD93.jpg\" mam-talent-3.jpg)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"/c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/screamotrickz/web/public/images/zawody-IMG_1385.jpg\")",
+      "Bash(npm install:*)",
+      "Bash(curl -s -X POST \"https://oiampgefyjnujwzjcrdn.supabase.co/rest/v1/rpc\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYW1wZ2VmeWpudWp3empjcmRuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDI3ODczOCwiZXhwIjoyMDg5ODU0NzM4fQ.2HbpslUSZuUOLfKnPG0CmY_RSUbdQQcezahJW1opCE0\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYW1wZ2VmeWpudWp3empjcmRuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDI3ODczOCwiZXhwIjoyMDg5ODU0NzM4fQ.2HbpslUSZuUOLfKnPG0CmY_RSUbdQQcezahJW1opCE0\" -H \"Content-Type: application/json\")",
+      "Bash(SQL_QUERY='CREATE TABLE IF NOT EXISTS groups \\(id uuid PRIMARY KEY DEFAULT gen_random_uuid\\(\\), name text NOT NULL, age_range text, monthly_fee integer NOT NULL DEFAULT 0, sort_order integer DEFAULT 0, created_at timestamptz DEFAULT now\\(\\)\\);')",
+      "Bash(__NEW_LINE_a2ee10aefef54214__ curl:*)",
+      "Bash(node scripts/setup-db.mjs)",
+      "Bash(node -e \"const bcrypt = require\\(''bcryptjs''\\); console.log\\(bcrypt.hashSync\\(''Screamo2026!'', 10\\)\\);\")",
+      "Bash(nslookup screamotrickz.pl)",
+      "Bash(curl -sI https://screamotrickz.pl)",
+      "Bash(curl -sI https://screamotrickz.pl/admin)",
+      "Bash(curl -sI https://www.screamotrickz.pl/admin)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"C:\\\\Users\\\\Tomek\\\\Desktop\\\\TRZ Web\\\\ScreamoTrickz\\\\promo scr.mp4\")",
+      "Read(//c/Users/Tomek/Desktop/TRZ Web/ScreamoTrickz/**)",
+      "Bash(ffmpeg -i \"C:\\\\Users\\\\Tomek\\\\Desktop\\\\TRZ Web\\\\ScreamoTrickz\\\\promo scr.mp4\" -c:v libx264 -crf 28 -preset slow -vf \"scale=1280:720\" -c:a aac -b:a 128k -movflags +faststart \"C:\\\\Users\\\\Tomek\\\\Desktop\\\\TRZ Web\\\\ScreamoTrickz\\\\screamotrickz\\\\web\\\\public\\\\videos\\\\promo-scr.mp4\" -y)"
+    ]
+  }
+}

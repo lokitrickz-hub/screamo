@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -42,13 +42,13 @@ export default function Navigation() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 md:h-18 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-18 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
             <img
               src="/images/logo.png"
               alt="ScreamoTrickz"
-              className="w-9 h-9 object-contain group-hover:scale-110 transition-transform duration-300"
+              className="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
             <span className="font-[var(--font-heading)] text-lg hidden sm:block tracking-[0.02em]">
               <span className="text-white">SCREAMO</span>
@@ -57,7 +57,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -78,8 +78,20 @@ export default function Navigation() {
                 />
               </Link>
             ))}
+
+            {/* Phone */}
+            <a
+              href="tel:+48514201443"
+              className="inline-flex items-center gap-1.5 font-[var(--font-accent)] text-xs font-semibold
+                       text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors"
+              aria-label="Zadzwoń"
+            >
+              <Phone size={12} />
+              514 201 443
+            </a>
+
             <Link
-              href="/zajecia"
+              href="/kontakt"
               className="font-[var(--font-accent)] text-xs font-bold tracking-wider uppercase
                        px-5 py-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
                        hover:bg-[var(--color-yellow-dark)] hover:scale-105
@@ -89,14 +101,23 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
-            aria-label="Otwórz menu"
-          >
-            <Menu size={24} />
-          </button>
+          {/* Mobile: phone + hamburger */}
+          <div className="flex lg:hidden items-center gap-3">
+            <a
+              href="tel:+48514201443"
+              className="p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
+              aria-label="Zadzwoń"
+            >
+              <Phone size={20} />
+            </a>
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
+              aria-label="Otwórz menu"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -120,7 +141,7 @@ export default function Navigation() {
               <X size={28} />
             </button>
 
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center gap-7">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -141,13 +162,31 @@ export default function Navigation() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Phone in mobile menu */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: NAV_LINKS.length * 0.08, duration: 0.4 }}
               >
+                <a
+                  href="tel:+48514201443"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 font-[var(--font-body)] text-lg
+                           text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors"
+                >
+                  <Phone size={18} />
+                  514 201 443
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (NAV_LINKS.length + 1) * 0.08, duration: 0.4 }}
+              >
                 <Link
-                  href="/zajecia"
+                  href="/kontakt"
                   onClick={() => setMobileOpen(false)}
                   className="font-[var(--font-accent)] text-sm font-bold tracking-wider uppercase
                            px-8 py-3 bg-[var(--color-yellow)] text-[var(--color-navy)]

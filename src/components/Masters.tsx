@@ -252,7 +252,10 @@ export default function Masters() {
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
-            Kliknij w trenera, żeby poznać go bliżej. Najedź na zdjęcie, żeby zobaczyć trick!
+
+            <span className="hidden md:inline">Kliknij w trenera, żeby poznać go bliżej. Najedź na zdjęcie, żeby zobaczyć trick!</span>
+            <span className="md:hidden">Dotknij zdjęcie trenera, żeby poznać go bliżej!</span>
+
           </motion.p>
         </div>
 

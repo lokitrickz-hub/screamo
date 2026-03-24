@@ -91,25 +91,25 @@ export default function Hero() {
             href="/zajecia"
             className="inline-flex items-center justify-center gap-2
                      bg-[var(--color-yellow)] text-[var(--color-navy)] font-[var(--font-accent)]
-                     font-bold text-sm tracking-wider uppercase
-                     px-6 md:px-8 py-3 md:py-3.5 rounded-full
+                     font-bold text-xs sm:text-sm tracking-wider uppercase
+                     px-5 sm:px-6 md:px-8 py-3 md:py-3.5 rounded-full
                      hover:bg-[var(--color-yellow-dark)] hover:scale-105
                      shadow-[0_0_25px_rgba(251,191,36,0.3)]
                      hover:shadow-[0_0_35px_rgba(251,191,36,0.5)]
                      transition-all duration-300"
           >
-            Zapisz dziecko
+            Zobacz zajęcia
           </a>
           <a
-            href="/historia"
+            href="tel:+48514201443"
             className="inline-flex items-center justify-center gap-2
                      border-2 border-[var(--color-purple)] text-white font-[var(--font-accent)]
-                     font-semibold text-sm tracking-wider uppercase
-                     px-6 md:px-8 py-3 md:py-3.5 rounded-full
+                     font-semibold text-xs sm:text-sm tracking-wider uppercase
+                     px-5 sm:px-6 md:px-8 py-3 md:py-3.5 rounded-full
                      hover:bg-[var(--color-purple)] hover:border-[var(--color-purple)]
                      transition-all duration-300"
           >
-            Poznaj nas
+            Zadzwoń — 514 201 443
           </a>
         </motion.div>
       </div>

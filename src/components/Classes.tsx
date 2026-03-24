@@ -137,6 +137,21 @@ export default function Classes() {
             Treningi trickingu i akrobatyki dla dzieci od 5 lat w Nowym Sączu i okolicach.
             Każda grupa ma program dopasowany do wieku i poziomu zaawansowania.
           </motion.p>
+
+          {/* Age badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mt-5 inline-flex items-center gap-2 bg-[var(--color-purple)]/15 border border-[var(--color-purple)]/30
+                     rounded-full px-4 py-2"
+          >
+            <span className="w-2 h-2 rounded-full bg-[var(--color-yellow)]" />
+            <span className="font-[var(--font-accent)] text-xs font-semibold text-[var(--color-gray-300)] tracking-wider uppercase">
+              Zajęcia dla dzieci od 5. roku życia &bull; Pierwsza lekcja próbna gratis!
+            </span>
+          </motion.div>
         </div>
 
         {/* Age Groups */}

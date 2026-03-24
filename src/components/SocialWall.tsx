@@ -149,7 +149,7 @@ export default function SocialWall() {
                     <span className="font-[var(--font-accent)] text-xs font-semibold text-[var(--color-purple-light)]">
                       {link.handle}
                     </span>
-                    <div className="flex items-center gap-1.5 text-[var(--color-gray-500)]">
+                    <div className="flex items-center gap-1.5 text-[var(--color-gray-400)]">
                       <platform.statIcon size={12} />
                       <span className="font-[var(--font-accent)] text-[10px] font-medium tracking-wider uppercase">
                         {platform.stat}
