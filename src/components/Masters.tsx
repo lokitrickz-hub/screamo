@@ -70,7 +70,7 @@ function TrainerCard({
 
           {/* ── Photo / Video area ── */}
           <div
-            className="relative w-full md:w-[45%] lg:w-[40%] shrink-0 cursor-pointer overflow-hidden"
+            className="relative w-full md:w-[60%] shrink-0 cursor-pointer overflow-hidden"
             onMouseEnter={handlePlay}
             onMouseLeave={handleStop}
             onClick={onToggle}
