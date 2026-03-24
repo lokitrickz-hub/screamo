@@ -27,7 +27,7 @@ export const TRAINERS: Trainer[] = [
     name: "Andrzej Stec",
     role: "Założyciel & Główny Trener",
     bio: "Wizjoner i serce ScreamoTrickz. Od 2011 roku wyznacza kierunek rozwoju klubu. Specjalizuje się w technicznych ewolucjach i metodyce nauczania trickingu od podstaw. To on przeprowadził grupę z podwórkowych treningów na ogólnopolską scenę.",
-    photo: "/images/trainer-andrzej.jpg",
+    photo: "/images/DSC_4334.JPG",
     video: "/videos/andrzej-trick.mp4",
     trick: "Corkscrew 720",
     socials: {

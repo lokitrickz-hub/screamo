@@ -19,7 +19,7 @@ export default function Hero() {
           preload="metadata"
           poster="/images/hero-poster.jpg"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/promo-scr.mp4" type="video/mp4" />
         </video>
         {/* Gradient overlays — navy themed */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(16,23,42,0.7)] via-[rgba(16,23,42,0.3)] to-[#10172A]" />
