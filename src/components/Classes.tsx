@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles, Flame, Zap, Trophy, Phone } from "lucide-react";
 import Link from "next/link";
 
-const VP = { once: true, margin: "-80px" as const };
-
 const AGE_GROUPS = [
   {
     name: "Maluchy",
@@ -49,7 +47,6 @@ const AGE_GROUPS = [
   },
 ];
 
-
 export default function Classes() {
   return (
     <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-4 sm:px-6 min-h-screen bg-[var(--color-navy)]">
@@ -81,13 +78,12 @@ export default function Classes() {
           </Link>
         </motion.div>
 
-        {/* Header */}
+        {/* Header — use animate (not whileInView) to avoid flash on load */}
         <div className="mb-16 md:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VP}
-            transition={{ duration: 0.5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
@@ -95,9 +91,8 @@ export default function Classes() {
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VP}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
             className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
                      text-white leading-[1] mb-4"
           >
@@ -111,8 +106,7 @@ export default function Classes() {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VP}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-xl leading-relaxed"
@@ -124,8 +118,7 @@ export default function Classes() {
           {/* Age badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VP}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             className="mt-5 inline-flex items-center gap-2 bg-[var(--color-purple)]/15 border border-[var(--color-purple)]/30
                      rounded-full px-4 py-2"
@@ -137,15 +130,14 @@ export default function Classes() {
           </motion.div>
         </div>
 
-        {/* Age Groups */}
+        {/* Age Groups — use animate with stagger, not whileInView */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
           {AGE_GROUPS.map((group, i) => (
             <motion.div
               key={group.name}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VP}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
                         border-2 ${group.border} ${group.shadow} transition-all duration-500`}
             >
@@ -183,9 +175,8 @@ export default function Classes() {
         <div className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
             className="relative p-8 md:p-12 rounded-2xl bg-gradient-to-br from-[var(--color-purple)]/20 to-[var(--color-navy-light)]
                       border-2 border-[var(--color-purple)]/30 text-center"
           >

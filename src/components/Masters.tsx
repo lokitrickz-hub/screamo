@@ -60,29 +60,30 @@ function TrainerCard({
       <div
         className={`rounded-2xl border-2 overflow-hidden transition-all duration-500
                     ${isOpen
-                      ? "border-[var(--color-yellow)] shadow-[0_0_40px_rgba(251,191,36,0.15)]"
-                      : "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)] hover:shadow-[0_0_30px_rgba(124,58,237,0.15)]"
+                      ? "border-[var(--color-yellow)] shadow-[0_0_40px_rgba(251,191,36,0.2)]"
+                      : "border-[var(--color-purple)] hover:border-[var(--color-yellow)]/60 hover:shadow-[0_0_30px_rgba(124,58,237,0.2)]"
                     }
-                    bg-[var(--color-navy-lighter)]`}
+                    bg-[var(--color-navy-light)]`}
       >
         {/* Card layout: photo + info side by side on desktop, stacked on mobile */}
         <div className={`flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"}`}>
 
           {/* ── Photo / Video area ── */}
           <div
-            className="relative w-full md:w-[45%] lg:w-[40%] shrink-0 aspect-[4/3] md:aspect-auto md:min-h-[320px] cursor-pointer"
+            className="relative w-full md:w-[45%] lg:w-[40%] shrink-0 cursor-pointer overflow-hidden"
             onMouseEnter={handlePlay}
             onMouseLeave={handleStop}
             onClick={onToggle}
           >
-            {/* Photo */}
-            <div
-              className={`absolute inset-0 bg-cover bg-center bg-[var(--color-navy)] transition-opacity duration-700
+            {/* Photo — natural height, no cropping */}
+            <img
+              src={trainer.photo}
+              alt={trainer.name}
+              className={`w-full h-auto block transition-opacity duration-700
                         ${videoPlaying ? "opacity-0" : "opacity-100"}`}
-              style={{ backgroundImage: `url(${trainer.photo})` }}
             />
 
-            {/* Video */}
+            {/* Video — overlays the photo area */}
             <video
               ref={videoRef}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700
