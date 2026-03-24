@@ -42,8 +42,7 @@ function TrainerTile({
   }
 
   return (
-    <motion.div
-      layout
+    <div
       onClick={() => { if (!isActive) onSelect(); }}
       onMouseEnter={handlePlay}
       onMouseLeave={handleStop}
@@ -111,7 +110,6 @@ function TrainerTile({
 
       {/* Info overlay */}
       <div className="relative z-10 h-full flex flex-col justify-end p-5 md:p-6">
-        {/* Role label — hide when card is small */}
         <span
           className={`inline-block self-start font-[var(--font-accent)] text-[9px] tracking-[0.15em] uppercase font-bold
                     text-[var(--color-yellow)] bg-[var(--color-navy)]/60 backdrop-blur-sm
@@ -173,7 +171,7 @@ function TrainerTile({
           )}
         </AnimatePresence>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -182,14 +180,22 @@ export default function Masters() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  // Build column template based on which trainer is active
-  // Each trainer keeps its fixed position (index 0, 1, 2)
-  function getColumnTemplate() {
-    if (!activeSlug) return "3fr 1fr 1fr"; // default: Andrzej big
-    const activeIndex = TRAINERS.findIndex((t) => t.slug === activeSlug);
-    if (activeIndex === -1) return "3fr 1fr 1fr";
-    // Active card gets 3fr, others get 1fr
-    return TRAINERS.map((_, i) => (i === activeIndex ? "3fr" : "1fr")).join(" ");
+  const andrzej = TRAINERS[0]; // always left
+  const mariusz = TRAINERS[1]; // always top-right
+  const wiktoria = TRAINERS[2]; // always bottom-right
+
+  // Dynamic grid proportions based on who's active
+  // Columns: [left, right]  Rows: [top, bottom]
+  function getColTemplate() {
+    if (!activeSlug || activeSlug === andrzej.slug) return "3fr 2fr";
+    // Mariusz or Wiktoria active → right column grows, left shrinks
+    return "1.5fr 3fr";
+  }
+
+  function getRowTemplate() {
+    if (!activeSlug || activeSlug === andrzej.slug) return "1fr 1fr";
+    if (activeSlug === mariusz.slug) return "3fr 1fr"; // Mariusz grows
+    return "1fr 3fr"; // Wiktoria grows
   }
 
   return (
@@ -250,7 +256,7 @@ export default function Masters() {
           </motion.p>
         </div>
 
-        {/* Trainer cards — fixed positions, dynamic sizing */}
+        {/* Bento grid */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -262,12 +268,10 @@ export default function Masters() {
               const isActive = activeSlug === trainer.slug;
               const isSmall = activeSlug !== null && !isActive;
               return (
-                <motion.div
+                <div
                   key={trainer.slug}
-                  layout
-                  animate={{ height: isActive ? 500 : isSmall ? 200 : 350 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full rounded-2xl overflow-hidden"
+                  className="w-full rounded-2xl overflow-hidden transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ height: isActive ? 500 : isSmall ? 200 : 350 }}
                 >
                   <TrainerTile
                     trainer={trainer}
@@ -276,39 +280,52 @@ export default function Masters() {
                     onSelect={() => setActiveSlug(trainer.slug)}
                     onClose={() => setActiveSlug(null)}
                   />
-                </motion.div>
+                </div>
               );
             })}
           </div>
 
-          {/* Desktop: horizontal row with dynamic column ratios */}
+          {/* Desktop: bento grid — Andrzej left (row-span-2), Mariusz + Wiktoria right (stacked) */}
           <div
             className="hidden md:grid gap-5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
-              gridTemplateColumns: getColumnTemplate(),
-              height: "min(80vh, 750px)",
+              gridTemplateColumns: getColTemplate(),
+              gridTemplateRows: getRowTemplate(),
+              height: "min(85vh, 900px)",
             }}
           >
-            {TRAINERS.map((trainer) => {
-              const isActive = activeSlug === trainer.slug;
-              const isSmall = activeSlug !== null && !isActive;
-              return (
-                <motion.div
-                  key={trainer.slug}
-                  layout
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full rounded-2xl overflow-hidden"
-                >
-                  <TrainerTile
-                    trainer={trainer}
-                    isActive={isActive}
-                    isSmall={isSmall}
-                    onSelect={() => setActiveSlug(trainer.slug)}
-                    onClose={() => setActiveSlug(null)}
-                  />
-                </motion.div>
-              );
-            })}
+            {/* Andrzej — left, spans both rows */}
+            <div className="row-span-2 rounded-2xl overflow-hidden">
+              <TrainerTile
+                trainer={andrzej}
+                isActive={activeSlug === andrzej.slug}
+                isSmall={activeSlug !== null && activeSlug !== andrzej.slug}
+                onSelect={() => setActiveSlug(andrzej.slug)}
+                onClose={() => setActiveSlug(null)}
+              />
+            </div>
+
+            {/* Mariusz — top-right */}
+            <div className="rounded-2xl overflow-hidden">
+              <TrainerTile
+                trainer={mariusz}
+                isActive={activeSlug === mariusz.slug}
+                isSmall={activeSlug !== null && activeSlug !== mariusz.slug}
+                onSelect={() => setActiveSlug(mariusz.slug)}
+                onClose={() => setActiveSlug(null)}
+              />
+            </div>
+
+            {/* Wiktoria — bottom-right */}
+            <div className="rounded-2xl overflow-hidden">
+              <TrainerTile
+                trainer={wiktoria}
+                isActive={activeSlug === wiktoria.slug}
+                isSmall={activeSlug !== null && activeSlug !== wiktoria.slug}
+                onSelect={() => setActiveSlug(wiktoria.slug)}
+                onClose={() => setActiveSlug(null)}
+              />
+            </div>
           </div>
         </motion.div>
       </div>
