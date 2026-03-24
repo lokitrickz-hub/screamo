@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { label: "Zajęcia", href: "/zajecia" },
+  { label: "Plan zajęć", href: "/plan-zajec" },
   { label: "Kadra", href: "/kadra" },
-  { label: "Aktualności", href: "/blog" },
   { label: "O nas", href: "/historia" },
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
