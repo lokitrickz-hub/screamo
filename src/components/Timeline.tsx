@@ -162,7 +162,7 @@ export default function Timeline() {
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
-            Poznaj drogę ScreamoTrickz — od pierwszych salta w parku po scenę ogólnopolską.
+            Poznaj drogę ScreamoTrickz — od pasji na sądeckich murkach po wielkie sceny i międzynarodowe sukcesy.
           </motion.p>
         </div>
 
