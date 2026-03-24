@@ -173,10 +173,24 @@ export default function Contact() {
               },
               {
                 icon: MapPin,
-                title: "Gdzie trenujemy",
-                value: "Park Trampolin JumpMania",
+                title: "Dunajcowa 60A — główna baza",
+                value: "ul. Dunajcowa 60A",
+                href: "https://maps.google.com/?q=Dunajcowa+60A+Nowy+Sącz",
+                subtitle: "33-300 Nowy Sącz",
+              },
+              {
+                icon: MapPin,
+                title: "JumpMania",
+                value: "ul. Zielona 27",
                 href: "https://maps.google.com/?q=Zielona+27+Nowy+Sącz",
-                subtitle: "ul. Zielona 27, 33-300 Nowy Sącz",
+                subtitle: "33-300 Nowy Sącz — tumbling i treningi wieczorne",
+              },
+              {
+                icon: MapPin,
+                title: "Elektryk (ZSE-M)",
+                value: "ul. Bolesława Limanowskiego 4",
+                href: "https://maps.google.com/?q=Limanowskiego+4+Nowy+Sącz",
+                subtitle: "33-330 Nowy Sącz — sobotnie grupy Mariusza",
               },
               {
                 icon: Clock,
