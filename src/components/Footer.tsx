@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer ref={ref} id="kontakt" className="relative">
       {/* CTA band — yellow with comic energy */}
-      <div className="bg-[var(--color-yellow)] py-12 md:py-20 px-6 relative overflow-hidden">
+      <div className="bg-[var(--color-yellow)] py-10 md:py-20 px-4 sm:px-6 relative overflow-hidden">
         {/* Comic dots pattern */}
         <div className="absolute inset-0 opacity-[0.08]"
              style={{
@@ -26,13 +26,13 @@ export default function Footer() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Zap size={28} className="text-[var(--color-navy)]" fill="currentColor" />
-              <h2 className="font-[var(--font-heading)] text-2xl md:text-5xl lg:text-6xl
-                           text-[var(--color-navy)] leading-[1]">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-4 flex-wrap justify-center">
+              <Zap size={20} className="text-[var(--color-navy)] hidden sm:block" fill="currentColor" />
+              <h2 className="font-[var(--font-heading)] text-xl sm:text-2xl md:text-5xl lg:text-6xl
+                           text-[var(--color-navy)] leading-[1.1]">
                 GOTOWY NA TRENING?
               </h2>
-              <Zap size={28} className="text-[var(--color-navy)]" fill="currentColor" />
+              <Zap size={20} className="text-[var(--color-navy)] hidden sm:block" fill="currentColor" />
             </div>
           </motion.div>
           <motion.p
@@ -61,7 +61,7 @@ export default function Footer() {
 
       {/* Footer info */}
       <div className="bg-[var(--color-navy)] py-12 px-6 border-t-4 border-[var(--color-purple)]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">

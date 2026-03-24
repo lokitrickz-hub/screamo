@@ -43,7 +43,7 @@ export default function SocialWall() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-16 md:py-32 px-6 bg-[var(--color-navy)]">
+    <section className="relative py-16 md:py-32 px-4 sm:px-6 bg-[var(--color-navy)]">
       {/* Top accent */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[var(--color-purple)] via-[var(--color-yellow)] to-[var(--color-purple)]" />
 
@@ -121,8 +121,8 @@ export default function SocialWall() {
                   />
                   {/* Big icon */}
                   <platform.icon
-                    size={80}
-                    className="absolute -right-3 -bottom-3 text-white/20"
+                    size={60}
+                    className="absolute -right-3 -bottom-3 text-white/20 sm:w-20 sm:h-20"
                   />
                   {/* Arrow */}
                   <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center

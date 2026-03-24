@@ -63,12 +63,12 @@ export default function BlogList() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-[var(--font-heading)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-                     text-white leading-[1] mb-4"
+            className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-5xl lg:text-6xl
+                     text-white leading-[1.1] mb-4"
           >
             AKTUALNOŚCI{" "}
             <span
-              className="text-[var(--color-yellow)] whitespace-nowrap"
+              className="text-[var(--color-yellow)] sm:whitespace-nowrap"
               style={{ textShadow: "0 0 30px rgba(251,191,36,0.3)" }}
             >
               &amp; WYDARZENIA
@@ -185,7 +185,7 @@ export default function BlogList() {
               >
                 <div className="flex flex-col sm:flex-row">
                   {/* Thumbnail */}
-                  <div className="relative sm:w-48 md:w-64 flex-shrink-0 aspect-[16/9] sm:aspect-auto sm:min-h-[140px] overflow-hidden">
+                  <div className="relative sm:w-40 md:w-56 lg:w-64 flex-shrink-0 aspect-[16/9] sm:aspect-auto sm:min-h-[140px] overflow-hidden">
                     <div
                       className="absolute inset-0 bg-cover bg-center bg-[var(--color-navy-lighter)]
                                group-hover:scale-105 transition-transform duration-700"

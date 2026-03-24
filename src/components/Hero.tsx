@@ -27,7 +27,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-4xl">
         {/* Subtitle above */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,17 +35,17 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="mb-4"
         >
-          <span className="inline-flex items-center gap-2 font-[var(--font-accent)] text-[10px] md:text-sm
-                         tracking-[0.2em] md:tracking-[0.3em] uppercase text-[var(--color-yellow)] font-semibold">
-            <Zap size={14} className="text-[var(--color-yellow)]" fill="currentColor" />
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 font-[var(--font-accent)] text-[9px] sm:text-[10px] md:text-sm
+                         tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase text-[var(--color-yellow)] font-semibold">
+            <Zap size={12} className="text-[var(--color-yellow)] hidden sm:block" fill="currentColor" />
             Uczniowski Klub Sportowy
-            <Zap size={14} className="text-[var(--color-yellow)]" fill="currentColor" />
+            <Zap size={12} className="text-[var(--color-yellow)] hidden sm:block" fill="currentColor" />
           </span>
         </motion.div>
 
         {/* Main title — letter-by-letter reveal */}
-        <h1 className="font-[var(--font-heading)] text-[clamp(1.5rem,5vw,4.5rem)]
-                      leading-[1] tracking-[0.02em] mb-4 md:mb-6 overflow-hidden whitespace-nowrap">
+        <h1 className="font-[var(--font-heading)] text-[clamp(1.6rem,5vw,4.5rem)]
+                      leading-[1] tracking-[0.02em] mb-4 md:mb-6 overflow-hidden">
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}

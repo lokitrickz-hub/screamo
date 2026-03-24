@@ -69,7 +69,7 @@ const LOCATIONS = [
 
 export default function Classes() {
   return (
-    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-6 min-h-screen bg-[var(--color-navy)]">
+    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-4 sm:px-6 min-h-screen bg-[var(--color-navy)]">
       {/* Comic dots background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -148,7 +148,7 @@ export default function Classes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VP}
               transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
+              className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
                         border-2 ${group.border} ${group.shadow} transition-all duration-500`}
             >
               {/* Icon + Name */}
@@ -209,7 +209,7 @@ export default function Classes() {
                     <h3 className="font-[var(--font-heading)] text-base text-white mb-1">
                       {loc.name}
                     </h3>
-                    <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] mb-1">
+                    <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] mb-1 break-words">
                       {loc.address}
                     </p>
                     <p className="font-[var(--font-accent)] text-[11px] text-[var(--color-purple-light)] tracking-wider uppercase font-semibold">

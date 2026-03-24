@@ -199,7 +199,7 @@ export default function Masters() {
   }
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)]">
+    <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-4 sm:px-6 bg-[var(--color-navy)]">
       <div className="max-w-6xl mx-auto">
         {/* Back button */}
         <motion.div
@@ -271,7 +271,7 @@ export default function Masters() {
                 <div
                   key={trainer.slug}
                   className="w-full rounded-2xl overflow-hidden transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{ height: isActive ? 500 : isSmall ? 200 : 350 }}
+                  style={{ height: isActive ? 420 : isSmall ? 160 : 280 }}
                 >
                   <TrainerTile
                     trainer={trainer}

@@ -33,7 +33,7 @@ function TimelineItem({
       >
         <div
           className={`bg-[var(--color-navy-light)] backdrop-blur-sm border-2 border-[var(--color-purple)]/20
-                    rounded-2xl p-6 md:p-8 ${
+                    rounded-2xl p-4 sm:p-6 md:p-8 ${
                       event.highlight
                         ? "border-[var(--color-purple)]/40 shadow-[0_0_30px_rgba(124,58,237,0.1)]"
                         : ""
@@ -111,7 +111,7 @@ export default function Timeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-6 min-h-screen bg-[var(--color-navy)]">
+    <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-4 sm:px-6 min-h-screen bg-[var(--color-navy)]">
       <div className="max-w-5xl mx-auto">
         {/* Back button */}
         <motion.div
@@ -167,7 +167,7 @@ export default function Timeline() {
         </div>
 
         {/* Timeline */}
-        <div ref={containerRef} className="relative pl-6 md:pl-0">
+        <div ref={containerRef} className="relative pl-4 sm:pl-6 md:pl-0">
           {/* Vertical line — desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
             <div className="absolute inset-0 bg-[var(--color-navy-lighter)]" />

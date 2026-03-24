@@ -20,7 +20,7 @@ export default function Contact() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)] min-h-screen">
+    <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-4 sm:px-6 bg-[var(--color-navy)] min-h-screen">
       <div className="max-w-5xl mx-auto">
         {/* Back button */}
         <motion.div
@@ -206,7 +206,7 @@ export default function Contact() {
                         {item.title}
                       </h3>
                     </div>
-                    <div className="space-y-3 pl-[52px]">
+                    <div className="space-y-3 pl-0 sm:pl-[52px]">
                       {(item.locations as { name: string; address: string; href: string }[]).map((loc) => (
                         <a
                           key={loc.name}
