@@ -50,7 +50,7 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-9 h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="font-[var(--font-heading)] text-xl hidden sm:block tracking-[0.1em]">
+            <span className="font-[var(--font-heading)] text-lg hidden sm:block tracking-[0.02em]">
               <span className="text-white">SCREAMO</span>
               <span className="text-[var(--color-yellow)]">TRICKZ</span>
             </span>
