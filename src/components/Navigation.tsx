@@ -38,7 +38,7 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[rgba(16,23,42,0.92)] backdrop-blur-xl border-b border-[var(--color-purple)]/20"
+            ? "bg-[rgba(16,23,42,0.92)] backdrop-blur-xl border-b border-[#DFFF00]/15"
             : "bg-transparent"
         }`}
       >
@@ -50,9 +50,9 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="font-[var(--font-heading)] text-lg hidden sm:block tracking-[0.02em]">
+            <span className="font-[var(--font-heading)] font-[900] text-lg hidden sm:block tracking-[0.02em]">
               <span className="text-white">SCREAMO</span>
-              <span className="text-[var(--color-yellow)]">TRICKZ</span>
+              <span className="text-[#DFFF00]">TRICKZ</span>
             </span>
           </Link>
 
@@ -62,16 +62,16 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-[var(--font-accent)] text-xs font-semibold tracking-[0.15em] uppercase
+                className={`font-[var(--font-heading)] text-xs font-bold tracking-[0.15em] uppercase
                          transition-colors duration-300 relative group ${
                            isActive(link.href)
-                             ? "text-[var(--color-yellow)]"
-                             : "text-[var(--color-gray-300)] hover:text-[var(--color-yellow)]"
+                             ? "text-[#DFFF00]"
+                             : "text-[var(--color-gray-300)] hover:text-[#DFFF00]"
                          }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-[var(--color-yellow)]
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-[#DFFF00]
                             transition-all duration-300 ${
                               isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                             }`}
@@ -82,8 +82,8 @@ export default function Navigation() {
             {/* Phone */}
             <a
               href="tel:+48514201443"
-              className="inline-flex items-center gap-1.5 font-[var(--font-accent)] text-xs font-semibold
-                       text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors"
+              className="inline-flex items-center gap-1.5 font-[var(--font-body)] text-xs font-semibold
+                       text-[var(--color-gray-300)] hover:text-[#DFFF00] transition-colors"
               aria-label="Zadzwoń"
             >
               <Phone size={12} />
@@ -92,9 +92,11 @@ export default function Navigation() {
 
             <Link
               href="/kontakt"
-              className="font-[var(--font-accent)] text-xs font-bold tracking-wider uppercase
-                       px-5 py-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
-                       hover:bg-[var(--color-yellow-dark)] hover:scale-105
+              className="font-[var(--font-heading)] text-xs font-bold tracking-wider uppercase
+                       px-5 py-2 bg-[#DFFF00] text-[var(--color-navy)]
+                       hover:bg-[#c4e000] hover:scale-105
+                       shadow-[0_0_15px_rgba(223,255,0,0.2)]
+                       hover:shadow-[0_0_25px_rgba(223,255,0,0.4)]
                        transition-all duration-300 rounded-full"
             >
               Zapisz się
@@ -105,14 +107,14 @@ export default function Navigation() {
           <div className="flex lg:hidden items-center gap-3">
             <a
               href="tel:+48514201443"
-              className="p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
+              className="p-2 text-[#DFFF00] hover:text-white transition-colors"
               aria-label="Zadzwoń"
             >
               <Phone size={20} />
             </a>
             <button
               onClick={() => setMobileOpen(true)}
-              className="p-2 text-[var(--color-yellow)] hover:text-white transition-colors"
+              className="p-2 text-[#DFFF00] hover:text-white transition-colors"
               aria-label="Otwórz menu"
             >
               <Menu size={24} />
@@ -135,7 +137,7 @@ export default function Navigation() {
             <button
               onClick={() => setMobileOpen(false)}
               className="absolute top-5 right-6 p-2 text-[var(--color-gray-400)]
-                       hover:text-[var(--color-yellow)] transition-colors"
+                       hover:text-[#DFFF00] transition-colors"
               aria-label="Zamknij menu"
             >
               <X size={28} />
@@ -152,10 +154,10 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-[var(--font-heading)] text-2xl uppercase transition-colors ${
+                    className={`font-[var(--font-heading)] font-[900] text-2xl uppercase transition-colors ${
                       isActive(link.href)
-                        ? "text-[var(--color-yellow)]"
-                        : "text-white hover:text-[var(--color-yellow)]"
+                        ? "text-[#DFFF00]"
+                        : "text-white hover:text-[#DFFF00]"
                     }`}
                   >
                     {link.label}
@@ -172,8 +174,8 @@ export default function Navigation() {
                 <a
                   href="tel:+48514201443"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center gap-2 font-[var(--font-body)] text-lg
-                           text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors"
+                  className="inline-flex items-center gap-2 font-[var(--font-body)] text-lg font-medium
+                           text-[var(--color-gray-300)] hover:text-[#DFFF00] transition-colors"
                 >
                   <Phone size={18} />
                   514 201 443
@@ -188,9 +190,10 @@ export default function Navigation() {
                 <Link
                   href="/kontakt"
                   onClick={() => setMobileOpen(false)}
-                  className="font-[var(--font-accent)] text-sm font-bold tracking-wider uppercase
-                           px-8 py-3 bg-[var(--color-yellow)] text-[var(--color-navy)]
-                           hover:bg-[var(--color-yellow-dark)]
+                  className="font-[var(--font-heading)] text-sm font-bold tracking-wider uppercase
+                           px-8 py-3 bg-[#DFFF00] text-[var(--color-navy)]
+                           hover:bg-[#c4e000]
+                           shadow-[0_0_20px_rgba(223,255,0,0.25)]
                            transition-all duration-300 rounded-full"
                 >
                   Zapisz się

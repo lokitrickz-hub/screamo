@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme inline {
@@ -8,8 +8,8 @@
   --color-navy: #10172A;
   --color-navy-light: #1a2340;
   --color-navy-lighter: #243058;
-  --color-yellow: #FBBF24;
-  --color-yellow-dark: #d9a520;
+  --color-yellow: #DFFF00;
+  --color-yellow-dark: #c4e000;
   --color-purple: #7C3AED;
   --color-purple-light: #9F67FF;
   --color-purple-dark: #6025c9;
@@ -23,9 +23,9 @@
   --color-glass-border: rgba(124, 58, 237, 0.15);
 
   /* ── Typography ──────────────────────────── */
-  --font-heading: 'Russo One', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-accent: 'Inter', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-accent: 'Montserrat', sans-serif;
 }
 
 /* ── BASE ─────────────────────────────────── */
@@ -75,6 +75,23 @@ body::before {
 ::selection {
   background: var(--color-yellow);
   color: #10172A;
+}
+
+/* ── NEON GLOW TEXT ──────────────────────── */
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+}
+
+.neon-lime {
+  color: #DFFF00;
+  text-shadow:
+    0 0 10px rgba(223, 255, 0, 0.6),
+    0 0 30px rgba(223, 255, 0, 0.3),
+    0 0 60px rgba(223, 255, 0, 0.15);
+  animation: neon-flicker 4s ease-in-out infinite;
 }
 
 /* ── SWIPER OVERRIDES ─────────────────────── */
