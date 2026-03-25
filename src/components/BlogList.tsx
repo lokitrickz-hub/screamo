@@ -1,10 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Calendar, Play, Tag, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Calendar, Play, Tag, ChevronDown, X } from "lucide-react";
 import { NEWS_ITEMS } from "@/lib/data";
-import Link from "next/link";
 import WipeReveal from "./WipeReveal";
 
 const formatDate = (dateStr: string) => {
@@ -19,14 +18,18 @@ const formatDate = (dateStr: string) => {
 export default function BlogList() {
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  // Sort by date descending
   const sortedNews = [...NEWS_ITEMS].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   const featured = sortedNews[0];
   const rest = sortedNews.slice(1);
+
+  const toggleExpand = (id: number) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   return (
     <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)] min-h-screen">
@@ -78,15 +81,21 @@ export default function BlogList() {
           >
           <article
             className="group cursor-pointer"
-            {...(featured.youtube
-              ? { onClick: () => window.open(featured.youtube, "_blank") }
-              : {})}
+            onClick={() => {
+              if (featured.youtube) {
+                window.open(featured.youtube, "_blank");
+              } else {
+                toggleExpand(featured.id);
+              }
+            }}
           >
             <div
-              className="relative overflow-hidden rounded-2xl bg-[var(--color-navy-light)]
-                       border-2 border-[var(--color-purple)]/20
-                       hover:border-[var(--color-yellow)] transition-all duration-500
-                       hover:shadow-[0_0_40px_rgba(251,191,36,0.1)]"
+              className={`relative overflow-hidden rounded-2xl bg-[var(--color-navy-light)]
+                       border-2 transition-all duration-500
+                       ${expandedId === featured.id
+                         ? "border-[var(--color-yellow)] shadow-[0_0_40px_rgba(251,191,36,0.15)]"
+                         : "border-[var(--color-purple)]/20 hover:border-[var(--color-yellow)] hover:shadow-[0_0_40px_rgba(251,191,36,0.1)]"
+                       }`}
             >
               <div className="grid grid-cols-1 md:grid-cols-5">
                 {/* Image — takes 3/5 */}
@@ -132,15 +141,38 @@ export default function BlogList() {
                     {featured.title}
                   </h2>
 
-                  <p className="font-[var(--font-body)] text-sm md:text-base text-[var(--color-gray-300)] leading-relaxed mb-6">
+                  <p className="font-[var(--font-body)] text-sm md:text-base text-[var(--color-gray-300)] leading-relaxed mb-4">
                     {featured.excerpt}
                   </p>
+
+                  {/* Expanded content */}
+                  <AnimatePresence>
+                    {expandedId === featured.id && featured.content && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <p className="font-[var(--font-body)] text-sm md:text-base text-[var(--color-gray-300)] leading-relaxed
+                                   border-t border-[var(--color-purple)]/20 pt-4 mb-2">
+                          {featured.content}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   <span className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-bold
                                tracking-wider uppercase text-[var(--color-yellow)]
                                group-hover:gap-3 transition-all">
-                    Czytaj więcej
-                    <ArrowUpRight size={14} />
+                    {expandedId === featured.id ? "Zwiń" : "Czytaj więcej"}
+                    <motion.span
+                      animate={{ rotate: expandedId === featured.id ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronDown size={14} />
+                    </motion.span>
                   </span>
                 </div>
               </div>
@@ -160,15 +192,21 @@ export default function BlogList() {
             >
             <article
               className="group cursor-pointer"
-              {...(item.youtube
-                ? { onClick: () => window.open(item.youtube, "_blank") }
-                : {})}
+              onClick={() => {
+                if (item.youtube) {
+                  window.open(item.youtube, "_blank");
+                } else {
+                  toggleExpand(item.id);
+                }
+              }}
             >
               <div
-                className="relative overflow-hidden rounded-2xl bg-[var(--color-navy-light)]
-                         border-2 border-[var(--color-purple)]/20
-                         hover:border-[var(--color-purple)] transition-all duration-300
-                         hover:shadow-[0_0_25px_rgba(124,58,237,0.12)]"
+                className={`relative overflow-hidden rounded-2xl bg-[var(--color-navy-light)]
+                         border-2 transition-all duration-300
+                         ${expandedId === item.id
+                           ? "border-[var(--color-yellow)] shadow-[0_0_25px_rgba(251,191,36,0.12)]"
+                           : "border-[var(--color-purple)]/20 hover:border-[var(--color-purple)] hover:shadow-[0_0_25px_rgba(124,58,237,0.12)]"
+                         }`}
               >
                 <div className="flex flex-col sm:flex-row">
                   {/* Thumbnail */}
@@ -211,20 +249,45 @@ export default function BlogList() {
                       {item.title}
                     </h2>
 
-                    <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-400)] leading-relaxed
-                               line-clamp-2">
+                    <p className={`font-[var(--font-body)] text-sm text-[var(--color-gray-400)] leading-relaxed
+                               ${expandedId === item.id ? "" : "line-clamp-2"}`}>
                       {item.excerpt}
                     </p>
+
+                    {/* Expanded content */}
+                    <AnimatePresence>
+                      {expandedId === item.id && item.content && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed
+                                     border-t border-[var(--color-purple)]/20 pt-3 mt-3">
+                            {item.content}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
-                  {/* Arrow */}
+                  {/* Expand indicator */}
                   <div className="hidden md:flex items-center pr-6">
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[var(--color-gray-600)] group-hover:text-[var(--color-yellow)]
-                               group-hover:translate-x-0.5 group-hover:-translate-y-0.5
-                               transition-all duration-300"
-                    />
+                    <motion.div
+                      animate={{ rotate: expandedId === item.id ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronDown
+                        size={18}
+                        className={`transition-colors duration-300 ${
+                          expandedId === item.id
+                            ? "text-[var(--color-yellow)]"
+                            : "text-[var(--color-gray-600)] group-hover:text-[var(--color-yellow)]"
+                        }`}
+                      />
+                    </motion.div>
                   </div>
                 </div>
               </div>

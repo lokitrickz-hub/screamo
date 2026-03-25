@@ -70,6 +70,7 @@ export interface NewsItem {
   slug: string;
   title: string;
   excerpt: string;
+  content?: string;
   date: string;
   image: string;
   tag: string;
@@ -82,6 +83,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     slug: "nowe-nabory-wiosna-2026",
     title: "Nowe nabory — wiosna 2026!",
     excerpt: "Ruszają zapisy do grup początkujących! Pierwsza lekcja próbna gratis. Treningi w trzech lokalizacjach w Nowym Sączu — dla dzieci od 5 lat.",
+    content: "Wiosenny nabór 2026 oficjalnie otwarty! Zapraszamy dzieci od 5 roku życia na treningi trickingu i akrobatyki w Nowym Sączu. Zajęcia odbywają się w trzech lokalizacjach: Dunajcowa 60A, JumpMania oraz Elektryk. Pierwsza lekcja próbna jest całkowicie bezpłatna — przyjdź i sprawdź, czy to sport dla Twojego dziecka! Grupy prowadzone przez doświadczonych trenerów z wieloletnim stażem zawodniczym. Zapisy telefonicznie: 514 201 443.",
     date: "2026-03-10",
     image: "/images/zawody-IMG_9093.jpg",
     tag: "Nabór",
@@ -90,8 +92,9 @@ export const NEWS_ITEMS: NewsItem[] = [
     id: 2,
     slug: "31-medali-mistrzostwa-polski",
     title: "31 medali na Mistrzostwach Polski!",
-    excerpt: "ScreamoTrickz dominuje podium w kategoriach Tricking Battle i Rozbijanie Desek. Rekordowa liczba medali potwierdza — Nowy Sącz jest stolicą trickingu w Polsce!",
-    date: "2025-11-15",
+    excerpt: "Zawodnicy ScreamoTrickz pod okiem trenera Andrzeja Steca zdobyli aż 31 medali — 15 złotych, 12 srebrnych i 4 brązowe. Takiego wyniku nie powstydziłaby się żadna profesjonalna kadra!",
+    content: "Trickingu nie da się zatrzymać! Zawodnicy ScreamoTrickz z Nowego Sącza pod okiem trenera Andrzeja Steca zdobyli na Mistrzostwach Polski aż 31 medali — w tym 15 złotych, 12 srebrnych i 4 brązowe. Rywalizacja toczyła się w czterech kategoriach: Tricking Battle First Step, Rozbijanie Desek, Run and Fight oraz Tricking Battle Pro. Zawodnicy prezentowali spektakularne kombinacje powietrznych salt, kopnięć i ewolucji. Na treningach wspierała ich Wiktoria Bisaga — wielokrotna Mistrzyni Polski, która jako asystentka trenera wniosła swoje doświadczenie techniczne i zawodnicze do pracy z młodszymi adeptami. Takiego wyniku nie powstydziłaby się żadna profesjonalna kadra sportowa.",
+    date: "2025-05-19",
     image: "/images/zawody-IMG_1385.jpg",
     tag: "Zawody",
   },
@@ -99,8 +102,9 @@ export const NEWS_ITEMS: NewsItem[] = [
     id: 3,
     slug: "warsaw-tricking-gathering-2025",
     title: "Warsaw Tricking Gathering 2025",
-    excerpt: "ScreamoTrickz na największym evencie trickingowym w Polsce! Trzy dni pełne batli, warsztatów i niesamowitej energii w Warszawie.",
-    date: "2025-09-14",
+    excerpt: "ScreamoTrickz na największym evencie trickingowym w Polsce! Trzy dni batli, warsztatów z międzynarodowymi legendami trickingu w Warszawie.",
+    content: "Warsaw Tricking Gathering 2025 to trzydniowy event (12–14 września), który odbył się w Arthouse Kolowa w Warszawie. Tricking wrócił do stolicy po 14 latach przerwy! Zawody rozegrano w trzech kategoriach wiekowych: dzieci do 12 lat, młodzież 12–18 lat i open. Warsztaty prowadzili międzynarodowi trenerzy, m.in. Kojo z Wielkiej Brytanii i Johannes z Finlandii. Ekipa ScreamoTrickz wzięła udział w rywalizacji i warsztatach, reprezentując Nowy Sącz na najwyższym poziomie.",
+    date: "2025-09-12",
     image: "/images/news-1.jpg",
     tag: "Event",
   },
@@ -109,25 +113,18 @@ export const NEWS_ITEMS: NewsItem[] = [
     slug: "pytanie-na-sniadanie",
     title: "ScreamoTrickz w Pytanie na Śniadanie!",
     excerpt: "Nasza zawodniczka Anastazja Jurek — mistrzyni Europy w trickingu do lat 12 — wraz z trenerem Andrzejem Stecem gościli w programie TVP. Góralka z pasją podbija Polskę!",
+    content: "Anastazja Jurek, mistrzyni Europy w trickingu do lat 12, wraz z trenerem Andrzejem Stecem wystąpili w porannym programie TVP „Pytanie na Śniadanie". Podczas wywiadu opowiedzieli o początkach przygody z trickingiem, sukcesach na arenie międzynarodowej i codziennych treningach. Anastazja zaprezentowała również kilka efektownych trików na żywo, zachwycając widzów i prowadzących program!",
     date: "2025-07-01",
     image: "/images/gallery-6.jpg",
     tag: "Media",
   },
   {
     id: 5,
-    slug: "pokaz-dni-nowego-sacza",
-    title: "Pokaz na Dniach Nowego Sącza",
-    excerpt: "ScreamoTrickz zaprezentował się podczas Dni Nowego Sącza na scenie głównej. Widowiskowy pokaz akrobatyczny porwał tłumy!",
-    date: "2025-06-10",
-    image: "/images/zawody-IMG_9228.jpg",
-    tag: "Event",
-  },
-  {
-    id: 6,
     slug: "polfinal-mam-talent",
     title: "Półfinał Mam Talent!",
-    excerpt: "Nasz spektakularny występ w półfinale 12. edycji programu Mam Talent! — moment, w którym ScreamoTrickz stał się marką rozpoznawalną w całej Polsce.",
-    date: "2019-11-15",
+    excerpt: "Screamo Trickz jako pierwsza grupa trickingowa w historii programu Mam Talent! Przebrani za superbohaterów zachwycili jurorów i miliony widzów 12. edycji.",
+    content: "2 listopada 2019 roku Screamo Trickz — Tomasz Trzupek, Andrzej Stec, Kamil Nędza, Rafał Stec i Dawid Kołodziej — wystąpili w półfinale 12. edycji programu Mam Talent! na antenie TVN. Jako pierwsza grupa trickingowa w historii programu, już na przesłuchaniach (14 września 2019) usłyszeli trzy razy „tak" od jurorów. W półfinale zaprezentowali widowiskowy występ w kostiumach superbohaterów, łącząc tricking, akrobatykę i elementy sztuk walki. Zajęli 5. miejsce w głosowaniu widzów. Ten występ sprawił, że ScreamoTrickz stało się marką rozpoznawalną w całej Polsce.",
+    date: "2019-11-02",
     image: "/images/mam-talent-3.jpg",
     tag: "TV",
     youtube: "https://www.youtube.com/watch?v=ywHOHj4tLII",
