@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Flame, Zap, Trophy, Phone } from "lucide-react";
 import Link from "next/link";
@@ -9,8 +10,9 @@ const AGE_GROUPS = [
     name: "Maluchy",
     icon: Sparkles,
     color: "var(--color-yellow)",
+    wipeColor: "#DFFF00",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
-    shadow: "hover:shadow-[0_0_30px_rgba(251,191,36,0.15)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(223,255,0,0.15)]",
     description:
       "Wprowadzenie do akrobatyki przez zabawę. Nauka koordynacji, podstawowych przewrotów i salt w bezpiecznych warunkach. Budujemy pewność siebie i miłość do ruchu od najmłodszych lat.",
     skills: ["Przewroty", "Koordynacja", "Gry ruchowe", "Rozciąganie"],
@@ -19,6 +21,7 @@ const AGE_GROUPS = [
     name: "Juniorzy",
     icon: Flame,
     color: "var(--color-purple-light)",
+    wipeColor: "#9F67FF",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
     shadow: "hover:shadow-[0_0_30px_rgba(124,58,237,0.15)]",
     description:
@@ -29,8 +32,9 @@ const AGE_GROUPS = [
     name: "Zaawansowani",
     icon: Zap,
     color: "var(--color-yellow)",
+    wipeColor: "#DFFF00",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
-    shadow: "hover:shadow-[0_0_30px_rgba(251,191,36,0.15)]",
+    shadow: "hover:shadow-[0_0_30px_rgba(223,255,0,0.15)]",
     description:
       "Trening dla zawodników z doświadczeniem. Zaawansowane combo, ewolucje w powietrzu i przygotowanie do Mistrzostw Polski. Tutaj rodzą się mistrzowie.",
     skills: ["Combo tricków", "Ewolucje", "Przygotowanie startowe", "Choreografia"],
@@ -39,6 +43,7 @@ const AGE_GROUPS = [
     name: "Kadra Zawodnicza",
     icon: Trophy,
     color: "var(--color-purple-light)",
+    wipeColor: "#9F67FF",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
     shadow: "hover:shadow-[0_0_30px_rgba(124,58,237,0.15)]",
     description:
@@ -46,6 +51,87 @@ const AGE_GROUPS = [
     skills: ["Plan indywidualny", "Starty krajowe", "Starty międzynarodowe", "Pokazy"],
   },
 ];
+
+// Cascade order: top-left(0), top-right(1), bottom-left(2), bottom-right(3)
+const CASCADE_DELAY = [0, 0.15, 0.3, 0.45];
+
+function WipeCard({ group, index }: { group: (typeof AGE_GROUPS)[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const delay = CASCADE_DELAY[index];
+
+  return (
+    <div
+      ref={ref}
+      className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
+                  border-2 ${group.border} ${group.shadow} transition-all duration-500 overflow-hidden`}
+    >
+      {/* Wipe overlay */}
+      <div
+        className="absolute inset-0 z-20 rounded-2xl pointer-events-none"
+        style={{
+          background: group.wipeColor,
+          transform: revealed ? "translateX(101%)" : "translateX(-101%)",
+          transition: revealed
+            ? `transform 0.5s cubic-bezier(0.65, 0, 0.35, 1) ${delay}s`
+            : "none",
+        }}
+      />
+
+      {/* Content — hidden until wipe passes */}
+      <div
+        style={{
+          opacity: revealed ? 1 : 0,
+          transition: `opacity 0.01s ${delay + 0.25}s`,
+        }}
+      >
+        {/* Icon + Name */}
+        <div className="flex items-center gap-3 mb-1">
+          <group.icon size={22} style={{ color: group.color }} />
+          <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white">
+            {group.name}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed mb-5">
+          {group.description}
+        </p>
+
+        {/* Skills */}
+        <div className="flex flex-wrap gap-2">
+          {group.skills.map((skill) => (
+            <span
+              key={skill}
+              className="font-[var(--font-accent)] text-[10px] font-semibold tracking-wider uppercase
+                       px-3 py-1 rounded-full bg-[var(--color-navy)] border border-[var(--color-purple)]/30
+                       text-[var(--color-gray-400)]"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Classes() {
   return (
@@ -61,7 +147,7 @@ export default function Classes() {
 
       <div className="relative max-w-6xl mx-auto">
 
-        {/* Header — use animate (not whileInView) to avoid flash on load */}
+        {/* Header */}
         <div className="mb-16 md:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -82,7 +168,7 @@ export default function Classes() {
             NASZE{" "}
             <span
               className="text-[var(--color-yellow)]"
-              style={{ textShadow: "0 0 30px rgba(251,191,36,0.3)" }}
+              style={{ textShadow: "0 0 30px rgba(223,255,0,0.3)" }}
             >
               ZAJĘCIA
             </span>
@@ -113,41 +199,10 @@ export default function Classes() {
           </motion.div>
         </div>
 
-        {/* Age Groups */}
+        {/* Age Groups — cascade wipe reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
-          {AGE_GROUPS.map((group) => (
-            <div
-              key={group.name}
-              className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
-                        border-2 ${group.border} ${group.shadow} transition-all duration-500`}
-            >
-              {/* Icon + Name */}
-              <div className="flex items-center gap-3 mb-1">
-                <group.icon size={22} style={{ color: group.color }} />
-                <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white">
-                  {group.name}
-                </h3>
-              </div>
-
-              {/* Description */}
-              <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed mb-5">
-                {group.description}
-              </p>
-
-              {/* Skills */}
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-[var(--font-accent)] text-[10px] font-semibold tracking-wider uppercase
-                             px-3 py-1 rounded-full bg-[var(--color-navy)] border border-[var(--color-purple)]/30
-                             text-[var(--color-gray-400)]"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {AGE_GROUPS.map((group, i) => (
+            <WipeCard key={group.name} group={group} index={i} />
           ))}
         </div>
 
@@ -172,8 +227,8 @@ export default function Classes() {
                 className="inline-flex items-center justify-center gap-2 bg-[var(--color-yellow)] text-[var(--color-navy)]
                          font-[var(--font-heading)] text-sm tracking-wider
                          px-8 py-3.5 rounded-full hover:bg-[var(--color-yellow-dark)] hover:scale-105
-                         shadow-[0_0_25px_rgba(251,191,36,0.3)]
-                         hover:shadow-[0_0_35px_rgba(251,191,36,0.5)]
+                         shadow-[0_0_25px_rgba(223,255,0,0.3)]
+                         hover:shadow-[0_0_35px_rgba(223,255,0,0.5)]
                          transition-all duration-300"
               >
                 Plan zajęć
