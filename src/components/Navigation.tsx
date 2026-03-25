@@ -50,7 +50,7 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="text-lg hidden sm:block tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 900 }}>
+            <span className="text-lg hidden sm:block tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}>
               <span className="text-white">SCREAMO</span>
               <span className="text-[#DFFF00]">TRICKZ</span>
             </span>
@@ -68,7 +68,7 @@ export default function Navigation() {
                              ? "text-[#DFFF00]"
                              : "text-[var(--color-gray-300)] hover:text-[#DFFF00]"
                          }`}
-                style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
               >
                 {link.label}
                 <span
@@ -99,7 +99,7 @@ export default function Navigation() {
                        shadow-[0_0_15px_rgba(223,255,0,0.2)]
                        hover:shadow-[0_0_25px_rgba(223,255,0,0.4)]
                        transition-all duration-300 rounded-full"
-              style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
             >
               Zapisz się
             </Link>
@@ -161,7 +161,7 @@ export default function Navigation() {
                         ? "text-[#DFFF00]"
                         : "text-white hover:text-[#DFFF00]"
                     }`}
-                    style={{ fontFamily: "var(--font-heading)", fontWeight: 900 }}
+                    style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
                   >
                     {link.label}
                   </Link>
@@ -198,7 +198,7 @@ export default function Navigation() {
                            hover:bg-[#c4e000]
                            shadow-[0_0_20px_rgba(223,255,0,0.25)]
                            transition-all duration-300 rounded-full"
-                  style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
+                  style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
                 >
                   Zapisz się
                 </Link>

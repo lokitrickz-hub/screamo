@@ -28,7 +28,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-5xl">
+      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-6xl">
         {/* Top label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ export default function Hero() {
         >
           <span
             className="inline-block text-[9px] sm:text-[11px] md:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white/70"
-            style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
+            style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}
           >
             Uczniowski Klub Sportowy
           </span>
@@ -46,8 +46,8 @@ export default function Hero() {
 
         {/* Main title — SCREAMO white, TRICKZ neon lime */}
         <h1
-          className="leading-[0.95] tracking-[-0.02em] mb-3 md:mb-5 overflow-hidden whitespace-nowrap"
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: "clamp(1.65rem,5.8vw,7.5rem)" }}
+          className="leading-[0.95] tracking-[-0.02em] mb-3 md:mb-5 whitespace-nowrap"
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(1.65rem,5.8vw,6.5rem)" }}
         >
           {screamo.map((letter, i) => (
             <motion.span
@@ -91,7 +91,7 @@ export default function Hero() {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="text-[10px] sm:text-sm md:text-base tracking-[0.15em] md:tracking-[0.25em] uppercase
                    text-white/50 mb-8 md:mb-10"
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}
         >
           Tricking{" "}
           <span className="text-[#DFFF00] mx-1 md:mx-2">&#9889;</span>{" "}
@@ -117,7 +117,7 @@ export default function Hero() {
                      shadow-[0_0_25px_rgba(223,255,0,0.3)]
                      hover:shadow-[0_0_40px_rgba(223,255,0,0.5)]
                      transition-all duration-300"
-            style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
+            style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
           >
             Zobacz zajęcia
           </a>
@@ -129,7 +129,7 @@ export default function Hero() {
                      px-5 sm:px-6 md:px-8 py-3 md:py-3.5 rounded-full
                      hover:bg-[#DFFF00]/10 hover:border-[#DFFF00]
                      transition-all duration-300"
-            style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}
+            style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}
           >
             Zadzwoń — 514 201 443
           </a>
