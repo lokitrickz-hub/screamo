@@ -50,7 +50,7 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="font-[var(--font-heading)] font-[900] text-lg hidden sm:block tracking-[0.02em]">
+            <span className="text-lg hidden sm:block tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 900 }}>
               <span className="text-white">SCREAMO</span>
               <span className="text-[#DFFF00]">TRICKZ</span>
             </span>
@@ -62,12 +62,13 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-[var(--font-heading)] text-xs font-bold tracking-[0.15em] uppercase
+                className={`text-xs tracking-[0.15em] uppercase
                          transition-colors duration-300 relative group ${
                            isActive(link.href)
                              ? "text-[#DFFF00]"
                              : "text-[var(--color-gray-300)] hover:text-[#DFFF00]"
                          }`}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
               >
                 {link.label}
                 <span
@@ -92,12 +93,13 @@ export default function Navigation() {
 
             <Link
               href="/kontakt"
-              className="font-[var(--font-heading)] text-xs font-bold tracking-wider uppercase
+              className="text-xs tracking-wider uppercase
                        px-5 py-2 bg-[#DFFF00] text-[var(--color-navy)]
                        hover:bg-[#c4e000] hover:scale-105
                        shadow-[0_0_15px_rgba(223,255,0,0.2)]
                        hover:shadow-[0_0_25px_rgba(223,255,0,0.4)]
                        transition-all duration-300 rounded-full"
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
             >
               Zapisz się
             </Link>
@@ -154,11 +156,12 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-[var(--font-heading)] font-[900] text-2xl uppercase transition-colors ${
+                    className={`text-2xl uppercase transition-colors ${
                       isActive(link.href)
                         ? "text-[#DFFF00]"
                         : "text-white hover:text-[#DFFF00]"
                     }`}
+                    style={{ fontFamily: "var(--font-heading)", fontWeight: 900 }}
                   >
                     {link.label}
                   </Link>
@@ -190,11 +193,12 @@ export default function Navigation() {
                 <Link
                   href="/kontakt"
                   onClick={() => setMobileOpen(false)}
-                  className="font-[var(--font-heading)] text-sm font-bold tracking-wider uppercase
+                  className="text-sm tracking-wider uppercase
                            px-8 py-3 bg-[#DFFF00] text-[var(--color-navy)]
                            hover:bg-[#c4e000]
                            shadow-[0_0_20px_rgba(223,255,0,0.25)]
                            transition-all duration-300 rounded-full"
+                  style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
                 >
                   Zapisz się
                 </Link>
