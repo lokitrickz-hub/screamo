@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { TRAINERS, type Trainer } from "@/lib/data";
 import Link from "next/link";
+import WipeReveal from "./WipeReveal";
 
 /* ── Single trainer card ── */
 function TrainerCard({
@@ -50,14 +51,10 @@ function TrainerCard({
   const reversed = index % 2 !== 0;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div
-        className={`rounded-2xl border-2 overflow-hidden transition-all duration-500
+    <WipeReveal
+      color={index % 2 === 0 ? "#DFFF00" : "#9F67FF"}
+      delay={index * 0.2}
+      className={`rounded-2xl border-2 transition-all duration-500
                     ${isOpen
                       ? "border-[var(--color-yellow)] shadow-[0_0_40px_rgba(251,191,36,0.2)]"
                       : "border-[var(--color-purple)] hover:border-[var(--color-yellow)]/60 hover:shadow-[0_0_30px_rgba(124,58,237,0.2)]"
@@ -238,8 +235,7 @@ function TrainerCard({
             </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+    </WipeReveal>
   );
 }
 

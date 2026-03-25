@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Flame, Zap, Trophy, Phone } from "lucide-react";
 import Link from "next/link";
+import WipeReveal from "./WipeReveal";
 
 const AGE_GROUPS = [
   {
@@ -52,86 +52,7 @@ const AGE_GROUPS = [
   },
 ];
 
-// Cascade order: top-left(0), top-right(1), bottom-left(2), bottom-right(3)
 const CASCADE_DELAY = [0, 0.15, 0.3, 0.45];
-
-function WipeCard({ group, index }: { group: (typeof AGE_GROUPS)[number]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setRevealed(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const delay = CASCADE_DELAY[index];
-
-  return (
-    <div
-      ref={ref}
-      className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
-                  border-2 ${group.border} ${group.shadow} transition-all duration-500 overflow-hidden`}
-    >
-      {/* Wipe overlay — soft gradient glow */}
-      <div
-        className="absolute inset-0 z-20 rounded-2xl pointer-events-none"
-        style={{
-          background: `linear-gradient(90deg, transparent 0%, ${group.wipeColor}33 30%, ${group.wipeColor}55 50%, ${group.wipeColor}33 70%, transparent 100%)`,
-          transform: revealed ? "translateX(101%)" : "translateX(-101%)",
-          transition: revealed
-            ? `transform 0.7s cubic-bezier(0.25, 1, 0.5, 1) ${delay}s`
-            : "none",
-        }}
-      />
-
-      {/* Content — hidden until wipe passes */}
-      <div
-        style={{
-          opacity: revealed ? 1 : 0,
-          transition: `opacity 0.01s ${delay + 0.25}s`,
-        }}
-      >
-        {/* Icon + Name */}
-        <div className="flex items-center gap-3 mb-1">
-          <group.icon size={22} style={{ color: group.color }} />
-          <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white">
-            {group.name}
-          </h3>
-        </div>
-
-        {/* Description */}
-        <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed mb-5">
-          {group.description}
-        </p>
-
-        {/* Skills */}
-        <div className="flex flex-wrap gap-2">
-          {group.skills.map((skill) => (
-            <span
-              key={skill}
-              className="font-[var(--font-accent)] text-[10px] font-semibold tracking-wider uppercase
-                       px-3 py-1 rounded-full bg-[var(--color-navy)] border border-[var(--color-purple)]/30
-                       text-[var(--color-gray-400)]"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Classes() {
   return (
@@ -202,7 +123,42 @@ export default function Classes() {
         {/* Age Groups — cascade wipe reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
           {AGE_GROUPS.map((group, i) => (
-            <WipeCard key={group.name} group={group} index={i} />
+            <WipeReveal
+              key={group.name}
+              color={group.wipeColor}
+              delay={CASCADE_DELAY[i]}
+              className={`rounded-2xl bg-[var(--color-navy-light)]
+                        border-2 ${group.border} ${group.shadow} transition-all duration-500`}
+            >
+              <div className="p-4 sm:p-6 md:p-8">
+                {/* Icon + Name */}
+                <div className="flex items-center gap-3 mb-1">
+                  <group.icon size={22} style={{ color: group.color }} />
+                  <h3 className="font-[var(--font-heading)] text-xl md:text-2xl text-white">
+                    {group.name}
+                  </h3>
+                </div>
+
+                {/* Description */}
+                <p className="font-[var(--font-body)] text-sm text-[var(--color-gray-300)] leading-relaxed mb-5">
+                  {group.description}
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="font-[var(--font-accent)] text-[10px] font-semibold tracking-wider uppercase
+                               px-3 py-1 rounded-full bg-[var(--color-navy)] border border-[var(--color-purple)]/30
+                               text-[var(--color-gray-400)]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </WipeReveal>
           ))}
         </div>
 

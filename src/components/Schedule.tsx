@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Calendar, Phone, User } from "lucide-react";
+import WipeReveal from "./WipeReveal";
 
 const VP = { once: true, margin: "-80px" as const };
 
@@ -175,12 +176,10 @@ export default function Schedule() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {LOCATIONS.map((loc, i) => (
-              <motion.div
+              <WipeReveal
                 key={loc.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VP}
-                transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+                color={i % 2 === 0 ? "#DFFF00" : "#9F67FF"}
+                delay={0.1 + i * 0.15}
                 className="p-6 rounded-2xl bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/20"
               >
                 <div className="flex items-start gap-3">
@@ -197,7 +196,7 @@ export default function Schedule() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </WipeReveal>
             ))}
           </div>
         </div>
@@ -268,13 +267,13 @@ function ScheduleDay({
     ? "var(--color-yellow)"
     : "var(--color-purple-light)";
 
+  const wipeColor = accent === "yellow" ? "#DFFF00" : "#9F67FF";
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={VP}
-      transition={{ delay, duration: 0.5 }}
-      className={`rounded-2xl bg-[var(--color-navy-light)] border-2 ${borderColor} overflow-hidden`}
+    <WipeReveal
+      color={wipeColor}
+      delay={delay}
+      className={`rounded-2xl bg-[var(--color-navy-light)] border-2 ${borderColor}`}
     >
       {/* Day header */}
       <div className="px-5 py-3 border-b border-[var(--color-purple)]/10 flex items-center justify-between">
@@ -331,6 +330,6 @@ function ScheduleDay({
           </div>
         ))}
       </div>
-    </motion.div>
+    </WipeReveal>
   );
 }

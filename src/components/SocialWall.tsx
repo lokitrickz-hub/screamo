@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Instagram, Youtube, Facebook, ArrowUpRight, Heart, Play, Users } from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/data";
+import WipeReveal from "./WipeReveal";
 
 const PLATFORMS = [
   {
@@ -90,23 +91,19 @@ export default function SocialWall() {
           {PLATFORMS.map((platform, i) => {
             const link = SOCIAL_LINKS[platform.key];
             return (
-              <motion.a
+              <WipeReveal
                 key={platform.key}
+                color={i === 0 ? "#E1306C" : i === 1 ? "#FF0000" : "#1877F2"}
+                delay={i * 0.2}
+                className={`rounded-2xl bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/30
+                         ${platform.hoverBorder} transition-all duration-300
+                         hover:scale-[1.03] hover:-translate-y-1`}
+              >
+              <a
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  delay: 0.3 + i * 0.15,
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                whileHover={{ scale: 1.03, y: -4 }}
-                className={`group relative overflow-hidden rounded-2xl
-                         bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/30
-                         ${platform.hoverBorder}
-                         transition-colors duration-300 block`}
+                className="group block"
               >
                 {/* Gradient header */}
                 <div className={`h-28 bg-gradient-to-br ${platform.color} relative overflow-hidden`}>
@@ -157,7 +154,8 @@ export default function SocialWall() {
                     </div>
                   </div>
                 </div>
-              </motion.a>
+              </a>
+              </WipeReveal>
             );
           })}
         </div>

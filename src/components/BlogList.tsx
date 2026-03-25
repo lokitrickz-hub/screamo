@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Calendar, Play, Tag, ArrowUpRight } from "lucide-react";
 import { NEWS_ITEMS } from "@/lib/data";
 import Link from "next/link";
+import WipeReveal from "./WipeReveal";
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
@@ -70,12 +71,13 @@ export default function BlogList() {
 
         {/* Featured article — hero card */}
         {featured && (
-          <motion.article
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="group cursor-pointer mb-8 md:mb-12"
+          <WipeReveal
+            color="#DFFF00"
+            delay={0}
+            className="rounded-2xl mb-8 md:mb-12"
+          >
+          <article
+            className="group cursor-pointer"
             {...(featured.youtube
               ? { onClick: () => window.open(featured.youtube, "_blank") }
               : {})}
@@ -143,18 +145,20 @@ export default function BlogList() {
                 </div>
               </div>
             </div>
-          </motion.article>
+          </article>
+          </WipeReveal>
         )}
 
         {/* Rest — horizontal cards */}
         <div className="space-y-4 md:space-y-5">
           {rest.map((item, i) => (
-            <motion.article
+            <WipeReveal
               key={item.id}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5 }}
+              color={i % 2 === 0 ? "#DFFF00" : "#9F67FF"}
+              delay={i * 0.1}
+              className="rounded-2xl"
+            >
+            <article
               className="group cursor-pointer"
               {...(item.youtube
                 ? { onClick: () => window.open(item.youtube, "_blank") }
@@ -224,7 +228,8 @@ export default function BlogList() {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </article>
+            </WipeReveal>
           ))}
         </div>
       </div>
