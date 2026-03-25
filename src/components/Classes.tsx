@@ -83,14 +83,14 @@ function WipeCard({ group, index }: { group: (typeof AGE_GROUPS)[number]; index:
       className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
                   border-2 ${group.border} ${group.shadow} transition-all duration-500 overflow-hidden`}
     >
-      {/* Wipe overlay */}
+      {/* Wipe overlay — soft gradient glow */}
       <div
         className="absolute inset-0 z-20 rounded-2xl pointer-events-none"
         style={{
-          background: group.wipeColor,
+          background: `linear-gradient(90deg, transparent 0%, ${group.wipeColor}33 30%, ${group.wipeColor}55 50%, ${group.wipeColor}33 70%, transparent 100%)`,
           transform: revealed ? "translateX(101%)" : "translateX(-101%)",
           transition: revealed
-            ? `transform 0.5s cubic-bezier(0.65, 0, 0.35, 1) ${delay}s`
+            ? `transform 0.7s cubic-bezier(0.25, 1, 0.5, 1) ${delay}s`
             : "none",
         }}
       />
