@@ -160,7 +160,7 @@ export const TIMELINE: TimelineEvent[] = [
     label: "Złote Lata Zawodów",
     title: "Mistrzowie Polski bez Konkurencji",
     description: "Zespół zaczął regularnie stawać na najwyższym stopniu podium. Zdobyli wielokrotne Mistrzostwo Polski w Trickingu, udowadniając swoją bezdyskusyjną dominację. Spektakularnym sukcesem był m.in. start na Mistrzostwach Polski w Radlinie, skąd reprezentacja Screamo Trickz przywiozła łącznie aż 38 medali (w tym 14 złotych), deklasując konkurencję w takich kategoriach jak tor przeszkód, bitwy na tricki czy widowiskowe rozbicia desek.",
-    image: "/images/seba-mistrz.jpg",
+    image: "/images/zawody2.jpg",
     highlight: true,
   },
   {
