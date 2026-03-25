@@ -71,15 +71,14 @@ function TrainerCard({
             onMouseLeave={handleStop}
             onClick={onToggle}
           >
-            {/* Photo — natural height, no cropping */}
+            {/* Photo — always visible as base layer */}
             <img
               src={trainer.photo}
               alt={trainer.name}
-              className={`w-full h-auto block transition-opacity duration-700
-                        ${videoPlaying ? "opacity-0" : "opacity-100"}`}
+              className="w-full h-auto block"
             />
 
-            {/* Video — overlays the photo area */}
+            {/* Video — fades in on top of photo */}
             <video
               ref={videoRef}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700
@@ -88,7 +87,7 @@ function TrainerCard({
               muted
               loop
               playsInline
-              preload="none"
+              preload="auto"
             />
 
             {/* Subtle gradient for name readability on mobile */}
