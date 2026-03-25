@@ -7,48 +7,48 @@ import WipeReveal from "./WipeReveal";
 
 const AGE_GROUPS = [
   {
-    name: "Maluchy",
+    name: "Maluchy (5-7 lat)",
     icon: Sparkles,
     color: "var(--color-yellow)",
     wipeColor: "#DFFF00",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
     shadow: "hover:shadow-[0_0_30px_rgba(223,255,0,0.15)]",
     description:
-      "Wprowadzenie do akrobatyki przez zabawę. Nauka koordynacji, podstawowych przewrotów i salt w bezpiecznych warunkach. Budujemy pewność siebie i miłość do ruchu od najmłodszych lat.",
-    skills: ["Przewroty", "Koordynacja", "Gry ruchowe", "Rozciąganie"],
+      "Ćwiczenia ogólnokształcące, koordynacyjne i wzmacniające z elementami gimnastyki. Budujemy fundamenty ruchu od najmłodszych lat.",
+    skills: ["Koordynacja", "Gimnastyka", "Wzmacnianie", "Gry ruchowe"],
   },
   {
-    name: "Juniorzy",
+    name: "Grupa Podstawowa",
     icon: Flame,
     color: "var(--color-purple-light)",
     wipeColor: "#9F67FF",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
     shadow: "hover:shadow-[0_0_30px_rgba(124,58,237,0.15)]",
     description:
-      "Systematyczna nauka trickingu i akrobatyki. Rozwijamy technikę salta, flik-flaków, kopnięć i obrotów. Przygotowanie do pierwszych zawodów i występów.",
-    skills: ["Salta", "Flik-flaki", "Kopnięcia", "Podstawy trickingu"],
+      "Gimnastyka z ukierunkowaniem na elementy akrobatyczne, ćwiczenia wzmacniające oraz kształtowanie sylwetek akrobatycznych.",
+    skills: ["Gimnastyka", "Akrobatyka", "Wzmacnianie", "Sylwetka akrobatyczna"],
   },
   {
-    name: "Zaawansowani",
+    name: "Średniozaawansowani",
     icon: Zap,
     color: "var(--color-yellow)",
     wipeColor: "#DFFF00",
     border: "border-[var(--color-yellow)]/40 hover:border-[var(--color-yellow)]",
     shadow: "hover:shadow-[0_0_30px_rgba(223,255,0,0.15)]",
     description:
-      "Trening dla zawodników z doświadczeniem. Zaawansowane combo, ewolucje w powietrzu i przygotowanie do Mistrzostw Polski. Tutaj rodzą się mistrzowie.",
-    skills: ["Combo tricków", "Ewolucje", "Przygotowanie startowe", "Choreografia"],
+      "Podstawowe elementy akrobatyczne i trickingowe: rundak, flik-flak, salto w tył i przód, podstawowe kopnięcia i combosy. Nauka łączenia i pozycji wyjściowych do elementów akrobatycznych.",
+    skills: ["Rundak", "Flik-flak", "Salta", "Kopnięcia", "Combosy"],
   },
   {
-    name: "Kadra Zawodnicza",
+    name: "Zaawansowani / Zawodnicy",
     icon: Trophy,
     color: "var(--color-purple-light)",
     wipeColor: "#9F67FF",
     border: "border-[var(--color-purple)]/40 hover:border-[var(--color-purple)]",
     shadow: "hover:shadow-[0_0_30px_rgba(124,58,237,0.15)]",
     description:
-      "Elitarna grupa reprezentująca klub na zawodach krajowych i międzynarodowych. Intensywne treningi, indywidualny plan rozwoju i wsparcie na najwyższym poziomie.",
-    skills: ["Plan indywidualny", "Starty krajowe", "Starty międzynarodowe", "Pokazy"],
+      "Nauka kombinacji akrobatycznych i zaawansowanych elementów trickingowych. Na tej grupie uczymy śrub w tył i przód oraz podwójnych salt.",
+    skills: ["Kombinacje akrobatyczne", "Śruby", "Podwójne salta", "Tricking zaawansowany"],
   },
 ];
 

@@ -7,25 +7,25 @@ import Link from "next/link";
 
 const GROUPS = [
   {
-    name: "Maluchy",
+    name: "Maluchy (5-7 lat)",
     icon: Sparkles,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40",
-    desc: "Nauka koordynacji i podstawowych przewrotów przez zabawę. Bezpiecznie i z uśmiechem!",
+    desc: "Ćwiczenia ogólnokształcące, koordynacyjne i wzmacniające z elementami gimnastyki.",
   },
   {
-    name: "Juniorzy",
+    name: "Grupa Podstawowa",
     icon: Flame,
     color: "var(--color-purple-light)",
     border: "border-[var(--color-purple)]/40",
-    desc: "Systematyczna nauka trickingu — salta, flik-flaki, kopnięcia. Przygotowanie do pierwszych zawodów.",
+    desc: "Gimnastyka z ukierunkowaniem na elementy akrobatyczne i kształtowanie sylwetek akrobatycznych.",
   },
   {
-    name: "Zaawansowani",
+    name: "Średniozaawansowani",
     icon: Zap,
     color: "var(--color-yellow)",
     border: "border-[var(--color-yellow)]/40",
-    desc: "Zaawansowane combo i ewolucje w powietrzu. Tutaj rodzą się mistrzowie Polski.",
+    desc: "Rundak, flik-flak, salta, podstawowe kopnięcia i combosy. Nauka łączenia elementów.",
   },
 ];
 
