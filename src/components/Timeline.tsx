@@ -55,10 +55,11 @@ function TimelineItem({
           </p>
 
           {event.image && (
-            <div className="mt-4 aspect-video rounded-xl overflow-hidden bg-[var(--color-navy-lighter)] relative border border-[var(--color-purple)]/20">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${event.image})` }}
+            <div className="mt-4 rounded-xl overflow-hidden bg-[var(--color-navy-lighter)] border border-[var(--color-purple)]/20">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-auto block"
               />
             </div>
           )}
