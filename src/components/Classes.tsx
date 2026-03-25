@@ -113,14 +113,11 @@ export default function Classes() {
           </motion.div>
         </div>
 
-        {/* Age Groups — use animate with stagger, not whileInView */}
+        {/* Age Groups */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-28">
-          {AGE_GROUPS.map((group, i) => (
-            <motion.div
+          {AGE_GROUPS.map((group) => (
+            <div
               key={group.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={`relative p-4 sm:p-6 md:p-8 rounded-2xl bg-[var(--color-navy-light)]
                         border-2 ${group.border} ${group.shadow} transition-all duration-500`}
             >
@@ -150,7 +147,7 @@ export default function Classes() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
