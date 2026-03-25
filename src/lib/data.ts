@@ -146,7 +146,7 @@ export const TIMELINE: TimelineEvent[] = [
   {
     label: "2008 r.",
     title: "Od pasji do przełomowego spotkania",
-    description: "Historia drużyny zaczęła się zupełnie niepozornie — od pasji kilku chłopaków, którzy trenowali na własną rękę w bardzo skromnych warunkach. Andrzej pierwsze kroki stawiał w stodole z kolegami, a po lekcjach na małej salce. Tomek skakał po murkach i do piaskownicy w Nowym Sączu, Mateusz ćwiczył u siebie w Łososinie, a Jakub i Sebastian również trenowali indywidualnie. Choć każdy rozwijał się osobno, los ich połączył — w 2008 roku poznali się przez internet i postanowili spotkać się na żywo. Od tego momentu zaczęli regularnie trenować razem, dzielić się wiedzą i wzajemnie motywować.",
+    description: "Historia drużyny zaczęła się zupełnie niepozornie — od pasji kilku chłopaków, którzy trenowali na własną rękę w bardzo skromnych warunkach. Tomek, Sebastian i Jakub skakali po murkach w Nowym Sączu, Mateusz ćwiczył u siebie w Łososinie, a Andrzej stawiał pierwsze kroki w stodole z kolegami. Choć każdy rozwijał się osobno, los ich połączył — w 2008 roku poznali się przez internet i postanowili spotkać się na żywo. Od tego momentu zaczęli regularnie trenować razem, dzielić się wiedzą i wzajemnie motywować.",
     image: "/images/ekipa-z-philem.jpg",
     highlight: true,
   },
