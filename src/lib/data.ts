@@ -147,7 +147,7 @@ export const TIMELINE: TimelineEvent[] = [
     label: "2008 r.",
     title: "Od pasji do przełomowego spotkania",
     description: "Historia drużyny zaczęła się zupełnie niepozornie — od pasji kilku chłopaków, którzy trenowali na własną rękę w bardzo skromnych warunkach. Andrzej pierwsze kroki stawiał w stodole z kolegami, a po lekcjach na małej salce. Tomek skakał po murkach i do piaskownicy w Nowym Sączu, a Jakub i Sebastian również trenowali indywidualnie. Choć każdy rozwijał się osobno, los ich połączył — w 2008 roku poznali się przez internet i postanowili spotkać się na żywo. Od tego momentu zaczęli regularnie trenować razem, dzielić się wiedzą i wzajemnie motywować.",
-    image: "/images/gallery-4.jpg",
+    image: "/images/ekipa-z-philem.jpg",
     highlight: true,
   },
   {
@@ -160,7 +160,7 @@ export const TIMELINE: TimelineEvent[] = [
     label: "Złote Lata Zawodów",
     title: "Mistrzowie Polski bez Konkurencji",
     description: "Zespół zaczął regularnie stawać na najwyższym stopniu podium. Zdobyli wielokrotne Mistrzostwo Polski w Trickingu, udowadniając swoją bezdyskusyjną dominację. Spektakularnym sukcesem był m.in. start na Mistrzostwach Polski w Radlinie, skąd reprezentacja Screamo Trickz przywiozła łącznie aż 38 medali (w tym 14 złotych), deklasując konkurencję w takich kategoriach jak tor przeszkód, bitwy na tricki czy widowiskowe rozbicia desek.",
-    image: "/images/gallery-22.jpg",
+    image: "/images/seba-mistrz.jpg",
     highlight: true,
   },
   {
