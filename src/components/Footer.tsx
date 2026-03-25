@@ -81,10 +81,10 @@ export default function Footer() {
               KONTAKT
             </h4>
             <div className="space-y-3">
-              <a href="https://maps.google.com/?q=Dunajcowa+60A+Nowy+S%C4%85cz" target="_blank" rel="noopener noreferrer"
+              <a href="https://maps.google.com/?q=Nowy+S%C4%85cz" target="_blank" rel="noopener noreferrer"
                  className="flex items-center gap-3 text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors text-sm">
                 <MapPin size={14} className="text-[var(--color-purple-light)]" />
-                <span className="font-[var(--font-body)]">ul. Dunajcowa 60A, 33-300 Nowy Sącz</span>
+                <span className="font-[var(--font-body)]">Nowy Sącz — treningi w 3 lokalizacjach</span>
               </a>
               <a href="tel:+48514201443" className="flex items-center gap-3 text-[var(--color-gray-300)] hover:text-[var(--color-yellow)] transition-colors text-sm">
                 <Phone size={14} className="text-[var(--color-purple-light)]" />

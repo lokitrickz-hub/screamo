@@ -288,7 +288,7 @@ export default function Contact() {
               </div>
               <div className="space-y-3 pl-0 sm:pl-[52px]">
                 {[
-                  { name: "Dunajcowa 60A — główna baza", address: "ul. Dunajcowa 60A, 33-300 Nowy Sącz", href: "https://maps.google.com/?q=Dunajcowa+60A+Nowy+S%C4%85cz" },
+                  { name: "Dunajcowa 60A", address: "ul. Dunajcowa 60A, 33-300 Nowy Sącz", href: "https://maps.google.com/?q=Dunajcowa+60A+Nowy+S%C4%85cz" },
                   { name: "JumpMania", address: "ul. Zielona 27, 33-300 Nowy Sącz", href: "https://maps.google.com/?q=Zielona+27+Nowy+S%C4%85cz" },
                   { name: "Elektryk (ZSE-M)", address: "ul. Limanowskiego 4, 33-330 Nowy Sącz", href: "https://maps.google.com/?q=Limanowskiego+4+Nowy+S%C4%85cz" },
                 ].map((loc) => (

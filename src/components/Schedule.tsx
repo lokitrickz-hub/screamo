@@ -10,7 +10,7 @@ const LOCATIONS = [
   {
     name: "Dunajcowa 60A — Nowy Sącz",
     address: "ul. Dunajcowa 60A, 33-300 Nowy Sącz",
-    note: "Główna baza treningowa klubu",
+    note: "Treningi popołudniowe",
   },
   {
     name: "JumpMania — Nowy Sącz",
