@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowLeft, Calendar, Play, Tag, ArrowUpRight } from "lucide-react";
+import { Calendar, Play, Tag, ArrowUpRight } from "lucide-react";
 import { NEWS_ITEMS } from "@/lib/data";
 import Link from "next/link";
 
@@ -30,23 +30,6 @@ export default function BlogList() {
   return (
     <section className="relative pt-28 md:pt-36 pb-16 md:pb-32 px-6 bg-[var(--color-navy)] min-h-screen">
       <div className="max-w-6xl mx-auto">
-        {/* Back button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-semibold
-                     tracking-wider uppercase text-[var(--color-gray-400)]
-                     hover:text-[var(--color-yellow)] transition-colors group"
-          >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            Powrót na stronę główną
-          </Link>
-        </motion.div>
 
         {/* Header */}
         <div ref={headerRef} className="mb-12 md:mb-16">

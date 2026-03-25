@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles, Flame, Zap, Trophy, Phone } from "lucide-react";
+import { Sparkles, Flame, Zap, Trophy, Phone } from "lucide-react";
 import Link from "next/link";
 
 const AGE_GROUPS = [
@@ -60,23 +60,6 @@ export default function Classes() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        {/* Back button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-semibold
-                     tracking-wider uppercase text-[var(--color-gray-400)]
-                     hover:text-[var(--color-yellow)] transition-colors group"
-          >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            Powrót na stronę główną
-          </Link>
-        </motion.div>
 
         {/* Header — use animate (not whileInView) to avoid flash on load */}
         <div className="mb-16 md:mb-20">

@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { TIMELINE } from "@/lib/data";
 
@@ -113,23 +112,6 @@ export default function Timeline() {
   return (
     <section className="relative pt-28 md:pt-36 pb-24 md:pb-32 px-4 sm:px-6 min-h-screen bg-[var(--color-navy)]">
       <div className="max-w-5xl mx-auto">
-        {/* Back button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-[var(--font-accent)] text-xs font-semibold
-                     tracking-wider uppercase text-[var(--color-gray-400)]
-                     hover:text-[var(--color-yellow)] transition-colors group"
-          >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            Powrót na stronę główną
-          </Link>
-        </motion.div>
 
         {/* Header */}
         <div ref={headerRef} className="mb-20 md:mb-24 text-center">
