@@ -50,7 +50,7 @@ export default function Navigation() {
               alt="ScreamoTrickz"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
             />
-            <span className="text-lg hidden sm:block tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 700 }}>
+            <span className="text-lg hidden sm:block tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}>
               <span className="text-white">SCREAMO</span>
               <span className="text-[#DFFF00]">TRICKZ</span>
             </span>

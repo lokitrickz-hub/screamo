@@ -47,7 +47,7 @@ export default function Hero() {
         {/* Main title — SCREAMO white, TRICKZ neon lime */}
         <h1
           className="leading-[0.95] tracking-[-0.02em] mb-3 md:mb-5 whitespace-nowrap"
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(1.65rem,5.8vw,6.5rem)" }}
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "clamp(1.65rem,5.8vw,6.5rem)" }}
         >
           {screamo.map((letter, i) => (
             <motion.span
