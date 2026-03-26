@@ -178,7 +178,6 @@ export default function Schedule() {
             {LOCATIONS.map((loc, i) => (
               <WipeReveal
                 key={loc.name}
-                color={i % 2 === 0 ? "#DFFF00" : "#9F67FF"}
                 delay={0.1 + i * 0.15}
                 className="p-6 rounded-2xl bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/20"
               >
@@ -267,11 +266,8 @@ function ScheduleDay({
     ? "var(--color-yellow)"
     : "var(--color-purple-light)";
 
-  const wipeColor = accent === "yellow" ? "#DFFF00" : "#9F67FF";
-
   return (
     <WipeReveal
-      color={wipeColor}
       delay={delay}
       className={`rounded-2xl bg-[var(--color-navy-light)] border-2 ${borderColor}`}
     >

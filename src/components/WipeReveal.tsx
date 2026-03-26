@@ -4,7 +4,6 @@ import { useRef, useEffect, useState, type ReactNode } from "react";
 
 export default function WipeReveal({
   children,
-  color = "#DFFF00",
   delay = 0,
   className = "",
 }: {
@@ -14,7 +13,7 @@ export default function WipeReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -22,38 +21,29 @@ export default function WipeReveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setRevealed(true);
+          setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      {/* Wipe glow overlay */}
-      <div
-        className="absolute inset-0 z-20 pointer-events-none"
-        style={{
-          background: `linear-gradient(90deg, transparent 0%, ${color}33 30%, ${color}55 50%, ${color}33 70%, transparent 100%)`,
-          transform: revealed ? "translateX(101%)" : "translateX(-101%)",
-          transition: revealed
-            ? `transform 0.7s cubic-bezier(0.25, 1, 0.5, 1) ${delay}s`
-            : "none",
-        }}
-      />
-      {/* Content */}
-      <div
-        style={{
-          opacity: revealed ? 1 : 0,
-          transition: `opacity 0.01s ${delay + 0.25}s`,
-        }}
-      >
-        {children}
-      </div>
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "scale(1) translateY(0)" : "scale(0.95) translateY(18px)",
+        filter: visible ? "blur(0px)" : "blur(6px)",
+        transition: `opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, filter 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+        willChange: "opacity, transform, filter",
+      }}
+    >
+      {children}
     </div>
   );
 }

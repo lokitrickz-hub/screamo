@@ -93,7 +93,6 @@ export default function SocialWall() {
             return (
               <WipeReveal
                 key={platform.key}
-                color={i === 0 ? "#E1306C" : i === 1 ? "#FF0000" : "#1877F2"}
                 delay={i * 0.2}
                 className={`rounded-2xl bg-[var(--color-navy-light)] border-2 border-[var(--color-purple)]/30
                          ${platform.hoverBorder} transition-all duration-300

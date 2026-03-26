@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Instagram,
   Youtube,
@@ -52,7 +52,6 @@ function TrainerCard({
 
   return (
     <WipeReveal
-      color={index % 2 === 0 ? "#DFFF00" : "#9F67FF"}
       delay={index * 0.2}
       className={`rounded-2xl border-2 transition-all duration-500
                     ${isOpen
@@ -240,8 +239,6 @@ function TrainerCard({
 
 /* ── Main section ── */
 export default function Masters() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(headerRef, { once: true, margin: "-80px" });
   const [openSlug, setOpenSlug] = useState<string | null>(null);
 
   function handleToggle(slug: string) {
@@ -253,20 +250,14 @@ export default function Masters() {
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-12 md:mb-16 text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+        <WipeReveal delay={0} className="mb-12 md:mb-16 text-center">
+          <span
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
             Poznaj nas
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6 }}
+          </span>
+          <h1
             className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
                      text-white leading-[1] mb-4"
           >
@@ -277,11 +268,8 @@ export default function Masters() {
             >
               KADRA
             </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+          </h1>
+          <p
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
@@ -291,8 +279,8 @@ export default function Masters() {
             <span className="md:hidden">
               Dotknij „Poznaj trenera", żeby dowiedzieć się więcej!
             </span>
-          </motion.p>
-        </div>
+          </p>
+        </WipeReveal>
 
         {/* Trainer cards */}
         <div className="flex flex-col gap-6 md:gap-8">

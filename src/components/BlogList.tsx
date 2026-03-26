@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Play, Tag, ChevronDown, X } from "lucide-react";
 import { NEWS_ITEMS } from "@/lib/data";
 import WipeReveal from "./WipeReveal";
@@ -16,8 +16,6 @@ const formatDate = (dateStr: string) => {
 };
 
 export default function BlogList() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(headerRef, { once: true, margin: "-80px" });
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const sortedNews = [...NEWS_ITEMS].sort(
@@ -36,20 +34,14 @@ export default function BlogList() {
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-12 md:mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+        <WipeReveal delay={0} className="mb-12 md:mb-16">
+          <span
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
             Blog
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6 }}
+          </span>
+          <h1
             className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-5xl lg:text-6xl
                      text-white leading-[1.1] mb-4"
           >
@@ -60,22 +52,18 @@ export default function BlogList() {
             >
               &amp; WYDARZENIA
             </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+          </h1>
+          <p
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg leading-relaxed"
           >
             Co słychać w ScreamoTrickz? Relacje z zawodów, nowe nabory i najważniejsze wydarzenia.
-          </motion.p>
-        </div>
+          </p>
+        </WipeReveal>
 
         {/* Featured article — hero card */}
         {featured && (
           <WipeReveal
-            color="#DFFF00"
             delay={0}
             className="rounded-2xl mb-8 md:mb-12"
           >
@@ -186,7 +174,6 @@ export default function BlogList() {
           {rest.map((item, i) => (
             <WipeReveal
               key={item.id}
-              color={i % 2 === 0 ? "#DFFF00" : "#9F67FF"}
               delay={i * 0.1}
               className="rounded-2xl"
             >

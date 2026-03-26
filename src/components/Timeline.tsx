@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { TIMELINE } from "@/lib/data";
+import WipeReveal from "./WipeReveal";
 
 function TimelineItem({
   event,
@@ -100,8 +101,6 @@ function TimelineItem({
 
 export default function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -115,20 +114,14 @@ export default function Timeline() {
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-20 md:mb-24 text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+        <WipeReveal delay={0} className="mb-20 md:mb-24 text-center">
+          <span
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
             Od 2011 roku
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6 }}
+          </span>
+          <h1
             className="font-[var(--font-heading)] text-4xl md:text-6xl lg:text-7xl
                      text-white leading-[1] mb-4"
           >
@@ -137,17 +130,14 @@ export default function Timeline() {
                   style={{ textShadow: "0 0 30px rgba(251,191,36,0.3)" }}>
               HISTORIA
             </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+          </h1>
+          <p
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg mx-auto leading-relaxed"
           >
             Poznaj drogę ScreamoTrickz — od pasji na sądeckich murkach po wielkie sceny i międzynarodowe sukcesy.
-          </motion.p>
-        </div>
+          </p>
+        </WipeReveal>
 
         {/* Timeline */}
         <div ref={containerRef} className="relative pl-4 sm:pl-6 md:pl-0">

@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
 import {
   MapPin,
   Phone,
@@ -14,13 +13,10 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
-import Link from "next/link";
 import { SOCIAL_LINKS } from "@/lib/data";
+import WipeReveal from "./WipeReveal";
 
 export default function Contact() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(headerRef, { once: true, margin: "-80px" });
-
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formData, setFormData] = useState({ name: "", contact: "", message: "" });
 
@@ -52,20 +48,14 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-12 md:mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+        <WipeReveal delay={0} className="mb-12 md:mb-16">
+          <span
             className="inline-block font-[var(--font-accent)] text-xs font-bold tracking-[0.2em] uppercase
                      text-[var(--color-navy)] bg-[var(--color-yellow)] px-3 py-1 rounded-full mb-4"
           >
             Kontakt
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6 }}
+          </span>
+          <h1
             className="font-[var(--font-heading)] text-3xl sm:text-4xl md:text-6xl lg:text-7xl
                      text-white leading-[1.1] mb-4"
           >
@@ -76,27 +66,19 @@ export default function Contact() {
             >
               NAS
             </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+          </h1>
+          <p
             className="font-[var(--font-body)] text-[var(--color-gray-300)] text-sm md:text-base
                      max-w-lg leading-relaxed"
           >
             Masz pytania? Chcesz zapisać dziecko na trening? Napisz do nas lub zadzwoń — odpowiemy jak najszybciej!
-          </motion.p>
-        </div>
+          </p>
+        </WipeReveal>
 
         {/* Content grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Contact form */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <WipeReveal delay={0.1}>
             {formState === "success" ? (
               <div className="bg-[var(--color-navy-light)] rounded-2xl border-2 border-green-500/30 p-8 text-center">
                 <CheckCircle size={48} className="text-green-400 mx-auto mb-4" />
@@ -227,16 +209,10 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </motion.div>
+          </WipeReveal>
 
           {/* Info side */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="space-y-6"
-          >
+          <WipeReveal delay={0.2} className="space-y-6">
             {/* Phone card */}
             <div className="bg-[var(--color-navy-light)] rounded-2xl border-2 border-[var(--color-purple)]/20
                          p-5 hover:border-[var(--color-purple)]/50 transition-colors duration-300">
@@ -322,7 +298,7 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </WipeReveal>
         </div>
       </div>
     </section>
