@@ -31,10 +31,12 @@ export default function WipeReveal({
     return () => observer.disconnect();
   }, []);
 
+  const needsClip = className.includes("rounded");
+
   return (
     <div
       ref={ref}
-      className={className}
+      className={`${className}${needsClip ? " overflow-hidden" : ""}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "scale(1) translateY(0)" : "scale(0.95) translateY(18px)",

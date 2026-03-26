@@ -89,8 +89,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-[10px] sm:text-sm md:text-base tracking-[0.15em] md:tracking-[0.25em] uppercase
-                   text-white/50 mb-8 md:mb-10"
+          className="text-xs sm:text-sm md:text-base tracking-[0.15em] md:tracking-[0.25em] uppercase
+                   text-white/70 mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}
         >
           Tricking{" "}
