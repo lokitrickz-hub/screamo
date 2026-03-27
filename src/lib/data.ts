@@ -85,7 +85,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     excerpt: "Zawodnicy ScreamoTrickz pod okiem trenera Andrzeja Steca zdobyli aż 31 medali — 15 złotych, 12 srebrnych i 4 brązowe. Takiego wyniku nie powstydziłaby się żadna profesjonalna kadra!",
     content: "Trickingu nie da się zatrzymać! Zawodnicy ScreamoTrickz z Nowego Sącza pod okiem trenera Andrzeja Steca zdobyli na Mistrzostwach Polski aż 31 medali — w tym 15 złotych, 12 srebrnych i 4 brązowe. Rywalizacja toczyła się w czterech kategoriach: Tricking Battle First Step, Rozbijanie Desek, Run and Fight oraz Tricking Battle Pro. Zawodnicy prezentowali spektakularne kombinacje powietrznych salt, kopnięć i ewolucji. Na treningach wspierała ich Wiktoria Bisaga — wielokrotna Mistrzyni Polski, która jako asystentka trenera wniosła swoje doświadczenie techniczne i zawodnicze do pracy z młodszymi adeptami. Takiego wyniku nie powstydziłaby się żadna profesjonalna kadra sportowa.",
     date: "2025-05-19",
-    image: "/images/zawody-IMG_1385.jpg",
+    image: "/images/zawody-mp-2025.jpg",
     tag: "Zawody",
   },
   {
