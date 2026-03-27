@@ -28,7 +28,7 @@ export const TRAINERS: Trainer[] = [
     name: "Andrzej Stec",
     role: "Założyciel & Główny Trener",
     bio: "Wizjoner i serce ScreamoTrickz. Od 2011 roku wyznacza kierunek rozwoju klubu. Specjalizuje się w technicznych ewolucjach i metodyce nauczania trickingu od podstaw. To on przeprowadził grupę z podwórkowych treningów na ogólnopolską scenę.",
-    photo: "/images/Jondrulla-2.png",
+    photo: "/images/DSC_4334.JPG",
     video: "/videos/andrzej-trick.mp4",
     trick: "Corkscrew 720",
     socials: {
@@ -78,16 +78,6 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
-  {
-    id: 1,
-    slug: "nowe-nabory-wiosna-2026",
-    title: "Nowe nabory — wiosna 2026!",
-    excerpt: "Ruszają zapisy do grup początkujących! Pierwsza lekcja próbna gratis. Treningi w trzech lokalizacjach w Nowym Sączu — dla dzieci od 5 lat.",
-    content: "Wiosenny nabór 2026 oficjalnie otwarty! Zapraszamy dzieci od 5 roku życia na treningi trickingu i akrobatyki w Nowym Sączu. Zajęcia odbywają się w trzech lokalizacjach: Dunajcowa 60A, JumpMania oraz Elektryk. Pierwsza lekcja próbna jest całkowicie bezpłatna — przyjdź i sprawdź, czy to sport dla Twojego dziecka! Grupy prowadzone przez doświadczonych trenerów z wieloletnim stażem zawodniczym. Zapisy telefonicznie: 514 201 443.",
-    date: "2026-03-10",
-    image: "/images/zawody-IMG_9093.jpg",
-    tag: "Nabór",
-  },
   {
     id: 2,
     slug: "31-medali-mistrzostwa-polski",
