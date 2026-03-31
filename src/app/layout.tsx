@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description:
     "Uczniowski Klub Sportowy ScreamoTrickz z Nowego Sącza. Tricking, akrobatyka i gimnastyka na Sądecczyźnie. Dołącz do nas!",
   keywords: ["tricking", "akrobatyka", "Nowy Sącz", "ScreamoTrickz", "UKS", "gimnastyka", "Sądecczyzna"],
+  verification: {
+    google: "_kDyJuqcN84KnWibW_xyFDdGBTRFJk-royh8Erv2hYU",
+  },
   openGraph: {
     title: "UKS ScreamoTrickz — Tricking & Akrobatyka",
     description: "Uczniowski Klub Sportowy ScreamoTrickz. Tricking, akrobatyka i gimnastyka na Sądecczyźnie.",
